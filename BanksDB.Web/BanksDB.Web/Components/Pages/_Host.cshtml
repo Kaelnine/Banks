@@ -1,7 +1,13 @@
 ﻿@page "/"
+@using BanksDB.Web.Components
 @using Microsoft.AspNetCore.Components.Web
-@namespace YourProjectName.Pages
+@namespace BanksDB.Web.Components.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+
+<component type="typeof(App)" render-mode="ServerPrerendered" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +20,7 @@
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
 <body>
-    <!--@RenderBody()-->
+    @*@RenderBody()*@
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.

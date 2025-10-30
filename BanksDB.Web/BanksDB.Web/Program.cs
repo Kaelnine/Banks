@@ -1,7 +1,10 @@
+using BanksDB.BLL.Services;
 using BanksDB.Web.Components;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
 
 namespace BanksDB.Web
 {
@@ -11,24 +14,27 @@ namespace BanksDB.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // блок авторизации
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
-            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+            // блок авторизации
+            //builder.Services.AddRazorPages();
+            //builder.Services.AddServerSideBlazor();
+            //builder.Services.AddHttpContextAccessor();
 
-            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options =>
-            {
-                options.Cookie.Name = "auth_token";
-                options.LoginPath = "/login";
-                options.LogoutPath = "/logout";
-                options.AccessDeniedPath = "/access-denied";
-                options.ExpireTimeSpan = TimeSpan.FromDays(7);
-            });
+            //builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //    .AddCookie(options =>
+            //{
+            //    options.Cookie.Name = "auth_token";
+            //    options.LoginPath = "/login";
+            //    options.LogoutPath = "/logout";
+            //    options.AccessDeniedPath = "/access-denied";
+            //    options.ExpireTimeSpan = TimeSpan.FromDays(7);
+            //});
 
-            builder.Services.AddAuthorizationCore();
+            //builder.Services.AddAuthorizationCore();
 
-            builder.Services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
+            //builder.Services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
             //builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStateProvider>();
             // конец блока авторизации
 
@@ -36,6 +42,7 @@ namespace BanksDB.Web
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents()
                 .AddInteractiveWebAssemblyComponents();
+            
 
             var app = builder.Build();
 
@@ -72,7 +79,7 @@ namespace BanksDB.Web
             app.UseStaticFiles();
 
             app.UseRouting();
-            
+
             app.UseAuthentication();
             app.UseAuthorization();
 

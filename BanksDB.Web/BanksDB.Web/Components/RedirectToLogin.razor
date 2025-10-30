@@ -1,36 +1,37 @@
 ﻿@using Microsoft.AspNetCore.Components
-@implements IDisposable
+@* @implements IDisposable *@
 @inject NavigationManager Navigation
 @inject IJSRuntime JSRuntime
 
 @code {
 	protected override void OnInitialized()
     {
-        Redirect();
+        Navigation.NavigateTo("/login");
+        //Redirect();
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await RedirectJS();
-        }
-    }
+    // protected override async Task OnAfterRenderAsync(bool firstRender)
+    // {
+    //     if (firstRender)
+    //     {
+    //         await RedirectJS();
+    //     }
+    // }
 
-    private void Redirect()
-    {
-        var returnUrl = Navigation.ToBaseRelativePath(Navigation.Uri);
-        Navigation.NavigateTo($"/login?returnUrl={returnUrl}", true);
-    }
+    // private void Redirect()
+    // {
+    //     var returnUrl = Navigation.ToBaseRelativePath(Navigation.Uri);
+    //     Navigation.NavigateTo($"/login?returnUrl={returnUrl}", true);
+    // }
 
-    private async Task RedirectJS()
-    {
-        var returnUrl = Navigation.ToBaseRelativePath(Navigation.Uri);
-        await JSRuntime.InvokeVoidAsync("window.location.replace", $"/login?returnUrl={returnUrl}");
-    }
+    // private async Task RedirectJS()
+    // {
+    //     var returnUrl = Navigation.ToBaseRelativePath(Navigation.Uri);
+    //     await JSRuntime.InvokeVoidAsync("window.location.replace", $"/login?returnUrl={returnUrl}");
+    // }
 
-    public void Dispose()
-    {
-        Redirect();
-    }
+    // public void Dispose()
+    // {
+    //     Redirect();
+    // }
 }

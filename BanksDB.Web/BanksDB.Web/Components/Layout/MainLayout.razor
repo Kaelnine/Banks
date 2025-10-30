@@ -1,9 +1,45 @@
-﻿@inherits LayoutComponentBase
+﻿@using BanksDB.BLL.Services
+@inherits LayoutComponentBase
+@inject IAuthenticationService AuthenticationService
+@inject NavigationManager Navigation
 
-@Body
+@* @Body
 
 <div id="blazor-error-ui" data-nosnippet>
     Что то пошло не так.
     <a href="." class="reload">Перезагрузить</a>
     <span class="dismiss">🗙</span>
+</div> *@
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4 auth-bar">
+            @if (AuthenticationService.IsAuthenticated)
+            {
+                <span>Добро пожаловать!</span>
+                <a href="/logout" @onclick="HandleLogout" class="btn btn-link">Выйти</a>
+            }
+            else
+            {
+                <a href="/login">Войти</a>
+                <span>|</span>
+                
+            }
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
 </div>
+
+@code {
+    private async Task HandleLogout()
+    {
+        await AuthenticationService.LogoutAsync();
+        Navigation.NavigateTo("/login");
+    }
+}

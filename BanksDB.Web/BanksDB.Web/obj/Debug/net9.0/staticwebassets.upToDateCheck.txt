@@ -1,2 +1,4 @@
 wwwroot\app.css
-D:\For Jobs\BanksDB\BanksDB.Web\BanksDB.Web\wwwroot\app.css
+wwwroot\css\login.css
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\app.css
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\css\login.css

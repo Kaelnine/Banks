@@ -1,0 +1,20 @@
+﻿@using BanksDB.BLL.Services
+@using static BanksDB.BLL.Services.AuthenticationService
+@inject IAuthenticationService AuthenticationService
+
+@if (AuthenticationService.IsAuthenticated)
+{
+    <AuthorizedView>
+        @ChildContent
+    </AuthorizedView>
+}
+else
+{
+    <NotAuthorized>
+        <p>Для просмотра этой страницы необходимо войти в систему.</p>
+        <a href="/login" class="btn btn-primary">Войти</a>
+    </NotAuthorized>
+}
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+}

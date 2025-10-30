@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\BanksDB.BLL\BanksDB.BLL.csproj" />
+    <ProjectReference Include="..\..\BanksDB.Core\BanksDB.Core.csproj" />
     <ProjectReference Include="..\BanksDB.Web.Client\BanksDB.Web.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.9" />
   </ItemGroup>

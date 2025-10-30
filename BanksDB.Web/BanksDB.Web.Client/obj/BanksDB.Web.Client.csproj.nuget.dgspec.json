@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\For Jobs\\BanksDB\\BanksDB.Web\\BanksDB.Web.Client\\BanksDB.Web.Client.csproj": {}
+    "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web.Client\\BanksDB.Web.Client.csproj": {}
   },
   "projects": {
-    "D:\\For Jobs\\BanksDB\\BanksDB.Web\\BanksDB.Web.Client\\BanksDB.Web.Client.csproj": {
+    "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web.Client\\BanksDB.Web.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\For Jobs\\BanksDB\\BanksDB.Web\\BanksDB.Web.Client\\BanksDB.Web.Client.csproj",
+        "projectUniqueName": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web.Client\\BanksDB.Web.Client.csproj",
         "projectName": "BanksDB.Web.Client",
-        "projectPath": "D:\\For Jobs\\BanksDB\\BanksDB.Web\\BanksDB.Web.Client\\BanksDB.Web.Client.csproj",
+        "projectPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web.Client\\BanksDB.Web.Client.csproj",
         "packagesPath": "C:\\Users\\Илья\\.nuget\\packages\\",
-        "outputPath": "D:\\For Jobs\\BanksDB\\BanksDB.Web\\BanksDB.Web.Client\\obj\\",
+        "outputPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web.Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

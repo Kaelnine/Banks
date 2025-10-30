@@ -1,5 +1,104 @@
 ﻿@page "/login"
-<PageTitle>Вход в систему</PageTitle>
-@code {
+@using BanksDB.Core.Models
+@using BanksDB.BLL.Services
 
+
+@inject IAuthenticationService AuthenticationService
+@inject NavigationManager Navigation
+
+<PageTitle>Вход в систему</PageTitle>
+<head><link href="css/login.css" rel="stylesheet"</head>
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <h2>Вход в систему</h2>
+            <p>Введите логин и пароль</p>
+        </div>
+
+        <EditForm Model="loginModel" OnValidSubmit="HandleLogin" class="login-form" FormName="loginForm">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label for="login">Логин</label>
+                <InputText @bind-Value="loginModel.Login" id="login" class="form-control" />
+                <ValidationMessage For="@(() => loginModel.Login)" />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <InputText @bind-Value="loginModel.Password" type="password" id="password" class="form-control" />
+                <ValidationMessage For="@(() => loginModel.Password)" />
+            </div>
+
+            <div class="form-check">
+                <InputCheckbox @bind-Value="loginModel.Remember" id="rememberMe" class="form-check-input" />
+                <label class="form-check-label" for="rememberMe">Запомнить</label>
+            </div>
+
+            @if (errorMessage != null)
+            {
+                <div class="alert alert-danger">
+                    @errorMessage
+                </div>
+            }
+
+            <button type="submit" class="btn btn-primary btn-login" disabled="@isLoading">
+                @if (isLoading)
+                {
+                    <span>Вход...</span>
+                }
+                else
+                {
+                    <span>Войти</span>
+                }
+            </button>
+        </EditForm>        
+    </div>
+</div>
+@code {
+    private LoginModel loginModel = new();
+    private string errorMessage;
+    private bool isLoading;
+
+    protected override void OnInitialized()
+    {
+        // Если пользователь уже авторизован, перенаправляем на главную
+        if (AuthenticationService.IsAuthenticated)
+        {
+            Navigation.NavigateTo("/", true);
+        }
+    }
+
+    private async Task HandleLogin()
+    {
+        isLoading = true;
+        errorMessage = null;
+        StateHasChanged();
+
+        try
+        {
+            var result = await AuthenticationService.LoginAsync(loginModel);
+            
+            if (result)
+            {
+                Navigation.NavigateTo("/", true);
+            }
+            else
+            {
+                errorMessage = "Неверный логин или пароль";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Произошла ошибка при входе. Попробуйте еще раз.";
+            Console.WriteLine($"Login error: {ex.Message}");
+            // В реальном приложении здесь можно логировать ошибку
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
 }
