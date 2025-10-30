@@ -1,0 +1,9 @@
+D:\For Jobs\BanksDB\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json

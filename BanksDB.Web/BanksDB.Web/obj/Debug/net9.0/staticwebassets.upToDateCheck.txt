@@ -1,0 +1,2 @@
+wwwroot\app.css
+D:\For Jobs\BanksDB\BanksDB.Web\BanksDB.Web\wwwroot\app.css
