@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BanksDB.Core.Dtos;
+using BanksDB.Core.Interfaces;
+using BanksDB.DAL.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DBBanks.DAL.Repositories
 {
-    public class BankRepository : IRepository<BankDto>
+    public class BankRepository : IBankRepository
     {
         private readonly BankDbContext _db;
         public BankRepository(BankDbContext db) {  _db = db; }
@@ -45,6 +48,6 @@ namespace DBBanks.DAL.Repositories
         {
             _db.Banks.Update(bank);
             await _db.SaveChangesAsync();
-        }
+        }        
     }
 }

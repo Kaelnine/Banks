@@ -10,9 +10,9 @@ namespace BanksDB.Core.Interfaces
     public interface IBankRepository
     {
         Task<IEnumerable<BankDto>> GetAllAsync();// получение всех банков
-        Task<BankDto> GetByIdAsync(int id);// получение банка по id                
-        Task<BankDto> AddAsync(BankDto bank);// создание банка
-        Task<BankDto> UpdateAsync(BankDto bank);// изменение банка
+        Task <BankDto>GetByIdAsync(int id);// получение банка по id                
+        Task AddAsync(BankDto bank);// создание банка
+        Task UpdateAsync(BankDto bank);// изменение банка
         Task DeleteAsync(int bankId);// удаление банка
     }
 }

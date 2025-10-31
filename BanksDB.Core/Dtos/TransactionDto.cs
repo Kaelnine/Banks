@@ -21,5 +21,6 @@ namespace BanksDB.Core.Dtos
         public decimal BalanceAfter { get; set; }
         public DateTime CreatedDate { get; set; }
         public AccountDto Account { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

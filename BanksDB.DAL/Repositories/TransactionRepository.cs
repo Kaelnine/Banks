@@ -1,4 +1,8 @@
-﻿using System;
+﻿using BanksDB.Core.Dtos;
+using BanksDB.Core.Interfaces;
+using BanksDB.DAL.Data;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,49 +14,65 @@ namespace DBBanks.DAL.Repositories
     {
         private readonly BankDbContext _db;
         public TransactionRepository(BankDbContext db) { _db = db; }
-        public Task<TransactionDto> AddAsync(TransactionDto transaction)
+
+        // добавление транзакции
+        public async Task AddAsync(TransactionDto transaction)
         {
-            throw new NotImplementedException();
+            await _db.Transactions.AddAsync(transaction);
+            await _db.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<TransactionDto>> AddSeveralAsync(IEnumerable<TransactionDto> transactions)
+        // добавление списка транзакций
+        public async Task AddSeveralAsync(IEnumerable<TransactionDto> transactions)
         {
-            throw new NotImplementedException();
+            await _db.Transactions.AddRangeAsync(transactions);
+            await _db.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(int id)
+        // удаление транзакции
+        public async Task DeleteAsync(int transactionId)
         {
-            throw new NotImplementedException();
+            var transaction = await _db.Transactions.FindAsync(transactionId);
+            if (transaction == null) return;
+            transaction.IsDeleted = true;
+            await _db.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<TransactionDto>> GetAllAsync()
+        // получение всех транзакций
+        public async Task<IEnumerable<TransactionDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _db.Transactions.Where(t => !t.IsDeleted).ToListAsync();
         }
 
-        public Task<IEnumerable<TransactionDto>> GetByAccountsIdAsync(int accountId)
+        // получение всех транзакций счета
+        public async Task<IEnumerable<TransactionDto>> GetByAccountIdAsync(int accountId)
         {
-            throw new NotImplementedException();
+            return await _db.Transactions.Where(t => t.AccountId == accountId && !t.IsDeleted).ToListAsync();
         }
 
-        public Task<IEnumerable<TransactionDto>> GetByAccountsIdForDayAsync(int accountId, DateTime date)
+        // получение всех транзакций счета за день
+        public async Task<IEnumerable<TransactionDto>> GetByAccountIdForDayAsync(int accountId, DateTime date)
         {
-            throw new NotImplementedException();
+            return await _db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate == date && !t.IsDeleted).ToListAsync();
         }
 
-        public Task<IEnumerable<TransactionDto>> GetByAccountsIdForPeriodAsync(int accountId, DateTime startDate, DateTime endDate)
+        // получение всех транзакций за период
+        public async Task<IEnumerable<TransactionDto>> GetByAccountIdForPeriodAsync(int accountId, DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+            return await _db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate > startDate && t.CreatedDate < endDate && !t.IsDeleted).ToListAsync();
         }
 
-        public Task<IEnumerable<TransactionDto>> GetByIdAsync(int id)
+        // получение транзакции по id
+        public async Task<TransactionDto> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _db.Transactions.FirstOrDefaultAsync(t => t.Id == id && !t.IsDeleted);
         }
 
-        public Task<TransactionDto> UpdateAsync(TransactionDto transaction)
+        // изменение транзакции
+        public async Task UpdateAsync(TransactionDto transaction)
         {
-            throw new NotImplementedException();
+            _db.Transactions.Update(transaction);
+            await _db.SaveChangesAsync();
         }
     }
 }

@@ -12,8 +12,8 @@ namespace BanksDB.Core.Interfaces
         Task<IEnumerable<OrganizationDto>> GetAllAsync();// получение всех организаций
         Task<OrganizationDto> GetByIdAsync(int id);// получение организации по id
         Task<IEnumerable<AccountDto>> GetByOrganizationIdAsync(int organizationtId);// получение всех счетов организации        
-        Task<OrganizationDto> AddAsync(OrganizationDto organization);// создание организации
-        Task<OrganizationDto> UpdateAsync(OrganizationDto organization);// изменение организации
+        Task AddAsync(OrganizationDto organization);// создание организации
+        Task UpdateAsync(OrganizationDto organization);// изменение организации
         Task DeleteAsync(int organizationId);// удаление организации       
     }
 }
