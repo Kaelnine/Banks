@@ -9,8 +9,14 @@
   <ItemGroup>
     <ProjectReference Include="..\..\BanksDB.BLL\BanksDB.BLL.csproj" />
     <ProjectReference Include="..\..\BanksDB.Core\BanksDB.Core.csproj" />
+    <ProjectReference Include="..\..\BanksDB.DAL\BanksDB.DAL.csproj" />
     <ProjectReference Include="..\BanksDB.Web.Client\BanksDB.Web.Client.csproj" />
+    <PackageReference Include="AutoMapper" Version="15.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
+    <PackageReference Include="Npgsql" Version="9.0.4" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
   </ItemGroup>
 
 </Project>

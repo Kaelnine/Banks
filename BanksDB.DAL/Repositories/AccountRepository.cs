@@ -1,5 +1,6 @@
 ﻿using BanksDB.Core.Dtos;
 using BanksDB.Core.Interfaces;
+using BanksDB.Core.Models.OutputModels;
 using BanksDB.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,7 +30,21 @@ namespace DBBanks.DAL.Repositories
             if (account == null) return;
             account.IsDeleted = true;
             await _db.SaveChangesAsync();
-        }       
+        }
+
+        public async Task<IEnumerable<AccountSummaryDto>> GetAccountSummaryAsync()
+        {
+            return await _db.AccountSummaries.Select(a => new AccountSummaryDto
+            {
+                OrganizationName = a.OrganizationName,
+                OrganizationInn = a.OrganizationInn,
+                BankName = a.BankName,
+                BankBik = a.BankBik,
+                AccountNumber = a.AccountNumber,
+                CurrentBalance = a.CurrentBalance,
+                //AccountType = a.AccountType
+            }).ToListAsync();
+        }
 
         // получение всех счетов
         public async Task<IEnumerable<AccountDto>> GetAllAsync()
@@ -49,6 +64,12 @@ namespace DBBanks.DAL.Repositories
             _db.Accounts.Update(account);
             await _db.SaveChangesAsync();
         }
-        
+
+        // получение всех счетов организации
+        public async Task<IEnumerable<AccountDto>> GetByOrganizationIdAsync(int organizationtId)
+        {
+            return await _db.Accounts.Where(a => a.OrganizationId == organizationtId).ToListAsync();
+        }
+
     }
 }

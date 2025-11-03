@@ -24,7 +24,7 @@ namespace BanksDB.DAL.Data
             modelBuilder.Entity<OrganizationDto>().ToTable("Organizations");
             modelBuilder.Entity<BankDto>().ToTable("Banks");
             modelBuilder.Entity<TransactionDto>().ToTable("Transactions");
-            modelBuilder.Entity<AccountSummaryDto>().ToView("AccountSummary");
+            modelBuilder.Entity<AccountSummaryDto>().HasNoKey().ToView("AccountSummary");
         }
     }
 }

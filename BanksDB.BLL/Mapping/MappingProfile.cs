@@ -20,8 +20,15 @@ namespace BanksDB.BLL.Mapping
 
             // Маппинг из DTO в OutputModel
             CreateMap<AccountDto, AccountOutputModel>();
+            //CreateMap<AccountDto, AccountOutputModel>()
+            //    .ForMember(dest => dest.OrganizationName,
+            //        opt => opt.MapFrom(src => src.Organization != null ? src.Organization.Name : src.OrganizationName))
+            //    .ForMember(dest => dest.BankName,
+            //        opt => opt.MapFrom(src => src.Bank != null ? src.Bank.Name : src.BankName));
             CreateMap<TransactionDto, TransactionOutputModel>();
             CreateMap<AccountSummaryDto, AccountOutputModel>();
+            CreateMap<AccountOutputModel, AccountSummaryDto>();
+            CreateMap<AccountOutputModel, AccountDto>();
         }
     }
 }

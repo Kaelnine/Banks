@@ -1,4 +1,5 @@
 ﻿using BanksDB.Core.Dtos;
+using BanksDB.Core.Models.OutputModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace BanksDB.Core.Interfaces
         Task AddAsync(AccountDto account);// создание счета
         Task UpdateAsync(AccountDto account);// изменение счета
         Task DeleteAsync(int bankId);// удаление счета
+        Task<IEnumerable<AccountSummaryDto>> GetAccountSummaryAsync();// получение сводки по счетам
+        Task<IEnumerable<AccountDto>> GetByOrganizationIdAsync(int organizationtId);// получение всех счетов организации
     }
 }

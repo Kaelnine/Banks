@@ -14,8 +14,8 @@ namespace BanksDB.BLL.Interfaces
         Task<AccountOutputModel> GetByIdAsync(int id);
         Task<List<AccountOutputModel>> GetAccountSummaryAsync();
         Task AddAsync(AccountInputModel inputModel);
-        Task<AccountOutputModel> UpdateAsync(int id, AccountInputModel inputModel);
-        Task<bool> DeleteAsync(int id);
+        Task UpdateAsync(int id, AccountInputModel inputModel);
+        Task DeleteAsync(int id);
         Task<List<AccountOutputModel>> GetByOrganizationIdAsync(int organizationId);
     }
 }

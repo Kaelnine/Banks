@@ -24,8 +24,8 @@ namespace BanksDB.Core.Models.InputModels
 
         public decimal CurrentBalance { get; set; }
 
-        [Required(ErrorMessage = "Тип счета обязателен")]
-        public int AccountType { get; set; }
+        //[Required(ErrorMessage = "Тип счета обязателен")]
+        //public int AccountType { get; set; }
     }
 }
 

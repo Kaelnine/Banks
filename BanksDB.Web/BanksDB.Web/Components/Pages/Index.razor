@@ -1,15 +1,58 @@
-﻿@page "/"
+﻿@page "/index"
+@using AutoMapper
+@using BanksDB.BLL.Interfaces
+@using BanksDB.BLL.Services
+@using BanksDB.Core.Dtos
+@using BanksDB.Core.Models.OutputModels
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize]
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using Microsoft.AspNetCore.Components
+@inject IAccountService AccountService
+@inject NavigationManager Navigation
+@inject IMapper Mapper
+@rendermode InteractiveServer
+@* @attribute [Authorize] *@
 <h3>Все счета</h3>
 
 @foreach (var org in organizations)
 {
 	<div class="organization-card">
-		<h4>@org.OrganizationName</h4>
+		<h4>@org.Name</h4>
+		<div class="account-list">
+			@foreach (var account in org.Accounts)
+			{
+				<div class="account-item">
+					<p><strong>Номер счета: </strong>@account.AccountNumber</p>
+					<p><strong>Название: </strong>@account.Name</p>
+					@* <p><strong>Тип счета: </strong>@account.AccountType</p> *@
+					<p><strong>Банк: </strong>@account.BankName</p>
+					<p><strong>Остаток: </strong>@account.CurrentBalance.ToString("C")</p>
+					<button @onclick="() => ViewAccountDetails(account.Id)" class="btn-login btn-info">Подробнее</button>
+				</div>
+			}
+		</div>
 	</div>
 }
 
 @code {
+	private List<OrganizationOutputModel> organizations = new();
+	protected override async Task OnInitializedAsync()
+	{
+		organizations = await LoadOrganizationsWithAccounts();
+	}
 
+	private async Task<List<OrganizationOutputModel>> LoadOrganizationsWithAccounts()
+	{
+		var accounts = await AccountService.GetAccountSummaryAsync();
+		return accounts.GroupBy(a => a.OrganizationName).Select(g => new OrganizationOutputModel
+			{
+				Name = g.Key,
+				Accounts = Mapper.Map<List<AccountDto>>(g.ToList())
+			}).ToList();
+	}
+
+	private void ViewAccountDetails(int accountId)
+	{
+		Navigation.NavigateTo($"/account/{accountId}");
+	}
 }
