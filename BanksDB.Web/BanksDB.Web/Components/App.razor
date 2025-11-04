@@ -1,10 +1,11 @@
 ﻿@using BanksDB.Web.Components.Layout
 @using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Routing
 @inject NavigationManager Navigation
 
 
 <CascadingAuthenticationState>
-    <Router AppAssembly="typeof(App).Assembly">
+    <Router AppAssembly="typeof(App).Assembly">        
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
                 <NotAuthorized>
@@ -21,6 +22,17 @@
                 <p role="alert">Страница не найдена</p>
             </LayoutView>
         </NotFound>
-    </Router>
+    </Router>    
 </CascadingAuthenticationState>
 
+@code {   
+
+    protected override void OnInitialized()
+    {        
+        var currentUri = Navigation.Uri;
+        if (currentUri.EndsWith("/") || currentUri == Navigation.BaseUri)
+        {
+            Navigation.NavigateTo("/index");
+        }
+    }
+}

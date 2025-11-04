@@ -1,6 +1,448 @@
 ﻿@page "/account/{Id:int}"
-<h3>Account</h3>
+@using BanksDB.BLL.Interfaces
+@using BanksDB.BLL.Services
+@using BanksDB.Core.Models.OutputModels
+@using BanksDB.Core.Models.InputModels
+@using BanksDB.Core.Enums
+@using Microsoft.AspNetCore.Components.Forms
+@inject ITransactionService TransactionService
+@inject IAccountService AccountService
+@inject NavigationManager Navigation
+@inject AuthenticationService AuthenticationService
+@inject IJSRuntime JSRuntime
+
+<head>
+    <link href="css/account.css" rel="stylesheet" />
+</head>
+<div class="account-details-container">
+        <div class="page-header">
+        <div class="header-content">
+            <button @onclick="GoBack" class="btn-back">
+                ← Назад
+            </button>
+            <h3>📊 Детали счета</h3>
+            <div class="header-actions">
+                @* @if (AuthenticationService.HasAccessToEdit())//пока поставил заглушку на все что связано с аутентификацией
+                { *@
+                    <button @onclick="ShowUploadModal" class="btn-upload">
+                        📁 Загрузить транзакции
+                    </button>
+                @* } *@
+            </div>
+        </div>
+    </div>
+    @if (accountInfo != null)
+    {
+        <div class="account-info-card">
+            <div class="account-header">
+                <h4>@accountInfo.Name</h4>
+                <span class="account-number">@accountInfo.AccountNumber</span>
+            </div>
+            <div class="account-details">
+                <div class="detail-row">
+                    <span class="label">Организация:</span>
+                    <span class="value">@accountInfo.OrganizationName</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Банк:</span>
+                    <span class="value">@accountInfo.BankName (БИК: @accountInfo.BankBik)</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Текущий баланс:</span>
+                    <span class="value balance @GetBalanceClass(accountInfo.CurrentBalance)">
+                        @accountInfo.CurrentBalance.ToString("C")
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="filter-section">
+        <h5>📅 Выбор периода</h5>
+        <div class="filter-form">
+            <div class="form-group">
+                <label for="startDate">С:</label>
+                <input type="date" @bind="dateRange.StartDate" @bind:format="yyyy-MM-dd"
+                       class="form-control" id="startDate" />
+            </div>
+            <div class="form-group">
+                <label for="endDate">По:</label>
+                <input type="date" @bind="dateRange.EndDate" @bind:format="yyyy-MM-dd"
+                       class="form-control" id="endDate" />
+            </div>
+            <button @onclick="LoadDailySummary" class="btn-apply" disabled="@isLoading">
+                @if (isLoading)
+                {
+                    <span>Загрузка...</span>
+                }
+                else
+                {
+                    <span>Применить</span>
+                }
+            </button>
+            <button @onclick="SetCurrentMonth" class="btn-secondary">
+                Текущий месяц
+            </button>
+        </div>
+    </div>
+
+   
+    <div class="summary-section">
+        <h5>📈 Сводка по дням</h5>
+
+        @if (isLoading)
+        {
+            <div class="loading-spinner">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Загрузка...</span>
+                </div>
+            </div>
+        }
+        else if (dailySummary.Any())
+        {
+            <div class="summary-table">
+                <div class="table-header">
+                    <div class="col-date">Дата</div>
+                    <div class="col-income">Приход</div>
+                    <div class="col-expense">Расход</div>
+                    <div class="col-count">Операций</div>
+                    <div class="col-actions">Действия</div>
+                </div>
+
+                @foreach (var day in dailySummary)
+                {
+                    <div class="table-row">
+                        <div class="col-date">
+                            <strong>@day.Date.ToString("dd.MM.yyyy")</strong>
+                            <div class="day-name">@day.Date.ToString("dddd", new System.Globalization.CultureInfo("ru-RU"))</div>
+                        </div>
+                        <div class="col-income income-amount">
+                            @day.TotalIncome.ToString("C")
+                        </div>
+                        <div class="col-expense expense-amount">
+                            @day.TotalExpense.ToString("C")
+                        </div>
+                        <div class="col-count">
+                            <span class="badge @GetTransactionCountClass(day.TransactionCount)">
+                                @day.TransactionCount
+                            </span>
+                        </div>
+                        <div class="col-actions">
+                            <button @onclick="() => ViewDayTransactions(day.Date)"
+                                    class="btn-details"
+                                    disabled="@(day.TransactionCount == 0)">
+                                Подробнее
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+            
+            <div class="period-totals">
+                <div class="total-card income-total">
+                    <div class="total-label">Общий приход</div>
+                    <div class="total-amount">@dailySummary.Sum(d => d.TotalIncome).ToString("C")</div>
+                </div>
+                <div class="total-card expense-total">
+                    <div class="total-label">Общий расход</div>
+                    <div class="total-amount">@dailySummary.Sum(d => d.TotalExpense).ToString("C")</div>
+                </div>
+                <div class="total-card net-total">
+                    <div class="total-label">Итоговое изменение</div>
+                    <div class="total-amount @GetBalanceClass(dailySummary.Sum(d => d.TotalIncome) - dailySummary.Sum(d => d.TotalExpense))">
+                        @((dailySummary.Sum(d => d.TotalIncome) - dailySummary.Sum(d => d.TotalExpense)).ToString("C"))
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="empty-state">
+                <div>📊</div>
+                <h6>Нет данных за выбранный период</h6>
+                <p>Транзакции не найдены для указанного периода времени</p>
+            </div>
+        }
+    </div>
+</div>
+
+
+@if (showUploadModal)
+{
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>📁 Загрузка банковской выписки</h5>
+                <button @onclick="CloseUploadModal" class="btn-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-instructions">
+                    <h6>Формат файла (TXT):</h6>
+                    <p>Каждая строка должна содержать данные в формате:</p>
+                    <code>Дата;Тип;Сумма;Описание;Контрагент;Счет;ИНН;Документ</code>
+                    <p><strong>Пример:</strong></p>
+                    <code>01.12.2024;Приход;100000,50;Оплата за услуги;ООО "Заказчик";40702810000000012345;1234567890;СЧ-123</code>
+                </div>
+
+                @* <div class="file-upload-area">
+                    <input type="file" @ref="fileInput" @onchange="HandleFileSelected" accept=".txt" class="file-input" />
+                    <div class="upload-placeholder" @onclick="TriggerFileInput">
+                        <div>📎</div>
+                        <p>Нажмите для выбора файла TXT</p>
+                        <small>Поддерживается только формат TXT</small>
+                    </div>
+                </div> *@
+                <div class="file-upload-area">
+                    <InputFile @ref="fileInput" OnChange="HandleFileSelected" accept=".txt" class="file-input" />
+                    <div class="upload-placeholder" @onclick="TriggerFileInput">
+                        <div>📎</div>
+                        <p>Нажмите для выбора файла TXT</p>
+                        <small>Поддерживается только формат TXT</small>
+                    </div>
+                </div>
+
+                @if (!string.IsNullOrEmpty(uploadError))
+                {
+                    <div class="alert alert-danger">
+                        @uploadError
+                    </div>
+                }
+
+                @if (parsedTransactions.Any())
+                {
+                    <div class="parsed-transactions">
+                        <h6>Найдено транзакций: @parsedTransactions.Count</h6>
+                        <div class="transaction-preview">
+                            @foreach (var transaction in parsedTransactions.Take(3))
+                            {
+                                <div class="preview-item">
+                                    <span>@transaction.TransactionDate.ToString("dd.MM.yyyy")</span>
+                                    <span class="@(transaction.TransactionType == "Приход" ? "income" : "expense")">
+                                        @transaction.TransactionType
+                                    </span>
+                                    <span>@transaction.Amount.ToString("C")</span>
+                                </div>
+                            }
+                            @if (parsedTransactions.Count > 3)
+                            {
+                                <div class="preview-more">
+                                    ... и еще @(parsedTransactions.Count - 3) транзакций
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button @onclick="CloseUploadModal" class="btn-cancel">
+                    Отмена
+                </button>
+                <button @onclick="UploadTransactions"
+                        class="btn-confirm"
+                        disabled="@(!parsedTransactions.Any() || isUploading)">
+                    @if (isUploading)
+                    {
+                        <span>Загрузка...</span>
+                    }
+                    else
+                    {
+                        <span>📤 Загрузить (@parsedTransactions.Count)</span>
+                    }
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
 
 @code {
+    [Parameter] public int Id { get; set; }
 
+    private AccountOutputModel? accountInfo;
+    private List<DailySummaryOutputModel> dailySummary = new();
+    private DateRangeInputModel dateRange = new();
+    private bool isLoading = false;
+    private bool showUploadModal = false;
+    private bool isUploading = false;
+    private string uploadError = string.Empty;
+    private List<TransactionInputModel> parsedTransactions = new();
+    //private ElementReference fileInput;
+    private InputFile? fileInput;
+        
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAccountInfo();
+        SetCurrentMonth();
+        await LoadDailySummary();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id > 0)
+        {
+            dateRange.AccountId = Id;
+            await LoadAccountInfo();
+        }
+    }
+
+    private async Task LoadAccountInfo()
+    {
+        try
+        {
+            accountInfo = await AccountService.GetByIdAsync(Id);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка загрузки информации о счете: {ex.Message}");
+        }
+    }
+
+    private async Task LoadDailySummary()
+    {
+        isLoading = true;
+        StateHasChanged();
+
+        try
+        {
+            dailySummary = await TransactionService.GetDailySummaryAsync(
+                Id,
+                dateRange.StartDate,
+                dateRange.EndDate
+            );
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка загрузки сводки: {ex.Message}");
+            dailySummary = new List<DailySummaryOutputModel>();
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private void SetCurrentMonth()
+    {
+        var today = DateTime.Now;
+        dateRange.StartDate = new DateTime(today.Year, today.Month, 1);
+        dateRange.EndDate = today;
+    }
+
+    private void ViewDayTransactions(DateTime date)
+    {
+        Navigation.NavigateTo($"/transactions/{Id}/{date:yyyy-MM-dd}");
+    }
+
+    private void GoBack()
+    {
+        Navigation.NavigateTo("/index");
+    }
+
+    private void ShowUploadModal()
+    {
+        showUploadModal = true;
+        uploadError = string.Empty;
+        parsedTransactions.Clear();
+        StateHasChanged();
+    }
+
+    private void CloseUploadModal()
+    {
+        showUploadModal = false;
+        parsedTransactions.Clear();
+        uploadError = string.Empty;
+        StateHasChanged();
+    }
+
+    private void TriggerFileInput()
+    {
+        JSRuntime.InvokeVoidAsync("clickElement", fileInput);
+    }
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        uploadError = string.Empty;
+        parsedTransactions.Clear();
+
+        var file = e.File;
+        if (file == null) return;
+
+        if (Path.GetExtension(file.Name).ToLower() != ".txt")
+        {
+            uploadError = "Поддерживаются только файлы в формате TXT";
+            return;
+        }
+
+        try
+        {
+            // Здесь будет логика парсинга файла
+            parsedTransactions = GenerateTestTransactions();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            uploadError = $"Ошибка чтения файла: {ex.Message}";
+        }
+    }
+
+    private async Task UploadTransactions()
+    {
+        if (!parsedTransactions.Any()) return;
+
+        isUploading = true;
+        StateHasChanged();
+
+        try
+        {
+            // Здесь будет логика сохранения транзакций
+            await Task.Delay(1000); // Имитация загрузки
+
+            // После успешной загрузки обновляем данные
+            await LoadDailySummary();
+            CloseUploadModal();
+        }
+        catch (Exception ex)
+        {
+            uploadError = $"Ошибка загрузки: {ex.Message}";
+        }
+        finally
+        {
+            isUploading = false;
+            StateHasChanged();
+        }
+    }
+
+    private string GetBalanceClass(decimal balance)
+    {
+        return balance >= 0 ? "positive" : "negative";
+    }
+
+    private string GetTransactionCountClass(int count)
+    {
+        return count == 0 ? "badge-secondary" : "badge-primary";
+    }
+
+    private List<TransactionInputModel> GenerateTestTransactions()
+    {
+        // Временный метод для тестирования
+        return new List<TransactionInputModel>
+        {
+            new() {
+                AccountId = Id,
+                TransactionDate = DateTime.Now,
+                Amount = 100000,
+                TransactionType = "Приход",
+                Description = "Тестовая транзакция",
+                CounterpartyName = "ООО Тест"
+            },
+            new() {
+                AccountId = Id,
+                TransactionDate = DateTime.Now.AddDays(-1),
+                Amount = 50000,
+                TransactionType = "Расход",
+                Description = "Тестовая транзакция 2",
+                CounterpartyName = "АО Тест"
+            }
+        };
+    }
 }

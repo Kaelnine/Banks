@@ -29,6 +29,8 @@ namespace BanksDB.Web
             });
             builder.Services.AddServerSideBlazor();
             builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+            builder.Services.AddScoped<AuthenticationService>();
+            builder.Services.AddScoped<ITransactionService, TransactionService>();
             builder.Services.AddAntiforgery();
             builder.Services.AddScoped<IBankRepository, BankRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
@@ -51,7 +53,7 @@ namespace BanksDB.Web
             {                
                 Console.WriteLine($"Ошибка конфигурации маппинга: {ex.Message}");
             }
-            
+
             // блок авторизации
             //builder.Services.AddRazorPages();
             //builder.Services.AddServerSideBlazor();
@@ -77,9 +79,9 @@ namespace BanksDB.Web
 
             // Add services to the container.
             builder.Services.AddRazorComponents()
-                .AddInteractiveServerComponents()
-                .AddInteractiveWebAssemblyComponents();
-            
+                .AddInteractiveServerComponents();
+                //.AddInteractiveWebAssemblyComponents();
+
 
             var app = builder.Build();
 
@@ -102,7 +104,7 @@ namespace BanksDB.Web
             app.MapStaticAssets();
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode()
-                .AddInteractiveWebAssemblyRenderMode()
+                //.AddInteractiveWebAssemblyRenderMode()
                 .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
 
             // тоже связано с авторизацией

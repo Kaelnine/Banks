@@ -7,7 +7,7 @@
 @inject NavigationManager Navigation
 
 <PageTitle>Вход в систему</PageTitle>
-<head><link href="css/login.css" rel="stylesheet"</head>
+<head><link href="css/login.css" rel="stylesheet"/></head>
 <div class="login-container">
     <div class="login-card">
         <div class="login-header">
@@ -92,9 +92,7 @@
         catch (Exception ex)
         {
             errorMessage = "Произошла ошибка при входе. Попробуйте еще раз.";
-            Console.WriteLine($"Login error: {ex.Message}");
-            // В реальном приложении здесь можно логировать ошибку
-        }
+            Console.WriteLine($"Login error: {ex.Message}");                    }
         finally
         {
             isLoading = false;

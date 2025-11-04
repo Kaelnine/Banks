@@ -17,6 +17,6 @@ namespace BanksDB.Core.Interfaces
         Task AddAsync(TransactionDto transaction);// создание транзакции
         Task UpdateAsync(TransactionDto transaction);// изменение транзакции
         Task DeleteAsync(int transactionId);// удаление транзакции
-        Task AddSeveralAsync(IEnumerable<TransactionDto> transactions);// создание списка транзакций
+        Task<IEnumerable<TransactionDto>> AddSeveralAsync(IEnumerable<TransactionDto> transactions);// создание списка транзакций
     }
 }

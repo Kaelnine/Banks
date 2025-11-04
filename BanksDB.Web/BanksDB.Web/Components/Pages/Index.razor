@@ -1,4 +1,5 @@
 ﻿@page "/index"
+@* @rendermode InteractiveServer *@
 @using AutoMapper
 @using BanksDB.BLL.Interfaces
 @using BanksDB.BLL.Services
@@ -10,27 +11,41 @@
 @inject IAccountService AccountService
 @inject NavigationManager Navigation
 @inject IMapper Mapper
-@rendermode InteractiveServer
-@* @attribute [Authorize] *@
-<h3>Все счета</h3>
 
-@foreach (var org in organizations)
+
+@* @attribute [Authorize] *@
+<!DOCTYPE html>
+<h3>🏦Все счета</h3>
+<head>
+	<link href="css/site.css" rel="stylesheet"/>
+</head>
+@if (organizations.Any())
 {
-	<div class="organization-card">
-		<h4>@org.Name</h4>
-		<div class="account-list">
-			@foreach (var account in org.Accounts)
-			{
-				<div class="account-item">
-					<p><strong>Номер счета: </strong>@account.AccountNumber</p>
-					<p><strong>Название: </strong>@account.Name</p>
-					@* <p><strong>Тип счета: </strong>@account.AccountType</p> *@
-					<p><strong>Банк: </strong>@account.BankName</p>
-					<p><strong>Остаток: </strong>@account.CurrentBalance.ToString("C")</p>
-					<button @onclick="() => ViewAccountDetails(account.Id)" class="btn-login btn-info">Подробнее</button>
-				</div>
-			}
+	@foreach (var org in organizations)
+	{
+		<div class="organization-card">
+			<h4>@org.Name</h4>
+			<div class="account-list">
+				@foreach (var account in org.Accounts)
+				{
+					<div class="account-item">
+						<p><strong>Номер счета: </strong><span>@account.AccountNumber</span></p>
+						<p><strong>Название: </strong><span>@account.Name</span></p>
+						@* <p><strong>Тип счета: </strong>@account.AccountType</p> *@
+						<p><strong>Банк: </strong><span>@account.BankName</span></p>
+						<p><strong>Остаток: </strong><span>@account.CurrentBalance.ToString("C")</span></p>
+						<button @onclick="@(() => ViewAccountDetails(account.Id))" class="btn-login btn-info">Подробнее</button>
+					</div>
+				}
+			</div>
 		</div>
+	}
+}
+else
+{
+	<div class="empty-state">
+		<h4>📊 Счета не найдены</h4>
+		<p>В системе пока нет зарегистрированных счетов</p>
 	</div>
 }
 
@@ -53,6 +68,15 @@
 
 	private void ViewAccountDetails(int accountId)
 	{
-		Navigation.NavigateTo($"/account/{accountId}");
+		//Navigation.NavigateTo($"/account/{accountId}");
+		try
+		{
+			Console.WriteLine($"Нажата кнопка для accountId: {accountId}");
+			Navigation.NavigateTo($"/account/{accountId}", true);
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine($"Ошибка навигации: {ex.Message}");
+		}
 	}
 }

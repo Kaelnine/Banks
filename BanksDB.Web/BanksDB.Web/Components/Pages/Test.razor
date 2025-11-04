@@ -1,0 +1,23 @@
+﻿@page "/test"
+
+@inject NavigationManager Navigation
+
+<h3>Тестовая страница</h3>
+
+<button type="button" @onclick="TestClick" class="btn btn-primary">Тестовая кнопка</button>
+<button @onclick="@(() => Console.WriteLine("Лямбда работает"))" class="btn btn-secondary">Лямбда кнопка</button>
+
+<div class="mt-3">
+    <p>Статус: @status</p>
+</div>
+
+@code {
+    private string status = "Нажмите кнопку";
+
+    private void TestClick()
+    {
+        status = "Кнопка нажата! " + DateTime.Now.ToString("HH:mm:ss");
+        Console.WriteLine("Кнопка работает!");
+        StateHasChanged();
+    }
+}

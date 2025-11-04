@@ -74,5 +74,10 @@ namespace DBBanks.DAL.Repositories
             _db.Transactions.Update(transaction);
             await _db.SaveChangesAsync();
         }
+
+        Task<IEnumerable<TransactionDto>> ITransactionRepository.AddSeveralAsync(IEnumerable<TransactionDto> transactions)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

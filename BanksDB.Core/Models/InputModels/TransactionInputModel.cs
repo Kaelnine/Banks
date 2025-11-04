@@ -21,5 +21,7 @@ namespace BanksDB.Core.Models.InputModels
         public string? CounterpartyAccount { get; set; }
         public string? CounterpartyInn { get; set; }
         public string? DocumentNumber { get; set; }
+        public DateTime TransactionDate { get; set; }
+        public int AccountId { get; set; }
     }
 }

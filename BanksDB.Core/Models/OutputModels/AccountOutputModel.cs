@@ -14,6 +14,7 @@ namespace BanksDB.Core.Models.OutputModels
         public string BankName { get; set; }
         public string AccountNumber { get; set; }
         public decimal CurrentBalance { get; set; }
+        public string BankBik { get; set; }
         //public string AccountTypeName { get; set; }
     }
 }
