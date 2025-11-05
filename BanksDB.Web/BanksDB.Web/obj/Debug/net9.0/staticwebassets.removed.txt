@@ -1,0 +1,4 @@
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\app.css
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\css\login.css
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\css\site.css
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\css\account.css
