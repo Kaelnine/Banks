@@ -1,4 +1,5 @@
 ﻿using BanksDB.Core.Dtos;
+using BanksDB.Core.Models.OutputModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,6 @@ namespace BanksDB.Core.Interfaces
         Task UpdateAsync(TransactionDto transaction);// изменение транзакции
         Task DeleteAsync(int transactionId);// удаление транзакции
         Task<IEnumerable<TransactionDto>> AddSeveralAsync(IEnumerable<TransactionDto> transactions);// создание списка транзакций
+        Task<List<DailySummaryOutputModel>> GetDailySummaryAsync(int accountId, DateTime startDate, DateTime endDate);// получение общих прихода и расхода по дням
     }
 }

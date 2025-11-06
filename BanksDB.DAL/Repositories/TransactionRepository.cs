@@ -1,5 +1,6 @@
 ﻿using BanksDB.Core.Dtos;
 using BanksDB.Core.Interfaces;
+using BanksDB.Core.Models.OutputModels;
 using BanksDB.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -66,6 +67,21 @@ namespace DBBanks.DAL.Repositories
         public async Task<TransactionDto> GetByIdAsync(int id)
         {
             return await _db.Transactions.FirstOrDefaultAsync(t => t.Id == id && !t.IsDeleted);
+        }
+
+        public async Task<List<DailySummaryOutputModel>> GetDailySummaryAsync(int accountId, DateTime startDate, DateTime endDate)
+        {
+            return await _db.Transactions.Where(t => t.AccountId == accountId && t.TransactionDate >= startDate &&  t.TransactionDate <= endDate && !t.IsDeleted)
+                .GroupBy(t => t.TransactionDate.Date)
+                .Select(g => new DailySummaryOutputModel
+                {
+                    Date = g.Key,
+                    TotalIncome = g.Where(t => t.TransactionType == "Приход").Sum(t => t.Amount),
+                    TotalExpense = g.Where(t => t.TransactionType == "Расход").Sum(t => t.Amount),
+                    TransactionCount = g.Count()
+                })
+                .OrderByDescending(s => s.Date)
+                .ToListAsync();
         }
 
         // изменение транзакции

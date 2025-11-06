@@ -65,7 +65,8 @@ namespace BanksDB.BLL.Services
 
         public async Task<List<DailySummaryOutputModel>> GetDailySummaryAsync(int accountId, DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+            var summary = await _transactionRepository.GetDailySummaryAsync(accountId, startDate, endDate);
+            return _mapper.Map<List<DailySummaryOutputModel>>(summary);
         }
 
         public Task<TransactionOutputModel> GetTransactionByIdAsync(int id)
