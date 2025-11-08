@@ -47,14 +47,25 @@ namespace BanksDB.BLL.Services
                 return _mapper.Map<List<TransactionOutputModel>>(createdTransactions);            
         }
 
-        public Task<TransactionOutputModel> AddTransactionAsync(TransactionInputModel inputModel)
+        public async Task AddTransactionAsync(TransactionInputModel inputModel)
         {
-            throw new NotImplementedException();
+            var account = await _accountRepository.GetByIdAsync(inputModel.AccountId);
+            if (account == null)
+            {
+                throw new ArgumentException($"Счет {account.Name} не найден");
+            }
+            if (inputModel.Amount <= 0)
+            {
+                throw new ArgumentException("Сумма транзакции должна быть больше 0");
+            }
+            var transactionDto = _mapper.Map<TransactionDto>(inputModel);
+            await _transactionRepository.AddAsync(transactionDto);
+            //await UpdateAccountBalance(account, inputModel.Amount, inputModel.TransactionType);            
         }
 
-        public Task<bool> DeleteTransactionAsync(int id)
+        public async Task DeleteTransactionAsync(int id)
         {
-            throw new NotImplementedException();
+            await _transactionRepository.DeleteAsync(id);
         }
 
         public async Task<List<TransactionOutputModel>> GetAllTransactionsAsync()
@@ -69,29 +80,42 @@ namespace BanksDB.BLL.Services
             return _mapper.Map<List<DailySummaryOutputModel>>(summary);
         }
 
-        public Task<TransactionOutputModel> GetTransactionByIdAsync(int id)
+        public async Task<TransactionOutputModel> GetTransactionByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var transaction = await _transactionRepository.GetByIdAsync(id);
+            return _mapper.Map<TransactionOutputModel>(transaction);
         }
 
-        public Task<List<TransactionOutputModel>> GetTransactionsByAccountAndDateAsync(int accountId, DateTime date)
+        public async Task<List<TransactionOutputModel>> GetTransactionsByAccountAndDateAsync(int accountId, DateTime date)
         {
-            throw new NotImplementedException();
+            var transactions = await _transactionRepository.GetByAccountIdForDayAsync(accountId, date);
+            return _mapper.Map<List<TransactionOutputModel>>(transactions);
         }
 
-        public Task<List<TransactionOutputModel>> GetTransactionsByAccountAndPeriodAsync(int accountId, DateTime startDate, DateTime endDate)
+        public async Task<List<TransactionOutputModel>> GetTransactionsByAccountAndPeriodAsync(int accountId, DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+            var transactions = await _transactionRepository.GetByAccountIdForPeriodAsync(accountId, startDate, endDate);
+            return _mapper.Map<List<TransactionOutputModel>>(transactions);
         }
 
-        public Task<List<TransactionOutputModel>> GetTransactionsByAccountAsync(int accountId)
+        public async Task<List<TransactionOutputModel>> GetTransactionsByAccountAsync(int accountId)
         {
-            throw new NotImplementedException();
+            var transactions = await _transactionRepository.GetByAccountIdAsync(accountId);
+            return _mapper.Map<List<TransactionOutputModel>>(transactions);
         }
 
-        public Task<TransactionOutputModel> UpdateTransactionAsync(int id, TransactionInputModel inputModel)
+        public async Task<TransactionOutputModel> UpdateTransactionAsync(int id, TransactionInputModel inputModel)
         {
-            throw new NotImplementedException();
+            var transaction = await _transactionRepository.GetByIdAsync(id);
+            if (transaction == null)
+            {
+                throw new ArgumentException($"Транзакция с номером {id} не найдена");
+            }
+            //  здесь надо реадизовать изменение баланса при установки у транзакции isDeleted = true, наверно лучше сделать на уровне бд
+            var account = await _accountRepository.GetByIdAsync(transaction.AccountId);
+            return _mapper.Map<TransactionOutputModel>(transaction);
         }
+
+        //private async Task UpdateAccountBalance()
     }
 }

@@ -5,6 +5,10 @@
 
 
 <CascadingAuthenticationState>
+    
+    @* <Routes @rendermode="InteractiveServer" /> *@
+    <CascadingAuthenticationState>
+    @* <Routes @rendermode="InteractiveServer"> *@
     <Router AppAssembly="typeof(App).Assembly">        
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
@@ -22,7 +26,11 @@
                 <p role="alert">Страница не найдена</p>
             </LayoutView>
         </NotFound>
-    </Router>    
+    </Router>   
+    @* </Routes>   *@  
+</CascadingAuthenticationState>
+    
+
 </CascadingAuthenticationState>
 
 @code {   

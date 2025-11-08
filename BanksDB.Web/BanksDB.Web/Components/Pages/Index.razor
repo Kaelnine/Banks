@@ -19,6 +19,10 @@
 <head>
 	<link href="css/site.css" rel="stylesheet"/>
 </head>
+@if (isLoading)
+{
+	<p>Загрузка счетов...</p>
+}
 @if (organizations.Any())
 {
 	@foreach (var org in organizations)
@@ -51,9 +55,17 @@ else
 
 @code {
 	private List<OrganizationOutputModel> organizations = new();
+	private bool isLoading = true;
 	protected override async Task OnInitializedAsync()
 	{
-		organizations = await LoadOrganizationsWithAccounts();
+		try
+		{
+			organizations = await LoadOrganizationsWithAccounts();
+		}
+		finally
+		{
+			isLoading = false;
+		}
 	}
 
 	private async Task<List<OrganizationOutputModel>> LoadOrganizationsWithAccounts()

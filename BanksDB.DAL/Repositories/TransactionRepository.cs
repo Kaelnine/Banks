@@ -20,7 +20,7 @@ namespace DBBanks.DAL.Repositories
         public async Task AddAsync(TransactionDto transaction)
         {
             await _db.Transactions.AddAsync(transaction);
-            await _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();            
         }
 
         // добавление списка транзакций

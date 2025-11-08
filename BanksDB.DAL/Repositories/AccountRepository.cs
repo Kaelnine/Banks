@@ -13,28 +13,41 @@ namespace DBBanks.DAL.Repositories
 {
     public class AccountRepository : IAccountRepository
     {
-        private readonly BankDbContext _db;
-        public AccountRepository(BankDbContext db) { _db = db; }
+        //private readonly BankDbContext _db;
+        private readonly IDbContextFactory<BankDbContext> _db;
+
+        //public AccountRepository(BankDbContext db) { _db = db; }
+        public AccountRepository(IDbContextFactory<BankDbContext> db) { _db = db; }
 
         // добавление счета
         public async Task AddAsync(AccountDto account)
         {
-            await _db.Accounts.AddAsync(account);
-            await _db.SaveChangesAsync();
+            await using var db = await _db.CreateDbContextAsync();
+            //await _db.Accounts.AddAsync(account);
+            //await _db.SaveChangesAsync();
+            await db.Accounts.AddAsync(account);
+            await db.SaveChangesAsync();
         }
 
         // удаление счета
         public async Task DeleteAsync(int id)
         {
-            var account = await _db.Accounts.FindAsync(id);
+            await using var db = await _db.CreateDbContextAsync();
+            //var account = await _db.Accounts.FindAsync(id);
+            //if (account == null) return;
+            //account.IsDeleted = true;
+            //await _db.SaveChangesAsync();
+            var account = await db.Accounts.FindAsync(id);
             if (account == null) return;
             account.IsDeleted = true;
-            await _db.SaveChangesAsync();
+            await db.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<AccountSummaryDto>> GetAccountSummaryAsync()
         {
-            return await _db.AccountSummaries.Select(a => new AccountSummaryDto
+            await using var db = await _db.CreateDbContextAsync();
+            return await db.AccountSummaries.Select(a => new AccountSummaryDto
+            //return await _db.AccountSummaries.Select(a => new AccountSummaryDto
             {
                 OrganizationName = a.OrganizationName,
                 OrganizationInn = a.OrganizationInn,
@@ -49,26 +62,35 @@ namespace DBBanks.DAL.Repositories
         // получение всех счетов
         public async Task<IEnumerable<AccountDto>> GetAllAsync()
         {
-            return await _db.Accounts.Where(a => !a.IsDeleted).ToListAsync();
+            await using var db = await _db.CreateDbContextAsync();
+            //return await _db.Accounts.Where(a => !a.IsDeleted).ToListAsync();
+            return await db.Accounts.Where(a => !a.IsDeleted).ToListAsync();
         }       
 
         // получение счета по id
         public async Task<AccountDto> GetByIdAsync(int id)
         {
-            return await _db.Accounts.FirstOrDefaultAsync(a => a.Id == id && !a.IsDeleted);
+            await using var db = await _db.CreateDbContextAsync();
+            //return await _db.Accounts.FirstOrDefaultAsync(a => a.Id == id && !a.IsDeleted);
+            return await db.Accounts.FirstOrDefaultAsync(a => a.Id == id && !a.IsDeleted);
         }               
 
         // изменение счета
         public async Task UpdateAsync(AccountDto account)
         {
-            _db.Accounts.Update(account);
-            await _db.SaveChangesAsync();
+            await using var db = await _db.CreateDbContextAsync();
+            //_db.Accounts.Update(account);
+            //await _db.SaveChangesAsync();
+            db.Accounts.Update(account);
+            await db.SaveChangesAsync();
         }
 
         // получение всех счетов организации
         public async Task<IEnumerable<AccountDto>> GetByOrganizationIdAsync(int organizationtId)
         {
-            return await _db.Accounts.Where(a => a.OrganizationId == organizationtId).ToListAsync();
+            await using var db = await _db.CreateDbContextAsync();
+            //return await _db.Accounts.Where(a => a.OrganizationId == organizationtId).ToListAsync();
+            return await db.Accounts.Where(a => a.OrganizationId == organizationtId).ToListAsync();
         }
 
     }

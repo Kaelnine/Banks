@@ -27,18 +27,24 @@ namespace BanksDB.Web
             {
                 options.RootDirectory = "/Components/Pages";
             });
+            builder.Services.AddTransient<IAccountService, AccountService>();
+            builder.Services.AddTransient<ITransactionService, TransactionService>();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
             builder.Services.AddScoped<AuthenticationService>();
-            builder.Services.AddScoped<ITransactionService, TransactionService>();
+            //builder.Services.AddScoped<ITransactionService, TransactionService>();
             builder.Services.AddAntiforgery();
             builder.Services.AddScoped<IBankRepository, BankRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
-            builder.Services.AddScoped<IAccountService, AccountService>();
-            builder.Services.AddDbContext<BankDbContext>(options =>
-                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+            //builder.Services.AddScoped<IAccountService, AccountService>();
+            //builder.Services.AddDbContext<BankDbContext>(options =>
+            //     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+            //ServiceLifetime.Transient,
+            //ServiceLifetime.Transient);
+            builder.Services.AddDbContextFactory<BankDbContext>(options =>
+                   options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddAutoMapper(cfg =>
             {
                 cfg.AddProfile(new MappingProfile());
@@ -102,10 +108,13 @@ namespace BanksDB.Web
             
 
             app.MapStaticAssets();
-            app.MapRazorComponents<App>()
-                .AddInteractiveServerRenderMode()
-                //.AddInteractiveWebAssemblyRenderMode()
-                .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
+            //app.MapRazorComponents<App>()
+            //    .AddInteractiveServerRenderMode()
+            //    //.AddInteractiveWebAssemblyRenderMode()
+            //    .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
+            app.MapRazorComponents<BanksDB.Web.Components.App>()
+                  .AddInteractiveServerRenderMode()
+                  .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
 
             // тоже связано с авторизацией
             if (!app.Environment.IsDevelopment())

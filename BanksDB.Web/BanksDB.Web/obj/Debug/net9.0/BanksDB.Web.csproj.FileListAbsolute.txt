@@ -128,7 +128,6 @@ D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Ban
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.DAL.pdb
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Npgsql.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-02232z7rn6.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Net.Http.Formatting.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.TeamFoundation.Common.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.VisualStudio.Services.Common.dll
@@ -289,3 +288,5 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.p
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.genruntimeconfig.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\ref\BanksDB.Web.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-pjehtp0nq8.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-pjehtp0nq8.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\1f7nnsgevt-3r8b2a0bt1.gz

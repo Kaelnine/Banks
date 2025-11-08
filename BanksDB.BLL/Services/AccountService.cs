@@ -4,6 +4,8 @@ using BanksDB.Core.Dtos;
 using BanksDB.Core.Interfaces;
 using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
+using BanksDB.DAL.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +17,12 @@ namespace BanksDB.BLL.Services
     public class AccountService : IAccountService
     {
         private readonly IAccountRepository _accountRepository;
-        private readonly IMapper _mapper;
+        private readonly IMapper _mapper;       
 
         public AccountService(IAccountRepository accountRepository, IMapper mapper)
         {
             _accountRepository = accountRepository;
-            _mapper = mapper;
+            _mapper = mapper;            
         }
         // добавление счета
         public async Task AddAsync(AccountInputModel inputModel)

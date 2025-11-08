@@ -16,9 +16,9 @@ namespace BanksDB.BLL.Interfaces
         Task<List<TransactionOutputModel>> GetTransactionsByAccountAndDateAsync(int accountId, DateTime date);
         Task<List<TransactionOutputModel>> GetTransactionsByAccountAndPeriodAsync(int accountId, DateTime startDate, DateTime endDate);
         Task<List<DailySummaryOutputModel>> GetDailySummaryAsync(int accountId, DateTime startDate, DateTime endDate);
-        Task<TransactionOutputModel> AddTransactionAsync(TransactionInputModel inputModel);
+        Task AddTransactionAsync(TransactionInputModel inputModel);
         Task<TransactionOutputModel> UpdateTransactionAsync(int id, TransactionInputModel inputModel);
-        Task<bool> DeleteTransactionAsync(int id);
+        Task DeleteTransactionAsync(int id);
         Task<List<TransactionOutputModel>> AddSeveralTransactionsAsync(List<TransactionInputModel> inputModels);        
     }
 }

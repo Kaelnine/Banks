@@ -1713,6 +1713,7 @@
         "dependencies": {
           "AutoMapper": "15.1.0",
           "BanksDB.Core": "1.0.0",
+          "BanksDB.DAL": "1.0.0",
           "Microsoft.AspNetCore.Components": "9.0.9",
           "Microsoft.VisualStudio.Services.Client": "19.225.1"
         },

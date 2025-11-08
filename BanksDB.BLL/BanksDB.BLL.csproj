@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BanksDB.Core\BanksDB.Core.csproj" />
+    <ProjectReference Include="..\BanksDB.DAL\BanksDB.DAL.csproj" />
   </ItemGroup>
 
 </Project>

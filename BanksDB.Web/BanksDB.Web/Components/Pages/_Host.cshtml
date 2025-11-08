@@ -7,7 +7,7 @@
     Layout = null;//"_Layout";
 }
 
-<component type="typeof(App)" render-mode="ServerPrerendered" />
+@* <component type="typeof(App)" render-mode="ServerPrerendered" /> *@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,20 +16,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="~/" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link href="css/site.css" rel="stylesheet" />    
+    <link href="css/site.css" rel="stylesheet" />
     <link href="~/css/account.css" rel="stylesheet" />
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
 <body>
     @* @RenderBody() *@
 
-    @* <div id="blazor-error-ui">
+    <@* div id="blazor-error-ui">
         An unhandled error has occurred.
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div> *@
 
+    <component type="typeof(App)" render-mode="ServerPrerendered" />
+
     <script src="_framework/blazor.server.js"></script>
+    <script src="_framework/blazor.web.js"></script>
     <script src="js/fileUpload.js"></script>
 </body>
 </html>
