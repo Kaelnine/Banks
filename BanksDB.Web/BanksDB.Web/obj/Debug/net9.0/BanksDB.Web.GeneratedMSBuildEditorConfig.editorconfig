@@ -52,10 +52,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUZXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Моё/Programming/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/UploadTransactions.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVcGxvYWRUcmFuc2FjdGlvbnMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Моё/Programming/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/RedirectToLogin.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSZWRpcmVjdFRvTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

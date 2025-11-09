@@ -1,8 +1,8 @@
-wwwroot\js\fileUpload.js
-wwwroot\css\site.css
-wwwroot\css\login.css
-wwwroot\css\account.css
 wwwroot\app.css
+wwwroot\css\account.css
+wwwroot\css\login.css
+wwwroot\css\site.css
+wwwroot\js\fileUpload.js
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\css\site.css
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\css\account.css
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\app.css

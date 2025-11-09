@@ -87,7 +87,7 @@ namespace BanksDB.Web
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
             //.AddInteractiveWebAssemblyComponents();
-            builder.Services.AddHttpClient();
+            //builder.Services.AddHttpClient();
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 
