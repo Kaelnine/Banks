@@ -17,7 +17,9 @@ namespace BanksDB.Core.Dtos
         public string BankName { get; set; }
         public string AccountNumber { get; set; }
         public decimal CurrentBalance { get; set; }
+        //
         //public string AccountType { get; set; }
+        //
         public DateTime UpdateAccount { get; set; }
         public OrganizationDto Organization { get; set; }
         public BankDto Bank { get; set; }

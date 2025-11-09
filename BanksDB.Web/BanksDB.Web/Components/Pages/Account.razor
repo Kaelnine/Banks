@@ -14,7 +14,7 @@
 <PageTitle>Информация по счету</PageTitle>
 <head><link href="/css/account.css" rel="stylesheet"/></head>
 
-<div class="account-details-container">
+<div class="account-details-container">    
         <div class="page-header">
         <div class="header-content">
             <button @onclick="GoBack" class="btn-back">
@@ -56,10 +56,10 @@
             </div>
         </div>
     }
-    else
+    else if (!isLoading)
     {
-        <div class="account-info-card">
-            <h4>НИКАКОЙ СЧЕТ НЕ ЗАГРУЖЕН</h4>
+        <div class="alert alert-warning">
+            ❌ Не удалось загрузить информацию о счете ID: @Id
         </div>
     }
     <div class="filter-section">

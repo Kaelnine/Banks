@@ -17,12 +17,14 @@ namespace BanksDB.BLL.Services
     public class AccountService : IAccountService
     {
         private readonly IAccountRepository _accountRepository;
-        private readonly IMapper _mapper;       
+        private readonly IMapper _mapper;
+        private readonly IDbContextFactory<BankDbContext> _db;
 
-        public AccountService(IAccountRepository accountRepository, IMapper mapper)
+        public AccountService(IAccountRepository accountRepository, IMapper mapper, IDbContextFactory<BankDbContext> db)
         {
             _accountRepository = accountRepository;
-            _mapper = mapper;            
+            _mapper = mapper;
+            _db = db;
         }
         // добавление счета
         public async Task AddAsync(AccountInputModel inputModel)
@@ -54,7 +56,29 @@ namespace BanksDB.BLL.Services
         // получение счета по id
         public async Task<AccountOutputModel> GetByIdAsync(int id)
         {
-            var account = await _accountRepository.GetByIdAsync(id);
+            //await Task.Delay(100);
+            await using var db = await _db.CreateDbContextAsync();
+            var account = await db.Accounts
+            .Where(a => a.Id == id && !a.IsDeleted)
+            .Include(a => a.Bank)
+            .Include(a => a.Organization)
+            //.Include(a => a.AccountType)
+            .Select(a => new AccountOutputModel
+            {
+                Id = a.Id,
+                Name = a.Name,
+                OrganizationName = a.Organization.Name,
+                BankName = a.Bank.Name,
+                BankBik = a.Bank.Bik,
+                AccountNumber = a.AccountNumber,
+                CurrentBalance = a.CurrentBalance,
+                //AccountTypeName = a.AccountType.Name
+            })
+            .FirstOrDefaultAsync();
+
+            //return account;
+            //return account;
+            //var account = await _accountRepository.GetByIdAsync(id);
             return _mapper.Map<AccountOutputModel>(account);
         }
 

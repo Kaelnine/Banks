@@ -86,7 +86,9 @@ namespace BanksDB.Web
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
-                //.AddInteractiveWebAssemblyComponents();
+            //.AddInteractiveWebAssemblyComponents();
+            builder.Services.AddHttpClient();
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 
             var app = builder.Build();

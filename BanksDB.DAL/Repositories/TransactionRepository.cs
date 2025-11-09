@@ -13,65 +13,98 @@ namespace DBBanks.DAL.Repositories
 {
     public class TransactionRepository : ITransactionRepository
     {
-        private readonly BankDbContext _db;
-        public TransactionRepository(BankDbContext db) { _db = db; }
+        private readonly IDbContextFactory<BankDbContext> _db;
+        public TransactionRepository(IDbContextFactory<BankDbContext> db) { _db = db; }
 
         // добавление транзакции
         public async Task AddAsync(TransactionDto transaction)
         {
-            await _db.Transactions.AddAsync(transaction);
-            await _db.SaveChangesAsync();            
+            await using var db = await _db.CreateDbContextAsync();
+            //await _db.Transactions.AddAsync(transaction);
+            //await _db.SaveChangesAsync();            
+            await db.Transactions.AddAsync(transaction);
+            await db.SaveChangesAsync();
         }
 
         // добавление списка транзакций
         public async Task AddSeveralAsync(IEnumerable<TransactionDto> transactions)
         {
-            await _db.Transactions.AddRangeAsync(transactions);
-            await _db.SaveChangesAsync();
+            await using var db = await _db.CreateDbContextAsync();
+            //await _db.Transactions.AddRangeAsync(transactions);
+            //await _db.SaveChangesAsync();
+            await db.Transactions.AddRangeAsync(transactions);
+            await db.SaveChangesAsync();
         }
 
         // удаление транзакции
         public async Task DeleteAsync(int transactionId)
         {
-            var transaction = await _db.Transactions.FindAsync(transactionId);
+            await using var db = await _db.CreateDbContextAsync();
+            //var transaction = await _db.Transactions.FindAsync(transactionId);
+            //if (transaction == null) return;
+            //transaction.IsDeleted = true;
+            //await _db.SaveChangesAsync();
+            var transaction = await db.Transactions.FindAsync(transactionId);
             if (transaction == null) return;
             transaction.IsDeleted = true;
-            await _db.SaveChangesAsync();
+            await db.SaveChangesAsync();
         }
 
         // получение всех транзакций
         public async Task<IEnumerable<TransactionDto>> GetAllAsync()
         {
-            return await _db.Transactions.Where(t => !t.IsDeleted).ToListAsync();
+            await using var db = await _db.CreateDbContextAsync();
+            //return await _db.Transactions.Where(t => !t.IsDeleted).ToListAsync();
+            return await db.Transactions.Where(t => !t.IsDeleted).ToListAsync();
         }
 
         // получение всех транзакций счета
         public async Task<IEnumerable<TransactionDto>> GetByAccountIdAsync(int accountId)
         {
-            return await _db.Transactions.Where(t => t.AccountId == accountId && !t.IsDeleted).ToListAsync();
+            await using var db = await _db.CreateDbContextAsync();
+            //return await _db.Transactions.Where(t => t.AccountId == accountId && !t.IsDeleted).ToListAsync();
+            return await db.Transactions.Where(t => t.AccountId == accountId && !t.IsDeleted).ToListAsync();
         }
 
         // получение всех транзакций счета за день
         public async Task<IEnumerable<TransactionDto>> GetByAccountIdForDayAsync(int accountId, DateTime date)
         {
-            return await _db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate == date && !t.IsDeleted).ToListAsync();
+            await using var db = await _db.CreateDbContextAsync();
+            //return await _db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate == date && !t.IsDeleted).ToListAsync();
+            return await db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate == date && !t.IsDeleted).ToListAsync();
         }
 
         // получение всех транзакций за период
         public async Task<IEnumerable<TransactionDto>> GetByAccountIdForPeriodAsync(int accountId, DateTime startDate, DateTime endDate)
         {
-            return await _db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate > startDate && t.CreatedDate < endDate && !t.IsDeleted).ToListAsync();
+            await using var db = await _db.CreateDbContextAsync();
+            //return await _db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate > startDate && t.CreatedDate < endDate && !t.IsDeleted).ToListAsync();
+            return await db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate > startDate && t.CreatedDate < endDate && !t.IsDeleted).ToListAsync();
         }
 
         // получение транзакции по id
         public async Task<TransactionDto> GetByIdAsync(int id)
         {
-            return await _db.Transactions.FirstOrDefaultAsync(t => t.Id == id && !t.IsDeleted);
+            await using var db = await _db.CreateDbContextAsync();
+            //return await _db.Transactions.FirstOrDefaultAsync(t => t.Id == id && !t.IsDeleted);
+            return await db.Transactions.FirstOrDefaultAsync(t => t.Id == id && !t.IsDeleted);
         }
 
         public async Task<List<DailySummaryOutputModel>> GetDailySummaryAsync(int accountId, DateTime startDate, DateTime endDate)
         {
-            return await _db.Transactions.Where(t => t.AccountId == accountId && t.TransactionDate >= startDate &&  t.TransactionDate <= endDate && !t.IsDeleted)
+            await using var db = await _db.CreateDbContextAsync();
+            //return await _db.Transactions.Where(t => t.AccountId == accountId && t.TransactionDate >= startDate &&  t.TransactionDate <= endDate && !t.IsDeleted)
+            //    .GroupBy(t => t.TransactionDate.Date)
+            //    .Select(g => new DailySummaryOutputModel
+            //    {
+            //        Date = g.Key,
+            //        TotalIncome = g.Where(t => t.TransactionType == "Приход").Sum(t => t.Amount),
+            //        TotalExpense = g.Where(t => t.TransactionType == "Расход").Sum(t => t.Amount),
+            //        TransactionCount = g.Count()
+            //    })
+            //    .OrderByDescending(s => s.Date)
+            //    .ToListAsync();
+            return await db.Transactions.Where(t => t.AccountId == accountId && t.TransactionDate >= startDate && t.TransactionDate <= endDate && !t.IsDeleted)
                 .GroupBy(t => t.TransactionDate.Date)
                 .Select(g => new DailySummaryOutputModel
                 {
@@ -81,14 +114,17 @@ namespace DBBanks.DAL.Repositories
                     TransactionCount = g.Count()
                 })
                 .OrderByDescending(s => s.Date)
-                .ToListAsync();
+                .ToListAsync();            
         }
 
         // изменение транзакции
         public async Task UpdateAsync(TransactionDto transaction)
         {
-            _db.Transactions.Update(transaction);
-            await _db.SaveChangesAsync();
+            await using var db = await _db.CreateDbContextAsync();
+            //_db.Transactions.Update(transaction);
+            //await _db.SaveChangesAsync();
+            db.Transactions.Update(transaction);
+            await db.SaveChangesAsync();
         }
 
         Task<IEnumerable<TransactionDto>> ITransactionRepository.AddSeveralAsync(IEnumerable<TransactionDto> transactions)

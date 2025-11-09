@@ -46,17 +46,31 @@ namespace DBBanks.DAL.Repositories
         public async Task<IEnumerable<AccountSummaryDto>> GetAccountSummaryAsync()
         {
             await using var db = await _db.CreateDbContextAsync();
-            return await db.AccountSummaries.Select(a => new AccountSummaryDto
-            //return await _db.AccountSummaries.Select(a => new AccountSummaryDto
-            {
-                OrganizationName = a.OrganizationName,
-                OrganizationInn = a.OrganizationInn,
-                BankName = a.BankName,
-                BankBik = a.BankBik,
-                AccountNumber = a.AccountNumber,
-                CurrentBalance = a.CurrentBalance,
-                //AccountType = a.AccountType
-            }).ToListAsync();
+            return await db.Accounts
+                .Where(a => !a.IsDeleted)
+                .Include(a => a.Organization)
+                .Include(a => a.Bank)                
+                .Select(a => new AccountSummaryDto
+                {
+                    OrganizationName = a.Organization.Name,
+                    OrganizationInn = a.Organization.Inn,
+                    BankName = a.Bank.Name,
+                    BankBik = a.Bank.Bik,
+                    AccountNumber = a.AccountNumber,
+                    CurrentBalance = a.CurrentBalance                    
+                })
+                .ToListAsync();
+            //return await db.AccountSummaries.Select(a => new AccountSummaryDto
+            ////return await _db.AccountSummaries.Select(a => new AccountSummaryDto
+            //{
+            //    OrganizationName = a.OrganizationName,
+            //    OrganizationInn = a.OrganizationInn,
+            //    BankName = a.BankName,
+            //    BankBik = a.BankBik,
+            //    AccountNumber = a.AccountNumber,
+            //    CurrentBalance = a.CurrentBalance,
+            //    //AccountType = a.AccountType
+            //}).ToListAsync();
         }
 
         // получение всех счетов
@@ -70,9 +84,25 @@ namespace DBBanks.DAL.Repositories
         // получение счета по id
         public async Task<AccountDto> GetByIdAsync(int id)
         {
-            await using var db = await _db.CreateDbContextAsync();
+            using var db = await _db.CreateDbContextAsync();
+            var account = await db.Accounts.Include(a => a.Bank)
+                .Include(a => a.Organization)
+                //.Include(a => a.AccountType)
+                .FirstOrDefaultAsync(a => a.Id == id && !a.IsDeleted);
+            if (account == null) return null;
+            return new AccountDto
+            {
+                Id = account.Id,
+                Name = account.Name,
+                OrganizationId = account.OrganizationId,
+                BankId = account.BankId,
+                AccountNumber = account.AccountNumber,
+                CurrentBalance = account.CurrentBalance,
+                //AccountType = account.AccountType,
+                UpdateAccount = account.UpdateAccount,
+            };
             //return await _db.Accounts.FirstOrDefaultAsync(a => a.Id == id && !a.IsDeleted);
-            return await db.Accounts.FirstOrDefaultAsync(a => a.Id == id && !a.IsDeleted);
+            //return await db.Accounts.FirstOrDefaultAsync(a => a.Id == id && !a.IsDeleted);
         }               
 
         // изменение счета
