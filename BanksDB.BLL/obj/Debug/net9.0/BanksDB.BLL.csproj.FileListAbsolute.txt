@@ -32,3 +32,5 @@ D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.pdb
 D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\ref\BanksDB.BLL.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.DAL.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.DAL.pdb
+D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.DAL.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.DAL.pdb

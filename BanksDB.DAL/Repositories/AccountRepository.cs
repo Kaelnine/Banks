@@ -52,6 +52,7 @@ namespace DBBanks.DAL.Repositories
                 .Include(a => a.Bank)                
                 .Select(a => new AccountSummaryDto
                 {
+                    Id = a.Id,
                     OrganizationName = a.Organization.Name,
                     OrganizationInn = a.Organization.Inn,
                     BankName = a.Bank.Name,

@@ -114,18 +114,18 @@ namespace BanksDB.Web
             //    .AddInteractiveServerRenderMode()
             //    //.AddInteractiveWebAssemblyRenderMode()
             //    .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
-            app.MapRazorComponents<BanksDB.Web.Components.App>()
-                  .AddInteractiveServerRenderMode()
-                  .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
+            //app.MapRazorComponents<BanksDB.Web.Components.App>()
+            //      .AddInteractiveServerRenderMode()
+            //      .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
 
             // тоже связано с авторизацией
-            if (!app.Environment.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Error");
-                app.UseHsts();
-            }
+            //if (!app.Environment.IsDevelopment())
+            //{
+            //    app.UseExceptionHandler("/Error");
+            //    app.UseHsts();
+            //}
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
