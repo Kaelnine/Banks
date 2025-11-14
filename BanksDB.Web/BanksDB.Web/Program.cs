@@ -1,6 +1,7 @@
 using AutoMapper;
 using BanksDB.BLL.Interfaces;
 using BanksDB.BLL.Mapping;
+using BanksDB.BLL.Parsers;
 using BanksDB.BLL.Services;
 using BanksDB.Core.Interfaces;
 using BanksDB.DAL.Data;
@@ -38,6 +39,7 @@ namespace BanksDB.Web
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+            builder.Services.AddScoped<BankParser>();
             //builder.Services.AddScoped<IAccountService, AccountService>();
             //builder.Services.AddDbContext<BankDbContext>(options =>
             //     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));

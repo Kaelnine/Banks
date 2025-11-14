@@ -4,6 +4,7 @@
 @using BanksDB.Core.Models.OutputModels
 @using BanksDB.Core.Models.InputModels
 @using BanksDB.Core.Enums
+@using BanksDB.BLL.Parsers
 @using Microsoft.AspNetCore.Components.Forms
 @inject ITransactionService TransactionService
 @inject IAccountService AccountService
@@ -182,11 +183,19 @@
             </div>
             <div class="modal-body">
                 <div class="upload-instructions">
-                    <h6>Формат файла (TXT):</h6>
+                    <h6>Формат файла:</h6>
+                    <p>Поддерживаются файлы выписок в формате TXT</p>
+                    <p><strong>Требования:</strong></p>
+                    <ul>
+                        <li>Файл должен быть в кодировке Windows-1251</li>
+                        <li>Формат: TXT</li>
+                        <li>Должны содержаться секции "Платежное поручение"</li>
+                    </ul>
+                    @* <h6>Формат файла (TXT):</h6>
                     <p>Каждая строка должна содержать данные в формате:</p>
                     <code>Дата;Тип;Сумма;Описание;Контрагент;Счет;ИНН;Документ</code>
                     <p><strong>Пример:</strong></p>
-                    <code>01.12.2024;Приход;100000,50;Оплата за услуги;ООО "Заказчик";40702810000000012345;1234567890;СЧ-123</code>
+                    <code>01.12.2024;Приход;100000,50;Оплата за услуги;ООО "Заказчик";40702810000000012345;1234567890;СЧ-123</code> *@
                 </div>
 
                 @* <div class="file-upload-area">
@@ -198,8 +207,11 @@
                     </div>
                 </div> *@
                 <div class="file-upload-area">
-                    <InputFile @ref="fileInput" OnChange="HandleFileSelected" accept=".txt" class="file-input" />
-                    <div class="upload-placeholder" @onclick="TriggerFileInput">
+                    <input type="file" @ref="fileInputElement" @onchange="HandleFileSelected" accept=".txt" class="file-input" style="display: none;" />
+                    @* <InputFile @ref="fileInput" OnChange="HandleFileSelected" accept=".txt" class="file-input" /> *@
+                    @* <div class="upload-placeholder" @onclick="TriggerFileInput"> *@
+                        @* <div class="upload-placeholder" @onclick="() => fileInput?.Click()"> *@
+                        <div class="upload-placeholder" @onclick="() => fileInputElement?.Click()">
                         <div>📎</div>
                         <p>Нажмите для выбора файла TXT</p>
                         <small>Поддерживается только формат TXT</small>
@@ -213,10 +225,12 @@
                     </div>
                 }
 
-                @if (parsedTransactions.Any())
+                @* @if (parsedTransactions.Any()) *@
+                @if (parserResult?.Transactions.Any() == true)
                 {
                     <div class="parsed-transactions">
-                        <h6>Найдено транзакций: @parsedTransactions.Count</h6>
+                        @* <h6>Найдено транзакций: @parsedTransactions.Count</h6> *@
+                        <h6>Найдено транзакций: @parserResult.TotalTransactionsFound</h6>
                         <div class="transaction-preview">
                             @foreach (var transaction in parsedTransactions.Take(3))
                             {
@@ -226,32 +240,55 @@
                                         @transaction.TransactionType
                                     </span>
                                     <span>@transaction.Amount.ToString("C")</span>
+                                 <div class="preview-description">
+                                    @transaction.Description
+                                </div>
+                                <div class="preview-counterparty">
+                                    Контрагент: @(transaction.CounterpartyName ?? transaction.PayerName ?? "Не указан")
+                                </div>
                                 </div>
                             }
-                            @if (parsedTransactions.Count > 3)
+                            @if (parsedTransactions.Count > 5)
                             {
                                 <div class="preview-more">
-                                    ... и еще @(parsedTransactions.Count - 3) транзакций
+                                    ... и еще @(parsedTransactions.Count - 5) транзакций
                                 </div>
                             }
                         </div>
                     </div>
                 }
+                @if (parserResult?.Errors.Any() == true)
+                {
+                    <div class="alert alert-warning">
+                        <h6>Предупреждения:</h6>
+                        <ul>
+                            @foreach (var error in parserResult.Errors.Take(3))
+                            {
+                                <li>@error</li>
+                            }
+                        </ul>
+                        @if (parserResult.Errors.Count > 3)
+                        {
+                            <small>... и еще @(parserResult.Errors.Count - 3) предупреждений</small>
+                        }
+                    </div>
+                }
             </div>
             <div class="modal-footer">
-                <button @onclick="CloseUploadModal" class="btn-cancel">
+                <button @onclick="CloseUploadModal" @* class="btn-cancel" *@ class="btn btn-secondary">
                     Отмена
                 </button>
-                <button @onclick="UploadTransactions"
-                        class="btn-confirm"
-                        disabled="@(!parsedTransactions.Any() || isUploading)">
+                <button @onclick="UploadTransactions" @* class="btn-confirm" *@ class="btn btn-success"
+                        @* disabled="@(!parsedTransactions.Any() || isUploading)"> *@
+                        disabled="@(parserResult?.Transactions.Any() != true || isUploading)">
                     @if (isUploading)
                     {
                         <span>Загрузка...</span>
                     }
                     else
                     {
-                        <span>📤 Загрузить (@parsedTransactions.Count)</span>
+                        @* <span>📤 Загрузить (@parsedTransactions.Count)</span> *@
+                        <span>📤 Загрузить (@parserResult?.TotalTransactionsFound)</span>
                     }
                 </button>
             </div>
@@ -273,7 +310,17 @@
     private List<TransactionInputModel> parsedTransactions = new();
     //private ElementReference fileInput;
     private InputFile? fileInput;
-        
+    private BankParserResult parserResult;
+    private ElementReference fileInputElement;
+    
+    private async Task TriggerFileInput()
+    {
+        if (fileInput != null)
+        {
+            await JSRuntime.InvokeVoidAsync("clickFileInput", fileInput.Element);
+        }
+    }
+
     protected override async Task OnInitializedAsync()
     {
         await LoadAccountInfo();
@@ -349,26 +396,29 @@
         showUploadModal = true;
         uploadError = string.Empty;
         parsedTransactions.Clear();
-        StateHasChanged();
+        // StateHasChanged();
     }
 
     private void CloseUploadModal()
     {
         showUploadModal = false;
-        parsedTransactions.Clear();
+        //parsedTransactions.Clear();
         uploadError = string.Empty;
-        StateHasChanged();
+        //StateHasChanged();
+        parserResult = null;
+        isUploading = false;
     }
 
-    private void TriggerFileInput()
-    {
-        JSRuntime.InvokeVoidAsync("clickElement", fileInput);
-    }
+    // private void TriggerFileInput()
+    // {
+    //     JSRuntime.InvokeVoidAsync("clickElement", fileInput);
+    // }
 
     private async Task HandleFileSelected(InputFileChangeEventArgs e)
     {
         uploadError = string.Empty;
-        parsedTransactions.Clear();
+        //parsedTransactions.Clear();
+        parserResult = null;
 
         var file = e.File;
         if (file == null) return;
@@ -382,27 +432,38 @@
         try
         {
             // Здесь будет логика парсинга файла
-            parsedTransactions = GenerateTestTransactions();
-            StateHasChanged();
+            //parsedTransactions = GenerateTestTransactions();
+            //StateHasChanged();
+            using var stream = file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024);
+            parserResult = await TransactionService.BankParserStatementAsync(stream, Id);
+            if (!parserResult.IsValid && parserResult.Errors.Any())
+            {
+                uploadError = string.Join("; ", parserResult.Errors.Take(3));
+            }
         }
         catch (Exception ex)
         {
             uploadError = $"Ошибка чтения файла: {ex.Message}";
         }
+        StateHasChanged();
     }
 
     private async Task UploadTransactions()
     {
-        if (!parsedTransactions.Any()) return;
-
+        //if (!parsedTransactions.Any()) return;
+        if (parserResult?.Transactions.Any() != true)
+        {
+            return;
+        }
         isUploading = true;
         StateHasChanged();
 
         try
         {
             // Здесь будет логика сохранения транзакций
-            await Task.Delay(1000); // Имитация загрузки
-
+            //await Task.Delay(1000); // Имитация загрузки
+            var importedTransactions = await TransactionService.ImportTransactionsAsync(parserResult.Transactions);
+            await JSRuntime.InvokeVoidAsync("alert", $"✅ Успешно загружено {importedTransactions.Count} транзакций");
             // После успешной загрузки обновляем данные
             await LoadDailySummary();
             CloseUploadModal();

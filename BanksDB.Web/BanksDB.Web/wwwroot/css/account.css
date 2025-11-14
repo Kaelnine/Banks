@@ -577,3 +577,89 @@
         max-height: calc(100vh - 20px);
     }
 }
+/* Стили для модального окна загрузки */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.upload-instructions {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.file-upload-area {
+    border: 2px dashed #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+    .file-upload-area:hover {
+        border-color: #007bff;
+    }
+
+.parsed-transactions {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.transaction-preview-item {
+    border-bottom: 1px solid #f8f9fa;
+    padding: 10px 0;
+}
+
+    .transaction-preview-item:last-child {
+        border-bottom: none;
+    }
+
+.preview-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.preview-type.income {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.preview-type.expense {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.preview-description {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.preview-counterparty {
+    font-size: 0.8em;
+    color: #6c757d;
+}

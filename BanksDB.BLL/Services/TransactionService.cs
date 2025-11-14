@@ -1,14 +1,18 @@
 ﻿using AutoMapper;
 using BanksDB.BLL.Interfaces;
+using BanksDB.BLL.Parsers;
 using BanksDB.Core.Dtos;
+using BanksDB.Core.Enums;
 using BanksDB.Core.Interfaces;
 using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace BanksDB.BLL.Services
 {
@@ -17,11 +21,90 @@ namespace BanksDB.BLL.Services
         private readonly ITransactionRepository _transactionRepository;
         private readonly IMapper _mapper;
         private readonly IAccountRepository _accountRepository;
-        public TransactionService(ITransactionRepository transactionRepository, IAccountRepository accountRepository, IMapper mapper)
+        private readonly BankParser _bankParser;
+        public TransactionService(ITransactionRepository transactionRepository, IAccountRepository accountRepository, IMapper mapper, BankParser bankParser)
         {
             _transactionRepository = transactionRepository;
             _accountRepository = accountRepository;
             _mapper = mapper;
+            _bankParser = bankParser;
+        }
+
+        public async Task<BankParserResult> BankParserStatementAsync(Stream fileStream, int accountId)
+        {
+            var account = await _accountRepository.GetByIdAsync(accountId);
+            var accountNumber = account?.AccountNumber;
+            var result = _bankParser.ParseFile(fileStream, accountNumber);
+            foreach (var transaction in result.Transactions)
+            {
+                transaction.AccountId = accountId;
+            }
+            return result;
+        }
+
+        public async Task<List<TransactionOutputModel>> ImportTransactionsAsync(List<TransactionInputModel> transactions)
+        {
+            if (!transactions.Any())
+            {
+                throw new ArgumentException("Список транзакций пуст");
+            }
+            var validationResult = ValidateTransactions(transactions);
+            if (!validationResult.IsValid)
+            {
+                throw new ArgumentException($"Ошибки валидации: {string.Join("; ", validationResult.Errors)}");
+            }
+            var transactionsDto = _mapper.Map<List<TransactionDto>>(transactions);
+            var createdTransactions = await _transactionRepository.AddSeveralAsync(transactionsDto);
+            await UpdateAccountBalances(transactions);
+            return _mapper.Map<List<TransactionOutputModel>>(createdTransactions);
+        }
+
+        private async Task UpdateAccountBalances(List<TransactionInputModel> transactions)
+        {
+            var accountGroups = transactions.GroupBy(t => t.AccountId);
+            foreach (var group in accountGroups)
+            {
+                var account = await _accountRepository.GetByIdAsync(group.Key);
+                if (account == null)
+                {
+                    continue;
+                }
+                var balanceChange = group.Sum(t => t.TransactionType == TransactionType.Приход.ToString() ? t.Amount : -t.Amount);
+                account.CurrentBalance += balanceChange;
+                account.UpdateAccount = DateTime.Now;
+                await _accountRepository.UpdateAsync(account);
+            }
+        }
+
+        private ValidationResult ValidateTransactions(List<TransactionInputModel> transactions)
+        {
+            var result = new ValidationResult
+            {
+                IsValid = true,
+                Errors = new List<string>()
+            };
+            for (int i = 0; i < transactions.Count; i++)
+            {
+                var transaction = transactions[i];
+                if (transaction.Amount <= 0)
+                {
+                    result.Errors.Add($"Транзакция {i + 1}: Сумма должна быть больше 0");
+                }
+                if (transaction.TransactionDate > DateTime.Now)
+                {
+                    result.Errors.Add($"Транзакция {i + 1}: Дата не может быть в будущем");
+                }
+                if (string.IsNullOrEmpty(transaction.TransactionType))
+                {
+                    result.Errors.Add($"Транзакция {i + 1}: Не указан тип транзакции");
+                }
+                if (transaction.TransactionType != "Приход" && transaction.TransactionType != "Расход")
+                {
+                    result.Errors.Add($"Транзакция {i + 1}: Тип транзакции должен быть 'Приход' или 'Расход'");
+                }                       
+            }
+            result.IsValid = !result.Errors.Any();
+            return result;
         }
 
         public async Task<List<TransactionOutputModel>> AddSeveralTransactionsAsync(List<TransactionInputModel> inputModels)
@@ -117,5 +200,11 @@ namespace BanksDB.BLL.Services
         }
 
         //private async Task UpdateAccountBalance()
+    }
+
+    public class ValidationResult
+    {
+        public bool IsValid { get; set; }
+        public List<string> Errors { get; set; } = new();
     }
 }
