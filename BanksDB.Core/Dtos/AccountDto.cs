@@ -25,5 +25,6 @@ namespace BanksDB.Core.Dtos
         public BankDto Bank { get; set; }
         public bool IsDeleted { get; set; }
         public ObservableCollection<TransactionDto> Transactions { get; set; } = new ObservableCollection<TransactionDto>();
+
     }
 }

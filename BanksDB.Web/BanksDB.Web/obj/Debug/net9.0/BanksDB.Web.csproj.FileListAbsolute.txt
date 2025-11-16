@@ -76,8 +76,6 @@ D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\sco
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\projectbundle\BanksDB.Web.bundle.scp.css
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\iad5zvhm75-4kywy7iv6g.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\y2l34x0t57-p2zu52r2ot.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\7q242g7x9r-ehu7arlyah.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\8boe08urzv-ehu7arlyah.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.build.json
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.development.json
@@ -141,7 +139,6 @@ D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\run
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win-x86\native\sni.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\hjbu2o4o39-mvvgqf58ms.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\appsettings.Development.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\appsettings.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\BrowserDebugHost.dll
@@ -287,6 +284,10 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.g
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\ref\BanksDB.Web.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-pjehtp0nq8.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-pjehtp0nq8.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\1f7nnsgevt-3r8b2a0bt1.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\hjbu2o4o39-e0g4uhnh83.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\1f7nnsgevt-zoufc1fd19.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\1f7nnsgevt-zoufc1fd19.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\hjbu2o4o39-e0g4uhnh83.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\Components\Pages\Account.razor.rz.scp.css
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\7q242g7x9r-gfj3d9im7b.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\8boe08urzv-gfj3d9im7b.gz

@@ -4,7 +4,7 @@ using BanksDB.BLL.Mapping;
 using BanksDB.BLL.Parsers;
 using BanksDB.BLL.Services;
 using BanksDB.Core.Interfaces;
-using BanksDB.DAL.Data;
+using BanksDB.Core.Data;
 using BanksDB.Web.Components;
 using DBBanks.DAL.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;

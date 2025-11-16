@@ -1,4 +1,4 @@
-﻿namespace BanksDB.DAL
+﻿namespace BanksDB.Core
 {
     public class Class1
     {

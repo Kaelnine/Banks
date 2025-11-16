@@ -4,7 +4,7 @@ using BanksDB.Core.Dtos;
 using BanksDB.Core.Interfaces;
 using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
-using BanksDB.DAL.Data;
+using BanksDB.Core.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

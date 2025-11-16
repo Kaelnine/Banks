@@ -206,16 +206,39 @@
                         <small>Поддерживается только формат TXT</small>
                     </div>
                 </div> *@
-                <div class="file-upload-area">
+                @* <div class="file-upload-area">
                     <input type="file" @ref="fileInputElement" @onchange="HandleFileSelected" accept=".txt" class="file-input" style="display: none;" />
-                    @* <InputFile @ref="fileInput" OnChange="HandleFileSelected" accept=".txt" class="file-input" /> *@
-                    @* <div class="upload-placeholder" @onclick="TriggerFileInput"> *@
-                        @* <div class="upload-placeholder" @onclick="() => fileInput?.Click()"> *@
+                    <InputFile @ref="fileInput" OnChange="HandleFileSelected" accept=".txt" class="file-input" />
+                    <div class="upload-placeholder" @onclick="TriggerFileInput">
+                        <div class="upload-placeholder" @onclick="() => fileInput?.Click()">
                         <div class="upload-placeholder" @onclick="() => fileInputElement?.Click()">
                         <div>📎</div>
                         <p>Нажмите для выбора файла TXT</p>
                         <small>Поддерживается только формат TXT</small>
                     </div>
+                </div> *@
+                @* <InputFile OnChange="HandleInputFileSelected" accept=".txt" class="file-upload-input">
+                    <div class="file-upload-area">
+                        <div class="upload-placeholder">
+                            <div>📎</div>
+                            <p>Нажмите для выбора файла выписки</p>
+                            <small>Поддерживается только формат TXT</small>
+                        </div>
+                    </div>
+                </InputFile> *@
+
+                <div class="file-upload-section">
+                    <InputFile OnChange="HandleFileSelected"
+                               accept=".txt"
+                               class="transparent-file-input">
+                        <div class="file-upload-area">
+                            <div class="upload-placeholder">
+                                <div>📎</div>
+                                <p>Нажмите для выбора файла выписки</p>
+                                <small>Поддерживается только формат TXT</small>
+                            </div>
+                        </div>
+                    </InputFile>
                 </div>
 
                 @if (!string.IsNullOrEmpty(uploadError))
@@ -275,11 +298,10 @@
                 }
             </div>
             <div class="modal-footer">
-                <button @onclick="CloseUploadModal" @* class="btn-cancel" *@ class="btn btn-secondary">
+                <button @onclick="CloseUploadModal" class="btn btn-secondary">
                     Отмена
                 </button>
-                <button @onclick="UploadTransactions" @* class="btn-confirm" *@ class="btn btn-success"
-                        @* disabled="@(!parsedTransactions.Any() || isUploading)"> *@
+                <button @onclick="UploadTransactions" class="btn btn-success"                        
                         disabled="@(parserResult?.Transactions.Any() != true || isUploading)">
                     @if (isUploading)
                     {
@@ -313,6 +335,37 @@
     private BankParserResult parserResult;
     private ElementReference fileInputElement;
     
+    private async Task HandleInputFileSelected(InputFileChangeEventArgs e)
+    {
+        uploadError = string.Empty;
+        parserResult = null;
+
+        var file = e.File;
+        if (file == null) return;
+
+        if (Path.GetExtension(file.Name).ToLower() != ".txt")
+        {
+            uploadError = "Поддерживаются только файлы в формате TXT";
+            return;
+        }
+
+        try
+        {
+            using var stream = file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024);
+            parserResult = await TransactionService.BankParserStatementAsync(stream, Id);
+
+            if (!parserResult.IsValid && parserResult.Errors.Any())
+            {
+                uploadError = string.Join("; ", parserResult.Errors.Take(3));
+            }
+        }
+        catch (Exception ex)
+        {
+            uploadError = $"Ошибка чтения файла: {ex.Message}";
+        }
+
+        StateHasChanged();
+    }
     private async Task TriggerFileInput()
     {
         if (fileInput != null)
@@ -487,29 +540,5 @@
     private string GetTransactionCountClass(int count)
     {
         return count == 0 ? "badge-secondary" : "badge-primary";
-    }
-
-    private List<TransactionInputModel> GenerateTestTransactions()
-    {
-        // Временный метод для тестирования
-        return new List<TransactionInputModel>
-        {
-            new() {
-                AccountId = Id,
-                TransactionDate = DateTime.Now,
-                Amount = 100000,
-                TransactionType = "Приход",
-                Description = "Тестовая транзакция",
-                CounterpartyName = "ООО Тест"
-            },
-            new() {
-                AccountId = Id,
-                TransactionDate = DateTime.Now.AddDays(-1),
-                Amount = 50000,
-                TransactionType = "Расход",
-                Description = "Тестовая транзакция 2",
-                CounterpartyName = "АО Тест"
-            }
-        };
-    }
+    }    
 }

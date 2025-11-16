@@ -1,13 +1,16 @@
 ﻿using BanksDB.Core.Dtos;
 using BanksDB.Core.Interfaces;
 using BanksDB.Core.Models.OutputModels;
-using BanksDB.DAL.Data;
+using BanksDB.Core.Data;
+using BanksDB.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Metadata;
+using AutoMapper;
 
 namespace DBBanks.DAL.Repositories
 {
@@ -15,12 +18,17 @@ namespace DBBanks.DAL.Repositories
     {
         //private readonly BankDbContext _db;
         private readonly IDbContextFactory<BankDbContext> _db;
+        private readonly IMapper _mapper;
 
         //public AccountRepository(BankDbContext db) { _db = db; }
-        public AccountRepository(IDbContextFactory<BankDbContext> db) { _db = db; }
+        public AccountRepository(IDbContextFactory<BankDbContext> db, IMapper mapper)
+        { 
+            _db = db; 
+            _mapper = mapper;
+        }
 
         // добавление счета
-        public async Task AddAsync(AccountDto account)
+        public async Task AddAsync(Account account)//AccountDto
         {
             await using var db = await _db.CreateDbContextAsync();
             //await _db.Accounts.AddAsync(account);
@@ -43,7 +51,7 @@ namespace DBBanks.DAL.Repositories
             await db.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<AccountSummaryDto>> GetAccountSummaryAsync()
+        public async Task<IEnumerable<AccountSummaryDto>> GetAccountSummaryAsync() // AccountSummaryDto
         {
             await using var db = await _db.CreateDbContextAsync();
             return await db.Accounts
@@ -75,20 +83,26 @@ namespace DBBanks.DAL.Repositories
         }
 
         // получение всех счетов
-        public async Task<IEnumerable<AccountDto>> GetAllAsync()
+        public async Task<IEnumerable<AccountDto>> GetAllAsync() // AccountDto
         {
             await using var db = await _db.CreateDbContextAsync();
             //return await _db.Accounts.Where(a => !a.IsDeleted).ToListAsync();
-            return await db.Accounts.Where(a => !a.IsDeleted).ToListAsync();
+            //return await db.Accounts.Where(a => !a.IsDeleted).ToListAsync();
+            var accounts = await db.Accounts
+                .Include(a => a.Bank)
+                .Include(a => a.Organization)
+                .Where(a => !a.IsDeleted)
+                .ToListAsync();
+            return _mapper.Map<IEnumerable<AccountDto>>(accounts);
         }       
 
         // получение счета по id
-        public async Task<AccountDto> GetByIdAsync(int id)
+        public async Task<AccountDto> GetByIdAsync(int id) // AccountDto
         {
             using var db = await _db.CreateDbContextAsync();
-            var account = await db.Accounts.Include(a => a.Bank)
+            var account = await db.Accounts
                 .Include(a => a.Organization)
-                //.Include(a => a.AccountType)
+                .Include(a => a.Bank)
                 .FirstOrDefaultAsync(a => a.Id == id && !a.IsDeleted);
             if (account == null) return null;
             return new AccountDto
@@ -97,17 +111,20 @@ namespace DBBanks.DAL.Repositories
                 Name = account.Name,
                 OrganizationId = account.OrganizationId,
                 BankId = account.BankId,
+                BankName = account.Bank.Name,
                 AccountNumber = account.AccountNumber,
                 CurrentBalance = account.CurrentBalance,
-                //AccountType = account.AccountType,
-                UpdateAccount = account.UpdateAccount,
+                UpdateAccount = account.UpdateAccount
             };
+
+
             //return await _db.Accounts.FirstOrDefaultAsync(a => a.Id == id && !a.IsDeleted);
             //return await db.Accounts.FirstOrDefaultAsync(a => a.Id == id && !a.IsDeleted);
+
         }               
 
         // изменение счета
-        public async Task UpdateAsync(AccountDto account)
+        public async Task UpdateAsync(Account account) // AccountDto
         {
             await using var db = await _db.CreateDbContextAsync();
             //_db.Accounts.Update(account);
@@ -117,11 +134,17 @@ namespace DBBanks.DAL.Repositories
         }
 
         // получение всех счетов организации
-        public async Task<IEnumerable<AccountDto>> GetByOrganizationIdAsync(int organizationtId)
+        public async Task<IEnumerable<AccountDto>> GetByOrganizationIdAsync(int organizationtId) // AccountDto
         {
             await using var db = await _db.CreateDbContextAsync();
             //return await _db.Accounts.Where(a => a.OrganizationId == organizationtId).ToListAsync();
-            return await db.Accounts.Where(a => a.OrganizationId == organizationtId).ToListAsync();
+            //return await db.Accounts.Where(a => a.OrganizationId == organizationtId).ToListAsync();
+            var accounts = await db.Accounts
+                .Include(a => a.Bank)
+                .Include(a => a.Organization)
+                .Where(a => !a.IsDeleted)
+                .ToListAsync();
+            return _mapper.Map<IEnumerable<AccountDto>>(accounts);
         }
 
     }

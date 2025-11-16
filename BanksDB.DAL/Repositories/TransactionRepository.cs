@@ -1,7 +1,9 @@
-﻿using BanksDB.Core.Dtos;
+﻿using AutoMapper;
+using BanksDB.Core.Data;
+using BanksDB.Core.Dtos;
+using BanksDB.Core.Entities;
 using BanksDB.Core.Interfaces;
 using BanksDB.Core.Models.OutputModels;
-using BanksDB.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,10 +16,15 @@ namespace DBBanks.DAL.Repositories
     public class TransactionRepository : ITransactionRepository
     {
         private readonly IDbContextFactory<BankDbContext> _db;
-        public TransactionRepository(IDbContextFactory<BankDbContext> db) { _db = db; }
+        private readonly IMapper _mapper;
+        public TransactionRepository(IDbContextFactory<BankDbContext> db, IMapper mapper)
+        { 
+            _db = db;
+            _mapper = mapper;
+        }
 
         // добавление транзакции
-        public async Task AddAsync(TransactionDto transaction)
+        public async Task AddAsync(Transaction transaction)// TransactionDto
         {
             await using var db = await _db.CreateDbContextAsync();
             //await _db.Transactions.AddAsync(transaction);
@@ -27,7 +34,7 @@ namespace DBBanks.DAL.Repositories
         }
 
         // добавление списка транзакций
-        public async Task AddSeveralAsync(IEnumerable<TransactionDto> transactions)
+        public async Task AddSeveralAsync(IEnumerable<Transaction> transactions)
         {
             await using var db = await _db.CreateDbContextAsync();
             //await _db.Transactions.AddRangeAsync(transactions);
@@ -55,7 +62,9 @@ namespace DBBanks.DAL.Repositories
         {
             await using var db = await _db.CreateDbContextAsync();
             //return await _db.Transactions.Where(t => !t.IsDeleted).ToListAsync();
-            return await db.Transactions.Where(t => !t.IsDeleted).ToListAsync();
+            //return await db.Transactions.Where(t => !t.IsDeleted).ToListAsync();
+            var transactions = await db.Transactions.Where(t => !t.IsDeleted).ToListAsync();
+            return _mapper.Map<IEnumerable<TransactionDto>>(transactions);
         }
 
         // получение всех транзакций счета
