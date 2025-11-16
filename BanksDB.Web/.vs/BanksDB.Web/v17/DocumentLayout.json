@@ -9,16 +9,16 @@
       "AbsoluteMoniker": "D:0:0:{FDE7AD87-E8C2-4969-B140-1B754D9D2BEF}|..\\BanksDB.DAL\\BanksDB.DAL.csproj|d:\\\u043C\u043E\u0451\\programming\\banksdb\\banks\\banksdb.dal\\repositories\\organizationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36B573AA-3280-4758-84CD-2689E1705421}|..\\BanksDB.Core\\BanksDB.Core.csproj|d:\\\u043C\u043E\u0451\\programming\\banksdb\\banks\\banksdb.core\\interfaces\\itransactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B573AA-3280-4758-84CD-2689E1705421}|..\\BanksDB.Core\\BanksDB.Core.csproj|d:\\\u043C\u043E\u0451\\programming\\banksdb\\banks\\banksdb.core\\interfaces\\iorganizationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FDE7AD87-E8C2-4969-B140-1B754D9D2BEF}|..\\BanksDB.DAL\\BanksDB.DAL.csproj|d:\\\u043C\u043E\u0451\\programming\\banksdb\\banks\\banksdb.dal\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FDE7AD87-E8C2-4969-B140-1B754D9D2BEF}|..\\BanksDB.DAL\\BanksDB.DAL.csproj|d:\\\u043C\u043E\u0451\\programming\\banksdb\\banks\\banksdb.dal\\repositories\\bankrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDE7AD87-E8C2-4969-B140-1B754D9D2BEF}|..\\BanksDB.DAL\\BanksDB.DAL.csproj|d:\\\u043C\u043E\u0451\\programming\\banksdb\\banks\\banksdb.dal\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36B573AA-3280-4758-84CD-2689E1705421}|..\\BanksDB.Core\\BanksDB.Core.csproj|d:\\\u043C\u043E\u0451\\programming\\banksdb\\banks\\banksdb.core\\interfaces\\itransactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B573AA-3280-4758-84CD-2689E1705421}|..\\BanksDB.Core\\BanksDB.Core.csproj|d:\\\u043C\u043E\u0451\\programming\\banksdb\\banks\\banksdb.core\\interfaces\\iorganizationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36B573AA-3280-4758-84CD-2689E1705421}|..\\BanksDB.Core\\BanksDB.Core.csproj|d:\\\u043C\u043E\u0451\\programming\\banksdb\\banks\\banksdb.core\\dtos\\accountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -269,32 +269,6 @@
           "SelectedChildIndex": 7,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OrganizationRepository.cs",
-              "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\OrganizationRepository.cs",
-              "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Repositories\\OrganizationRepository.cs",
-              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\OrganizationRepository.cs",
-              "RelativeToolTip": "..\\BanksDB.DAL\\Repositories\\OrganizationRepository.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowBIAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T14:37:38.666Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BankRepository.cs",
-              "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\BankRepository.cs",
-              "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Repositories\\BankRepository.cs",
-              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\BankRepository.cs",
-              "RelativeToolTip": "..\\BanksDB.DAL\\Repositories\\BankRepository.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAcwBwAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T13:49:04.446Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
@@ -312,13 +286,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "OrganizationRepository.cs",
+              "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\OrganizationRepository.cs",
+              "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Repositories\\OrganizationRepository.cs",
+              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\OrganizationRepository.cs",
+              "RelativeToolTip": "..\\BanksDB.DAL\\Repositories\\OrganizationRepository.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAIwEsAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T14:37:38.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BankRepository.cs",
+              "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\BankRepository.cs",
+              "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Repositories\\BankRepository.cs",
+              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\BankRepository.cs",
+              "RelativeToolTip": "..\\BanksDB.DAL\\Repositories\\BankRepository.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAwwBwAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:49:04.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "AccountRepository.cs",
               "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\AccountRepository.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Repositories\\AccountRepository.cs",
               "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\AccountRepository.cs",
               "RelativeToolTip": "..\\BanksDB.DAL\\Repositories\\AccountRepository.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAmwJIAAABCAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAwwJIAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-03T11:47:26.54Z",
               "EditorCaption": ""
@@ -331,14 +331,14 @@
               "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Repositories\\TransactionRepository.cs",
               "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\TransactionRepository.cs",
               "RelativeToolTip": "..\\BanksDB.DAL\\Repositories\\TransactionRepository.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAA1wEIAAABKAAAAAAAAAA==",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAowIUAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-04T17:02:57.292Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "IOrganizationRepository.cs",
               "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Core\\Interfaces\\IOrganizationRepository.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Interfaces\\IOrganizationRepository.cs",
@@ -346,12 +346,11 @@
               "RelativeToolTip": "..\\BanksDB.Core\\Interfaces\\IOrganizationRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T14:38:37.025Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T14:38:37.025Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ITransactionRepository.cs",
               "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Core\\Interfaces\\ITransactionRepository.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Interfaces\\ITransactionRepository.cs",
@@ -372,8 +371,7 @@
               "RelativeToolTip": "..\\BanksDB.Core\\Dtos\\AccountDto.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAuwBwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T15:16:59.833Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T15:16:59.833Z"
             },
             {
               "$type": "Document",
@@ -385,8 +383,7 @@
               "RelativeToolTip": "..\\BanksDB.Core\\Dtos\\AccountSummaryDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T11:52:45.123Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T11:52:45.123Z"
             },
             {
               "$type": "Document",
@@ -398,8 +395,7 @@
               "RelativeToolTip": "..\\BanksDB.DAL\\Data\\BankDbContext.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAEAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T15:03:45.709Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T15:03:45.709Z"
             },
             {
               "$type": "Document",
@@ -411,8 +407,7 @@
               "RelativeToolTip": "..\\BanksDB.Core\\Interfaces\\IBankRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T13:50:13.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T13:50:13.083Z"
             },
             {
               "$type": "Document",
@@ -424,8 +419,7 @@
               "RelativeToolTip": "..\\BanksDB.BLL\\Mapping\\DtoMappingProfile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T15:16:33.221Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-15T15:16:33.221Z"
             },
             {
               "$type": "Document",
@@ -437,8 +431,7 @@
               "RelativeToolTip": "..\\BanksDB.BLL\\Mapping\\MappingProfile.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAA6wB8AAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T16:53:26.897Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T16:53:26.897Z"
             },
             {
               "$type": "Document",
@@ -450,8 +443,7 @@
               "RelativeToolTip": "..\\BanksDB.BLL\\Services\\AccountService.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T11:32:28.688Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T11:32:28.688Z"
             },
             {
               "$type": "Document",
@@ -463,8 +455,7 @@
               "RelativeToolTip": "..\\BanksDB.Core\\Interfaces\\IAccountRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T11:40:51.955Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-03T11:40:51.955Z"
             },
             {
               "$type": "Document",
@@ -476,8 +467,7 @@
               "RelativeToolTip": "..\\BanksDB.DAL\\Configurations\\OrganizationConfiguration.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABsAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T14:49:14.055Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-15T14:49:14.055Z"
             },
             {
               "$type": "Document",
@@ -489,8 +479,7 @@
               "RelativeToolTip": "..\\BanksDB.DAL\\Configurations\\TransactionConfiguration.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T14:51:09.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-15T14:51:09.372Z"
             },
             {
               "$type": "Document",
@@ -502,8 +491,7 @@
               "RelativeToolTip": "..\\BanksDB.DAL\\Configurations\\BankConfiguration.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T14:47:53.75Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-15T14:47:53.75Z"
             },
             {
               "$type": "Document",
@@ -515,8 +503,7 @@
               "RelativeToolTip": "..\\BanksDB.DAL\\Configurations\\AccountConfiguration.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAIwCoAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T14:45:26.387Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-15T14:45:26.387Z"
             },
             {
               "$type": "Document",
@@ -695,8 +682,7 @@
               "RelativeToolTip": "BanksDB.Web\\Program.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAtwI4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T09:55:42.236Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T09:55:42.236Z"
             },
             {
               "$type": "Document",

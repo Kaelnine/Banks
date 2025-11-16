@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DBBanks.DAL.Repositories
 {
@@ -72,7 +73,12 @@ namespace DBBanks.DAL.Repositories
         {
             await using var db = await _db.CreateDbContextAsync();
             //return await _db.Transactions.Where(t => t.AccountId == accountId && !t.IsDeleted).ToListAsync();
-            return await db.Transactions.Where(t => t.AccountId == accountId && !t.IsDeleted).ToListAsync();
+            //return await db.Transactions.Where(t => t.AccountId == accountId && !t.IsDeleted).ToListAsync();
+            var transactions = await db.Transactions
+                .Include(t => t.Account)
+                .Where(t => t.AccountId == accountId && !t.IsDeleted)
+                .ToListAsync();
+            return _mapper.Map<IEnumerable<TransactionDto>>(transactions);
         }
 
         // получение всех транзакций счета за день
@@ -80,7 +86,12 @@ namespace DBBanks.DAL.Repositories
         {
             await using var db = await _db.CreateDbContextAsync();
             //return await _db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate == date && !t.IsDeleted).ToListAsync();
-            return await db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate == date && !t.IsDeleted).ToListAsync();
+            //return await db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate == date && !t.IsDeleted).ToListAsync();
+            var transactions = await db.Transactions
+                .Include(t => t.Account)
+                .Where(t => t.AccountId == accountId && t.CreatedDate == date && !t.IsDeleted)
+                .ToListAsync();
+            return _mapper.Map<IEnumerable<TransactionDto>>(transactions);
         }
 
         // получение всех транзакций за период
@@ -88,7 +99,12 @@ namespace DBBanks.DAL.Repositories
         {
             await using var db = await _db.CreateDbContextAsync();
             //return await _db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate > startDate && t.CreatedDate < endDate && !t.IsDeleted).ToListAsync();
-            return await db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate > startDate && t.CreatedDate < endDate && !t.IsDeleted).ToListAsync();
+            //return await db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate > startDate && t.CreatedDate < endDate && !t.IsDeleted).ToListAsync();
+            var transactions = await db.Transactions
+                .Include(t => t.Account)
+                .Where(t => t.AccountId == accountId && t.CreatedDate > startDate && t.CreatedDate < endDate && !t.IsDeleted)
+                .ToListAsync();
+            return _mapper.Map<IEnumerable<TransactionDto>>(transactions);
         }
 
         // получение транзакции по id
@@ -96,7 +112,27 @@ namespace DBBanks.DAL.Repositories
         {
             await using var db = await _db.CreateDbContextAsync();
             //return await _db.Transactions.FirstOrDefaultAsync(t => t.Id == id && !t.IsDeleted);
-            return await db.Transactions.FirstOrDefaultAsync(t => t.Id == id && !t.IsDeleted);
+            //return await db.Transactions.FirstOrDefaultAsync(t => t.Id == id && !t.IsDeleted);
+            var transaction = await db.Transactions.FirstOrDefaultAsync(t => t.Id == id && !t.IsDeleted);
+            if (transaction == null) return null;
+            return new TransactionDto
+            {
+                Id = transaction.Id,
+                AccountId = transaction.AccountId,
+                TransactionDate = transaction.TransactionDate,
+                Amount = transaction.Amount,
+                TransactionType = transaction.TransactionType,
+                Description = transaction.Description,
+                CounterpartyName = transaction.CounterpartyName,
+                CounterpartyAccount = transaction.CounterpartyAccount,
+                CounterpartyInn = transaction.CounterpartyInn,
+                DocumentNumber = transaction.DocumentNumber,
+                BalanceAfter = transaction.BalanceAfter,
+                CreatedDate = transaction.CreatedDate,
+                //Account = transaction.Account
+                //.Where(a => !a.IsDeleted)
+                //.Select(a => a.Id)                
+            };
         }
 
         public async Task<List<DailySummaryOutputModel>> GetDailySummaryAsync(int accountId, DateTime startDate, DateTime endDate)
