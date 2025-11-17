@@ -35,14 +35,14 @@ namespace DBBanks.DAL.Repositories
         }
 
         // добавление списка транзакций
-        public async Task AddSeveralAsync(IEnumerable<Transaction> transactions)
-        {
-            await using var db = await _db.CreateDbContextAsync();
-            //await _db.Transactions.AddRangeAsync(transactions);
-            //await _db.SaveChangesAsync();
-            await db.Transactions.AddRangeAsync(transactions);
-            await db.SaveChangesAsync();
-        }
+        //public async Task AddSeveralAsync(IEnumerable<Transaction> transactions)
+        //{
+        //    await using var db = await _db.CreateDbContextAsync();
+        //    //await _db.Transactions.AddRangeAsync(transactions);
+        //    //await _db.SaveChangesAsync();
+        //    await db.Transactions.AddRangeAsync(transactions);
+        //    await db.SaveChangesAsync();
+        //}
 
         // удаление транзакции
         public async Task DeleteAsync(int transactionId)
@@ -128,10 +128,16 @@ namespace DBBanks.DAL.Repositories
                 CounterpartyInn = transaction.CounterpartyInn,
                 DocumentNumber = transaction.DocumentNumber,
                 BalanceAfter = transaction.BalanceAfter,
-                CreatedDate = transaction.CreatedDate,
-                //Account = transaction.Account
-                //.Where(a => !a.IsDeleted)
-                //.Select(a => a.Id)                
+                CreatedDate = transaction.CreatedDate
+                // проверить надо ли возвращать все дто или хватить id
+                //Account = new AccountDto
+                //{
+                //    Id = transaction.Account.Id,
+                //    Name = transaction.Account.Name,
+                //    AccountNumber = transaction.Account.AccountNumber,
+                //    CurrentBalance = transaction.Account.CurrentBalance,
+                //    BankName = transaction.Account.Bank.Name
+                //}
             };
         }
 
@@ -163,7 +169,7 @@ namespace DBBanks.DAL.Repositories
         }
 
         // изменение транзакции
-        public async Task UpdateAsync(TransactionDto transaction)
+        public async Task UpdateAsync(Transaction transaction)
         {
             await using var db = await _db.CreateDbContextAsync();
             //_db.Transactions.Update(transaction);
@@ -172,9 +178,35 @@ namespace DBBanks.DAL.Repositories
             await db.SaveChangesAsync();
         }
 
-        Task<IEnumerable<TransactionDto>> ITransactionRepository.AddSeveralAsync(IEnumerable<TransactionDto> transactions)
+        public async Task<IEnumerable<TransactionDto>> AddSeveralAsync(IEnumerable<Transaction> transactions)
         {
-            throw new NotImplementedException();
+            await using var db = await _db.CreateDbContextAsync();
+            //await _db.Transactions.AddRangeAsync(transactions);
+            //await _db.SaveChangesAsync();
+            await db.Transactions.AddRangeAsync(transactions);
+            await db.SaveChangesAsync();
+            return _mapper.Map<IEnumerable<TransactionDto>>(transactions);
         }
+
+        //public async Task<IEnumerable<TransactionDto>> AddSeveralAsync(IEnumerable<Transaction> transactions)
+        //{
+        //    await using var db = await _db.CreateDbContextAsync();
+        //    try
+        //    {
+        //        foreach (var transaction in transactions)
+        //        {
+        //            transaction.CreatedDate = DateTime.Now;
+        //            transaction.IsDeleted = false;
+        //        }
+        //        await db.Transactions.AddRangeAsync(transactions);
+        //        await db.SaveChangesAsync();
+        //        return _mapper.Map<IEnumerable<TransactionDto>>(transactions);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Ошибка при создании транзакций: {ex.Message}");
+        //        throw;
+        //    }
+        //}
     }
 }

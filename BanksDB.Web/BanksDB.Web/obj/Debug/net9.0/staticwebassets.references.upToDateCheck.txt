@@ -163,3 +163,6 @@ D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json

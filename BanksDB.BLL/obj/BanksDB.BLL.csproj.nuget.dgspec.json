@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.BLL\\BanksDB.BLL.csproj": {}
+    "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\BanksDB.BLL.csproj": {}
   },
   "projects": {
-    "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.BLL\\BanksDB.BLL.csproj": {
+    "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\BanksDB.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.BLL\\BanksDB.BLL.csproj",
+        "projectUniqueName": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\BanksDB.BLL.csproj",
         "projectName": "BanksDB.BLL",
-        "projectPath": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.BLL\\BanksDB.BLL.csproj",
-        "packagesPath": "C:\\Users\\adamc\\.nuget\\packages\\",
-        "outputPath": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.BLL\\obj\\",
+        "projectPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\BanksDB.BLL.csproj",
+        "packagesPath": "C:\\Users\\Илья\\.nuget\\packages\\",
+        "outputPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\adamc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Илья\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,18 +26,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj": {
-                "projectPath": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj"
+              "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj": {
+                "projectPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj"
               },
-              "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\BanksDB.DAL.csproj": {
-                "projectPath": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\BanksDB.DAL.csproj"
+              "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\BanksDB.DAL.csproj": {
+                "projectPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\BanksDB.DAL.csproj"
               }
             }
           }
@@ -69,6 +68,10 @@
             "Microsoft.VisualStudio.Services.Client": {
               "target": "Package",
               "version": "[19.225.1, )"
+            },
+            "System.Text.Encoding.CodePages": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             }
           },
           "imports": [
@@ -91,20 +94,20 @@
         }
       }
     },
-    "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj": {
+    "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj",
+        "projectUniqueName": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj",
         "projectName": "BanksDB.Core",
-        "projectPath": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj",
-        "packagesPath": "C:\\Users\\adamc\\.nuget\\packages\\",
-        "outputPath": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\obj\\",
+        "projectPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj",
+        "packagesPath": "C:\\Users\\Илья\\.nuget\\packages\\",
+        "outputPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\adamc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Илья\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -113,7 +116,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -157,20 +159,20 @@
         }
       }
     },
-    "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\BanksDB.DAL.csproj": {
+    "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\BanksDB.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\BanksDB.DAL.csproj",
+        "projectUniqueName": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\BanksDB.DAL.csproj",
         "projectName": "BanksDB.DAL",
-        "projectPath": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\BanksDB.DAL.csproj",
-        "packagesPath": "C:\\Users\\adamc\\.nuget\\packages\\",
-        "outputPath": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.DAL\\obj\\",
+        "projectPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\BanksDB.DAL.csproj",
+        "packagesPath": "C:\\Users\\Илья\\.nuget\\packages\\",
+        "outputPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\adamc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Илья\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -179,15 +181,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj": {
-                "projectPath": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj"
+              "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj": {
+                "projectPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj"
               }
             }
           }

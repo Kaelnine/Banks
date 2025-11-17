@@ -13,6 +13,10 @@ namespace BanksDB.BLL.Parsers
 {
     public class BankParser
     {
+        static BankParser()
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        }
         public BankParserResult ParseFile(Stream fileStream, string expectedAccountNumber = null)
         {
             var transactions = new List<TransactionInputModel>();

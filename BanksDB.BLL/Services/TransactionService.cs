@@ -2,10 +2,12 @@
 using BanksDB.BLL.Interfaces;
 using BanksDB.BLL.Parsers;
 using BanksDB.Core.Dtos;
+using BanksDB.Core.Entities;
 using BanksDB.Core.Enums;
 using BanksDB.Core.Interfaces;
 using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
+using Microsoft.VisualStudio.Services.FormInput;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -34,7 +36,11 @@ namespace BanksDB.BLL.Services
         {
             var account = await _accountRepository.GetByIdAsync(accountId);
             var accountNumber = account?.AccountNumber;
-            var result = _bankParser.ParseFile(fileStream, accountNumber);
+            //var result = _bankParser.ParseFile(fileStream, accountNumber);
+            using var memoryStream = new MemoryStream();
+            await fileStream.CopyToAsync(memoryStream);
+            memoryStream.Position = 0;
+            var result = _bankParser.ParseFile(memoryStream, accountNumber);
             foreach (var transaction in result.Transactions)
             {
                 transaction.AccountId = accountId;
@@ -53,8 +59,8 @@ namespace BanksDB.BLL.Services
             {
                 throw new ArgumentException($"Ошибки валидации: {string.Join("; ", validationResult.Errors)}");
             }
-            var transactionsDto = _mapper.Map<List<TransactionDto>>(transactions);
-            var createdTransactions = await _transactionRepository.AddSeveralAsync(transactionsDto);
+            var transactionsEntity = _mapper.Map<List<Transaction>>(transactions);
+            var createdTransactions = await _transactionRepository.AddSeveralAsync(transactionsEntity);
             await UpdateAccountBalances(transactions);
             return _mapper.Map<List<TransactionOutputModel>>(createdTransactions);
         }
@@ -72,7 +78,8 @@ namespace BanksDB.BLL.Services
                 var balanceChange = group.Sum(t => t.TransactionType == TransactionType.Приход.ToString() ? t.Amount : -t.Amount);
                 account.CurrentBalance += balanceChange;
                 account.UpdateAccount = DateTime.Now;
-                await _accountRepository.UpdateAsync(account);
+                var accountEntity = _mapper.Map<Account>(account);
+                await _accountRepository.UpdateAsync(accountEntity);
             }
         }
 
@@ -123,10 +130,12 @@ namespace BanksDB.BLL.Services
                 }
                 var totalChange = group.Sum(t => t.TransactionType == "Приход" ? t.Amount : -t.Amount);
                 account.CurrentBalance += totalChange;
-                await _accountRepository.UpdateAsync(account);
+                var accountEntity = _mapper.Map<Account>(account);
+                await _accountRepository.UpdateAsync(accountEntity);
             }
-                var transactionsDto = _mapper.Map<List<TransactionDto>>(inputModels);
-                var createdTransactions = await _transactionRepository.AddSeveralAsync(transactionsDto);
+                //var transactionsDto = _mapper.Map<List<TransactionDto>>(inputModels);
+                var transactionsEntity = _mapper.Map<List<Transaction>>(inputModels);
+                var createdTransactions = await _transactionRepository.AddSeveralAsync(transactionsEntity);
                 return _mapper.Map<List<TransactionOutputModel>>(createdTransactions);            
         }
 
@@ -141,8 +150,9 @@ namespace BanksDB.BLL.Services
             {
                 throw new ArgumentException("Сумма транзакции должна быть больше 0");
             }
-            var transactionDto = _mapper.Map<TransactionDto>(inputModel);
-            await _transactionRepository.AddAsync(transactionDto);
+            //var transactionDto = _mapper.Map<TransactionDto>(inputModel);
+            var transactionEntity = _mapper.Map<Transaction>(inputModel);
+            await _transactionRepository.AddAsync(transactionEntity);
             //await UpdateAccountBalance(account, inputModel.Amount, inputModel.TransactionType);            
         }
 

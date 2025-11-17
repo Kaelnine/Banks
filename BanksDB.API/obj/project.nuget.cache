@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "xajbo/nOF1o=",
+  "dgSpecHash": "EzdHYvGiiPE=",
   "success": true,
-  "projectFilePath": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.API\\BanksDB.API.csproj",
+  "projectFilePath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.API\\BanksDB.API.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\adamc\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.9\\microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512",
-    "C:\\Users\\adamc\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+    "C:\\Users\\Илья\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.9\\microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512",
+    "C:\\Users\\Илья\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
   ],
   "logs": []
 }

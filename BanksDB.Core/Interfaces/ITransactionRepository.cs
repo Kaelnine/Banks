@@ -19,7 +19,8 @@ namespace BanksDB.Core.Interfaces
         Task AddAsync(Transaction transaction);// создание транзакции // TransactionDto
         Task UpdateAsync(Transaction transaction);// изменение транзакции TransactionDto
         Task DeleteAsync(int transactionId);// удаление транзакции
-        Task<IEnumerable<TransactionDto>> AddSeveralAsync(IEnumerable<TransactionDto> transactions);// создание списка транзакций
+        //Task AddSeveralAsync(IEnumerable<Transaction> transactions);
+        Task<IEnumerable<TransactionDto>> AddSeveralAsync(IEnumerable<Transaction> transactions);// создание списка транзакций
         Task<List<DailySummaryOutputModel>> GetDailySummaryAsync(int accountId, DateTime startDate, DateTime endDate);// получение общих прихода и расхода по дням
     }
 }

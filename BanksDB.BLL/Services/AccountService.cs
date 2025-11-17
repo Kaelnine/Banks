@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BanksDB.Core.Entities;
 
 namespace BanksDB.BLL.Services
 {
@@ -29,8 +30,8 @@ namespace BanksDB.BLL.Services
         // добавление счета
         public async Task AddAsync(AccountInputModel inputModel)
         {
-            var accountDto = _mapper.Map<AccountDto>(inputModel);
-            await _accountRepository.AddAsync(accountDto);            
+            var account = _mapper.Map<Account>(inputModel);
+            await _accountRepository.AddAsync(account);            
         }
 
         // удаление счета
@@ -92,9 +93,9 @@ namespace BanksDB.BLL.Services
         // обновление счета
         public async Task UpdateAsync(int id, AccountInputModel inputModel)
         {
-            var accountDto = _mapper.Map<AccountDto>(inputModel);
-            accountDto.Id = id;
-            await _accountRepository.UpdateAsync(accountDto);            
+            var account = _mapper.Map<Account>(inputModel);
+            account.Id = id;
+            await _accountRepository.UpdateAsync(account);            
         }
     }
 }
