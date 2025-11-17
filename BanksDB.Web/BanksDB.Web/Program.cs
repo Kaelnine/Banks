@@ -77,7 +77,7 @@ namespace BanksDB.Web
             //    options.ExpireTimeSpan = TimeSpan.FromDays(7);
             //});
 
-            //builder.Services.AddAuthorizationCore();
+            builder.Services.AddAuthorizationCore();
 
             //builder.Services.AddAntiforgery();
 
