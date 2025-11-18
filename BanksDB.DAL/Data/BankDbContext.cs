@@ -32,6 +32,7 @@ namespace BanksDB.Core.Data
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Bank> Banks { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public DbSet<AccountSummaryDto> AccountSummaries { get; set; }
 

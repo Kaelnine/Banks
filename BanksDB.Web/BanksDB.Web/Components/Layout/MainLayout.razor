@@ -39,7 +39,8 @@
 @code {
     private async Task HandleLogout()
     {
-        await AuthenticationService.LogoutAsync();
+        //await AuthenticationService.LogoutAsync();
+        AuthenticationService.Logout();
         Navigation.NavigateTo("/login");
     }
 }

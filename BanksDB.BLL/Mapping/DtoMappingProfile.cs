@@ -17,6 +17,7 @@ namespace BanksDB.BLL.Mapping
             CreateMap<Bank, BankDto>().ReverseMap();
             CreateMap<Organization, OrganizationDto>().ReverseMap();
             CreateMap<Transaction, TransactionDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
             CreateMap<AccountSummary, AccountSummaryDto>();
         }
     }

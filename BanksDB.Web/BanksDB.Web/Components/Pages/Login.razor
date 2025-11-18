@@ -78,7 +78,8 @@
 
         try
         {
-            var result = await AuthenticationService.LoginAsync(loginModel);
+            //var result = await AuthenticationService.LoginAsync(loginModel);
+            var result = AuthenticationService.Login(loginModel.Login, loginModel.Password);
             
             if (result)
             {

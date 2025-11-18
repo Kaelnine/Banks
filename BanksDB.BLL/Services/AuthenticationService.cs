@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.VisualStudio.Services.UserAccountMapping;
+using BanksDB.DAL.Repositories;
+using BanksDB.Core.Interfaces;
 
 
 namespace BanksDB.BLL.Services
@@ -62,7 +64,8 @@ namespace BanksDB.BLL.Services
         public bool Login(string username, string password)
         {
             var users = new List<User>();
-            var user = users.FirstOrDefault(u => u.Username == username && u.Password == password);
+            
+            var user = users.FirstOrDefault(u => u.UserName == username && u.Password == password);
             if (user != null)
             {
                 _currentUser = user;

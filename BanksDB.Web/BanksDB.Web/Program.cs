@@ -3,17 +3,11 @@ using BanksDB.BLL.Interfaces;
 using BanksDB.BLL.Mapping;
 using BanksDB.BLL.Parsers;
 using BanksDB.BLL.Services;
-using BanksDB.Core.Interfaces;
 using BanksDB.Core.Data;
-using BanksDB.Web.Components;
+using BanksDB.Core.Interfaces;
+using BanksDB.DAL.Repositories;
 using DBBanks.DAL.Repositories;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.Server;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using static System.Net.Mime.MediaTypeNames;
 
 
 namespace BanksDB.Web
@@ -40,6 +34,8 @@ namespace BanksDB.Web
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
             builder.Services.AddScoped<BankParser>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
             //builder.Services.AddScoped<IAccountService, AccountService>();
             //builder.Services.AddDbContext<BankDbContext>(options =>
             //     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -58,7 +54,7 @@ namespace BanksDB.Web
                 mapper.ConfigurationProvider.AssertConfigurationIsValid();
             }
             catch (AutoMapperConfigurationException ex)
-            {                
+            {
                 Console.WriteLine($"Ошибка конфигурации маппинга: {ex.Message}");
             }
 
@@ -76,8 +72,23 @@ namespace BanksDB.Web
             //    options.AccessDeniedPath = "/access-denied";
             //    options.ExpireTimeSpan = TimeSpan.FromDays(7);
             //});
+            builder.Services.AddAuthentication("Cookies").AddCookie("Cookies", options =>
+                {
+                    options.LoginPath = "/login";
+                });
+            builder.Services.AddAuthorization(options =>
+            {
+                // Бухгалтер
+                options.AddPolicy("AccountantOnly", policy =>
+                    policy.RequireRole("Accountant"));
 
-            builder.Services.AddAuthorizationCore();
+                // Директор
+                options.AddPolicy("DirectorOnly", policy =>
+                    policy.RequireRole("Director"));
+            });
+
+
+            //builder.Services.AddAuthorizationCore();
 
             //builder.Services.AddAntiforgery();
 
@@ -109,7 +120,7 @@ namespace BanksDB.Web
 
             app.UseHttpsRedirection();
 
-            
+
 
             app.MapStaticAssets();
             //app.MapRazorComponents<App>()

@@ -13,7 +13,7 @@ namespace BanksDB.Core.Models
         public string Login { get; set; }
 
         [Required(ErrorMessage = "Пароль обязателен")]
-        [MinLength(6, ErrorMessage = "Пароль должен содержать минимум 6 символов")]
+        [MinLength(3, ErrorMessage = "Пароль должен содержать минимум 3 символов")]
         public string Password { get; set; }
 
         public bool Remember { get; set; }
