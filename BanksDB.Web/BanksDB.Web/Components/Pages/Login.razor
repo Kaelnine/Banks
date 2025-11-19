@@ -74,13 +74,13 @@
     {
         isLoading = true;
         errorMessage = null;
-        StateHasChanged();
+        //StateHasChanged();
 
         try
         {
             //var result = await AuthenticationService.LoginAsync(loginModel);
-            var result = AuthenticationService.Login(loginModel.Login, loginModel.Password);
-            
+            //var result = AuthenticationService.Login(loginModel.Login, loginModel.Password);
+            var result = await AuthenticationService.LoginAsync(loginModel.Login, loginModel.Password);
             if (result)
             {
                 Navigation.NavigateTo("/", true);
@@ -97,7 +97,7 @@
         finally
         {
             isLoading = false;
-            StateHasChanged();
+            //StateHasChanged();
         }
     }
 }

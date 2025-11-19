@@ -1710,7 +1710,9 @@
           "AutoMapper": "15.1.0",
           "BanksDB.Core": "1.0.0",
           "BanksDB.DAL": "1.0.0",
+          "Microsoft.AspNetCore.Authentication": "2.3.0",
           "Microsoft.AspNetCore.Components": "9.0.9",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.3.0",
           "Microsoft.VisualStudio.Services.Client": "19.225.1",
           "System.Text.Encoding.CodePages": "7.0.0"
         },

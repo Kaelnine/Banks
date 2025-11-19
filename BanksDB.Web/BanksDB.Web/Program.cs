@@ -36,6 +36,7 @@ namespace BanksDB.Web
             builder.Services.AddScoped<BankParser>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddHttpContextAccessor();
             //builder.Services.AddScoped<IAccountService, AccountService>();
             //builder.Services.AddDbContext<BankDbContext>(options =>
             //     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));

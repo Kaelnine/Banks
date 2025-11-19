@@ -26,16 +26,40 @@ namespace BanksDB.BLL.Security
         public static bool VerifyPassword(string password, string hashString)
         {
             var parts = hashString.Split('.');
-            if (parts.Length != 3)
+            if (parts.Length == 2)
+            {
+                byte[] salt = Convert.FromBase64String(parts[0]);
+                byte[] hash = Convert.FromBase64String(parts[1]);                
+                using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256);
+                var computedHash = pbkdf2.GetBytes(32); 
+
+                return computedHash.SequenceEqual(hash);
+            }
+            else if (parts.Length == 3)
+            {
+                int iterations = int.Parse(parts[0]);
+                byte[] salt = Convert.FromBase64String(parts[1]);
+                byte[] hash = Convert.FromBase64String(parts[2]);
+
+                using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256);
+                var computedHash = pbkdf2.GetBytes(32);
+
+                return computedHash.SequenceEqual(hash);
+            }
+            else
             {
                 return false;
             }
-            int iterations = int.Parse(parts[0]);
-            byte[] salt = Convert.FromBase64String(parts[1]);
-            byte[] hash = Convert.FromBase64String(parts[2]);
-            using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256);
-            var computedHash = pbkdf2.GetBytes(KeySize);
-            return computedHash.SequenceEqual(hash);
+            //if (parts.Length != 3)
+            //{
+            //    return false;
+            //}
+            //int iterations = int.Parse(parts[0]);
+            //byte[] salt = Convert.FromBase64String(parts[1]);
+            //byte[] hash = Convert.FromBase64String(parts[2]);
+            //using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256);
+            //var computedHash = pbkdf2.GetBytes(KeySize);
+            //return computedHash.SequenceEqual(hash);
         }
     }
 }

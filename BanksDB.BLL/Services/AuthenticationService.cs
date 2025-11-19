@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.VisualStudio.Services.UserAccountMapping;
 using BanksDB.DAL.Repositories;
 using BanksDB.Core.Interfaces;
+using Microsoft.AspNetCore.Http;
+using BanksDB.BLL.Security;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 
 
 namespace BanksDB.BLL.Services
@@ -17,12 +21,14 @@ namespace BanksDB.BLL.Services
         //Task<bool> LoginAsync(LoginModel model);
         //Task LogoutAsync();
         //bool IsAuthenticated { get; }
-        User CurrentUser { get; }
+        //User CurrentUser { get; }
         bool IsAuthenticated { get; }
-        event Action OnAuthenticationStateChanged;
-        bool Login (string username, string password);
-        void Logout();
-        bool HasRole(string role);
+        //event Action OnAuthenticationStateChanged;
+        //bool Login (string username, string password);
+        Task<bool> LoginAsync(string username, string password);
+        //void Logout();
+        Task LogoutAsync();
+        //bool HasRole(string role);
     }
     public class AuthenticationService : IAuthenticationService
     {
@@ -56,32 +62,63 @@ namespace BanksDB.BLL.Services
         //        return false;
         //    }
         //}
-        private User _currentUser;
-        public User CurrentUser => _currentUser;
-        public bool IsAuthenticated => _currentUser != null;
-        public event Action OnAuthenticationStateChanged;
-        
-        public bool Login(string username, string password)
+        //private User _currentUser;
+        //public User CurrentUser => _currentUser;
+        //public bool IsAuthenticated => _currentUser != null;
+        //public event Action OnAuthenticationStateChanged;
+        private readonly IHttpContextAccessor _context;
+        private readonly IUserRepository _users;
+
+        public AuthenticationService(IHttpContextAccessor context, IUserRepository users)
         {
-            var users = new List<User>();
-            
-            var user = users.FirstOrDefault(u => u.UserName == username && u.Password == password);
-            if (user != null)
+            _context = context;
+            _users = users;
+        }
+
+        public bool IsAuthenticated => _context.HttpContext?.User?.Identity?.IsAuthenticated ?? false;
+
+        public async Task<bool> LoginAsync(string username, string password)
+        {
+            var user = await _users.GetByNameAsync(username);
+            if (user == null) return false;
+            if (!PasswordHasher.VerifyPassword(password, user.PasswordHash)) return false;
+            var claims = new List<Claim>
             {
-                _currentUser = user;
-                OnAuthenticationStateChanged.Invoke();
-                return true;
-            }
-            return false;
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Role, user.Role),
+                new Claim("FullName", user.FullName ?? "")
+            };
+            var identity = new ClaimsIdentity(claims, "Cookies");
+            var principal = new ClaimsPrincipal(identity);
+            await _context.HttpContext.SignInAsync("Cookies",  principal);
+            return true;
         }
 
-        public void Logout()
+        public async Task LogoutAsync()
         {
-            _currentUser = null;
-            OnAuthenticationStateChanged.Invoke();
+            await _context.HttpContext.SignOutAsync("Cookies");
         }
+        //public bool Login(string username, string password)
+        //{
+        //    var users = new List<User>();
+            
+        //    var user = users.FirstOrDefault(u => u.UserName == username && u.Password == password);
+        //    if (user != null)
+        //    {
+        //        _currentUser = user;
+        //        OnAuthenticationStateChanged.Invoke();
+        //        return true;
+        //    }
+        //    return false;
+        //}
 
-        public bool HasRole(string role) => _currentUser?.Role == role;
+        //public void Logout()
+        //{
+        //    _currentUser = null;
+        //    OnAuthenticationStateChanged.Invoke();
+        //}
+
+        //public bool HasRole(string role) => _currentUser?.Role == role;
 
         //public async Task LogoutAsync()
         //{
