@@ -7,6 +7,7 @@ using BanksDB.Core.Data;
 using BanksDB.Core.Interfaces;
 using BanksDB.DAL.Repositories;
 using DBBanks.DAL.Repositories;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -36,6 +37,7 @@ namespace BanksDB.Web
             builder.Services.AddScoped<BankParser>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
             builder.Services.AddHttpContextAccessor();
             //builder.Services.AddScoped<IAccountService, AccountService>();
             //builder.Services.AddDbContext<BankDbContext>(options =>
@@ -89,7 +91,7 @@ namespace BanksDB.Web
             });
 
 
-            //builder.Services.AddAuthorizationCore();
+            builder.Services.AddAuthorizationCore();
 
             //builder.Services.AddAntiforgery();
 

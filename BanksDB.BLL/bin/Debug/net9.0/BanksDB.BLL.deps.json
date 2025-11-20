@@ -12,7 +12,9 @@
           "BanksDB.Core": "1.0.0",
           "BanksDB.DAL": "1.0.0",
           "Microsoft.AspNetCore.Authentication": "2.3.0",
+          "Microsoft.AspNetCore.Authentication.Cookies": "2.3.0",
           "Microsoft.AspNetCore.Components": "9.0.9",
+          "Microsoft.AspNetCore.Components.Authorization": "9.0.9",
           "Microsoft.AspNetCore.Http.Abstractions": "2.3.0",
           "Microsoft.VisualStudio.Services.Client": "19.225.1",
           "System.Text.Encoding.CodePages": "7.0.0"
@@ -111,6 +113,17 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication.Cookies/2.3.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication": "2.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Cookies.dll": {
+            "assemblyVersion": "2.3.0.0",
+            "fileVersion": "2.3.0.25014"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Authentication.Core/2.3.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Abstractions": "2.3.0",
@@ -150,6 +163,18 @@
         }
       },
       "Microsoft.AspNetCore.Components.Analyzers/9.0.9": {},
+      "Microsoft.AspNetCore.Components.Authorization/9.0.9": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "9.0.9",
+          "Microsoft.AspNetCore.Components": "9.0.9"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Components.Authorization.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.925.42003"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/2.3.0": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {
@@ -1738,6 +1763,13 @@
       "path": "microsoft.aspnetcore.authentication.abstractions/2.3.0",
       "hashPath": "microsoft.aspnetcore.authentication.abstractions.2.3.0.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Authentication.Cookies/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-w3JPWHreXJ/Uv9CLkQtGCLwTbxZKY+94QPVi1RxcMuBTyRp+C9SdynznHEjnHWnw6QFNEHnBuHmWW3OYrvbpEQ==",
+      "path": "microsoft.aspnetcore.authentication.cookies/2.3.0",
+      "hashPath": "microsoft.aspnetcore.authentication.cookies.2.3.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Authentication.Core/2.3.0": {
       "type": "package",
       "serviceable": true,
@@ -1765,6 +1797,13 @@
       "sha512": "sha512-jmT0+VkIoSq3VNshj8XX44aV/oQtA82xYa7ScqmAa7I2avXgMiQZzGEbd5dmn2PjKqYvI9MlK+gLyja1TYPzzQ==",
       "path": "microsoft.aspnetcore.components.analyzers/9.0.9",
       "hashPath": "microsoft.aspnetcore.components.analyzers.9.0.9.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Authorization/9.0.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aaBFU4HAAbeBxofsc7xu+fZyGRzzSt/UfA8GKvkiGhD0cOWfFhXBkozt7J4KxzIWzCA97mr7vVeQeq3bA95O/g==",
+      "path": "microsoft.aspnetcore.components.authorization/9.0.9",
+      "hashPath": "microsoft.aspnetcore.components.authorization.9.0.9.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/2.3.0": {
       "type": "package",

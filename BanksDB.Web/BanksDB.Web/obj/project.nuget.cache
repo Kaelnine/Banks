@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nUS2jTLUpZo=",
+  "dgSpecHash": "9bZgsT9hOS4=",
   "success": true,
   "projectFilePath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\BanksDB.Web.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\Илья\\.nuget\\packages\\microsoft.aspnetcore.authorization\\9.0.9\\microsoft.aspnetcore.authorization.9.0.9.nupkg.sha512",
     "C:\\Users\\Илья\\.nuget\\packages\\microsoft.aspnetcore.components\\9.0.9\\microsoft.aspnetcore.components.9.0.9.nupkg.sha512",
     "C:\\Users\\Илья\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\9.0.9\\microsoft.aspnetcore.components.analyzers.9.0.9.nupkg.sha512",
+    "C:\\Users\\Илья\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\9.0.9\\microsoft.aspnetcore.components.authorization.9.0.9.nupkg.sha512",
     "C:\\Users\\Илья\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\9.0.9\\microsoft.aspnetcore.components.forms.9.0.9.nupkg.sha512",
     "C:\\Users\\Илья\\.nuget\\packages\\microsoft.aspnetcore.components.web\\9.0.9\\microsoft.aspnetcore.components.web.9.0.9.nupkg.sha512",
     "C:\\Users\\Илья\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\9.0.9\\microsoft.aspnetcore.components.webassembly.9.0.9.nupkg.sha512",

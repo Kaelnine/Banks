@@ -11,9 +11,10 @@
 @inject IAccountService AccountService
 @inject NavigationManager Navigation
 @inject IMapper Mapper
+@inject IAuthenticationService AuthenticationService
 
 
-@* @attribute [Authorize] *@
+@attribute [Authorize]
 <!DOCTYPE html>
 <h3>🏦Все счета</h3>
 <head>

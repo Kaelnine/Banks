@@ -292,3 +292,4 @@ D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\com
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\Components\Pages\Account.razor.rz.scp.css
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\7q242g7x9r-gfj3d9im7b.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\8boe08urzv-gfj3d9im7b.gz
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Authorization.dll
