@@ -1,8 +1,6 @@
 ﻿@page "/login"
 @using BanksDB.Core.Models
 @using BanksDB.BLL.Services
-
-
 @inject IAuthenticationService AuthenticationService
 @inject NavigationManager Navigation
 
@@ -62,28 +60,30 @@
     private bool isLoading;
 
     protected override void OnInitialized()
-    {
+    {          
         // Если пользователь уже авторизован, перенаправляем на главную
-        if (AuthenticationService.IsAuthenticated)
-        {
-            Navigation.NavigateTo("/", true);
-        }
+        // if (AuthenticationService.IsAuthenticated)
+        // {
+        //     Navigation.NavigateTo("/", true);
+        // }
     }
 
     private async Task HandleLogin()
-    {
+    {        
         isLoading = true;
         errorMessage = null;
         //StateHasChanged();
 
         try
-        {
+        {            
             //var result = await AuthenticationService.LoginAsync(loginModel);
             //var result = AuthenticationService.Login(loginModel.Login, loginModel.Password);
-            var result = await AuthenticationService.LoginAsync(loginModel.Login, loginModel.Password);
+            var result = await AuthenticationService.LoginAsync(loginModel.Login, loginModel.Password);            
             if (result)
-            {
-                Navigation.NavigateTo("/", true);
+            {               
+                await Task.Delay(1);                
+                //Navigation.NavigateTo("/", forceLoad: true);
+                Navigation.NavigateTo("/");                
             }
             else
             {

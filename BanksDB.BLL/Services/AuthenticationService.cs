@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BanksDB.BLL.Interfaces;
 using BanksDB.BLL.Security;
 using BanksDB.Core.Interfaces;
 using BanksDB.Core.Models;
@@ -20,77 +21,71 @@ using System.Threading.Tasks;
 namespace BanksDB.BLL.Services
 {
     public interface IAuthenticationService
-    {
-        //Task<bool> LoginAsync(LoginModel model);
-        //Task LogoutAsync();
-        //bool IsAuthenticated { get; }
+    {        
         User CurrentUser { get; }
         bool IsAuthenticated { get; }
-        event Action OnAuthenticationStateChanged;
-        //bool Login (string username, string password);
-        Task<bool> LoginAsync(string username, string password);
-        //void Logout();
+        event Action OnAuthenticationStateChanged;        
+        Task<bool> LoginAsync(string username, string password, bool rememberMe = false);        
         Task LogoutAsync();
-        //bool HasRole(string role);
+        Task InitializeAsync();
     }
     public class AuthenticationService : IAuthenticationService
-    {
-        //public bool IsAuthenticated { get; private set; }
-        //public event Action OnAuthenticationStateChanged;
-        //private readonly NavigationManager _navigationManager;
-        //public UserRole CurrentUserRole { get; private set; }
-        //public AuthenticationService(NavigationManager navigationManager)
-        //{
-        //    _navigationManager = navigationManager;
-        //}
-
-        //public async Task<bool> LoginAsync(LoginModel model)
-        //{
-        //    try
-        //    {                
-        //        await Task.Delay(500);
-
-        //        if (!string.IsNullOrEmpty(model.Login) && !string.IsNullOrEmpty(model.Password) && model.Password.Length >= 6)
-        //        {
-        //            IsAuthenticated = true;
-        //            OnAuthenticationStateChanged?.Invoke();
-        //            return true;
-        //        }
-
-        //        return false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Auth service error: {ex.Message}");
-        //        return false;
-        //    }
-        //}
-        //private User _currentUser;
-        //public User CurrentUser => _currentUser;
-        //public bool IsAuthenticated => _currentUser != null;
-        //public event Action OnAuthenticationStateChanged;
-        //private readonly IHttpContextAccessor _context;
+    {        
         private readonly IUserRepository _users;
+        private readonly ILocalStorageService _localStorage;
         private readonly AuthenticationStateProvider _authenticationStateProvider;
-        private readonly IMapper _mapper;
-        //public bool IsAuthenticated { get; private set; }
-        //public event Action<bool> OnAuthenticationStateChanged;
+        private readonly IMapper _mapper;        
         private User _currentUser;
         public User CurrentUser => _currentUser;
         public bool IsAuthenticated => _currentUser != null;
         public event Action OnAuthenticationStateChanged;
 
-        public AuthenticationService(IUserRepository users, AuthenticationStateProvider authenticationStateProvider, IMapper mapper)
+        public AuthenticationService(IUserRepository users, ILocalStorageService localStorageService, IMapper mapper)
         {
             //_context = context;
-            _authenticationStateProvider = authenticationStateProvider;
+            //_authenticationStateProvider = authenticationStateProvider;
             _users = users;
+            _localStorage = localStorageService;
             _mapper = mapper;
         }
 
         //public bool IsAuthenticated => _context.HttpContext?.User?.Identity?.IsAuthenticated ?? false;
+        public async Task InitializeAsync()
+        {
+            await TryRestoreUserFromStorageAsync();
+        }
 
-        public async Task<bool> LoginAsync(string username, string password)
+        private async Task TryRestoreUserFromStorageAsync()
+        {
+            try
+            {
+                var savedUsername = await _localStorage.GetStringAsync("auth_username");
+                if (string.IsNullOrEmpty(savedUsername))
+                {
+                    Console.WriteLine("Нет сохраненных польхователей");
+                    return;
+                }
+
+                var savedRole = await _localStorage.GetStringAsync("auth_role");
+                var savedFullName = await _localStorage.GetStringAsync("auth_fullName");
+
+                _currentUser = new User
+                {
+                    UserName = savedUsername,
+                    Role = savedRole ?? "User",
+                    FullName = savedFullName ?? ""
+                };
+
+                Console.WriteLine($"Пользователь восстановлен: {_currentUser.UserName} ({_currentUser.Role})");
+                OnAuthenticationStateChanged?.Invoke();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка восстановления пользователя: {ex.Message}");
+            }
+        }
+
+        public async Task<bool> LoginAsync(string username, string password, bool rememberMe = false)
         {
             try
             {
@@ -104,6 +99,14 @@ namespace BanksDB.BLL.Services
                 {
                     Console.WriteLine($"Неверный пароль пользователя {username}");
                     return false;
+                }
+                if (user != null)
+                {
+                    await _localStorage.SetStringAsync("auth_username", user.UserName);
+                    await _localStorage.SetStringAsync("auth_role", user.Role);
+                    await _localStorage.SetStringAsync("auth_fullName", user.FullName ?? "");
+                    OnAuthenticationStateChanged?.Invoke();
+                    return true;
                 }
                 //_currentUser = _mapper.Map<User>(user);
                 //var claims = new List<Claim>
@@ -119,8 +122,8 @@ namespace BanksDB.BLL.Services
                 {
                     await customAuthStateProvider.LoginAsync(user.UserName, user.Role, user.FullName);
                 }
-                OnAuthenticationStateChanged?.Invoke();
-                Console.WriteLine($"Пользователь {username}: успешный вход. Роль: {user.Role}");
+                //OnAuthenticationStateChanged?.Invoke();
+                //Console.WriteLine($"Пользователь {username}: успешный вход. Роль: {user.Role}");
                 return true;
 
             }
@@ -146,15 +149,31 @@ namespace BanksDB.BLL.Services
 
         public async Task LogoutAsync()
         {
-            //await _context.HttpContext.SignOutAsync("Cookies");
-            if (_authenticationStateProvider is CustomAuthStateProvider customProvider)
-            {
-                customProvider.Logout();
+            try
+            {                
+                _currentUser = null;                
+                await _localStorage.RemoveAsync("auth_username");
+                await _localStorage.RemoveAsync("auth_role");
+                await _localStorage.RemoveAsync("auth_fullName");                                
+                OnAuthenticationStateChanged?.Invoke();
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при выходе: {ex}");
+            }
+        
+            //await _context.HttpContext.SignOutAsync("Cookies");
 
-            _currentUser = null;
-            OnAuthenticationStateChanged?.Invoke();
-            Console.WriteLine("Успешный выход");
+            //////////////это работало
+            //if (_authenticationStateProvider is CustomAuthStateProvider customProvider)
+            //{
+            //    customProvider.Logout();
+            //}
+
+            //_currentUser = null;
+            //OnAuthenticationStateChanged?.Invoke();
+            //Console.WriteLine("Успешный выход");
+            ////////////////////////вот досюда
         }
         //public bool Login(string username, string password)
         //{

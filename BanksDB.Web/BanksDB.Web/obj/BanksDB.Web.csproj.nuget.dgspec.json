@@ -81,6 +81,10 @@
               "target": "Package",
               "version": "[2.3.0, )"
             },
+            "Microsoft.JSInterop": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
             "Microsoft.VisualStudio.Services.Client": {
               "target": "Package",
               "version": "[19.225.1, )"

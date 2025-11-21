@@ -12,6 +12,7 @@ namespace BanksDB.BLL.Services
     public class CustomAuthStateProvider : AuthenticationStateProvider
     {
         private ClaimsPrincipal _currentUser = new ClaimsPrincipal(new ClaimsIdentity());
+        
         public override Task<AuthenticationState> GetAuthenticationStateAsync()
         {
             return Task.FromResult(new AuthenticationState(_currentUser));
