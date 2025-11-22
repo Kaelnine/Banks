@@ -362,3 +362,35 @@ h3 {
     max-width: 200px;
     margin-left: auto;
 }
+
+.admin-panel {
+    background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+    margin-bottom: 2rem;
+    border: 1px solid #d4edda;
+    max-width: 1200px;
+    align-items: center;
+}
+    .admin-panel h5 {
+        margin: 0 0 1rem 0;
+        color: #155724;
+        font-weight: 800;
+        text-align: center;
+    }
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+.admin-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;    
+    justify-content: center;
+}
+    .admin-buttons .btn-login {
+        width: auto;
+        padding: 0.5rem 3rem;
+    }

@@ -28,8 +28,7 @@ namespace BanksDB.Web
             builder.Services.AddServerSideBlazor();
             builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
             builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
-            builder.Services.AddScoped<AuthenticationService>();
-            //builder.Services.AddScoped<ITransactionService, TransactionService>();
+            builder.Services.AddScoped<AuthenticationService>();            
             builder.Services.AddAntiforgery();
             builder.Services.AddScoped<IBankRepository, BankRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
@@ -39,12 +38,7 @@ namespace BanksDB.Web
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
-            builder.Services.AddHttpContextAccessor();
-            //builder.Services.AddScoped<IAccountService, AccountService>();
-            //builder.Services.AddDbContext<BankDbContext>(options =>
-            //     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-            //ServiceLifetime.Transient,
-            //ServiceLifetime.Transient);
+            builder.Services.AddHttpContextAccessor();            
             builder.Services.AddDbContextFactory<BankDbContext>(options =>
                    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddAutoMapper(cfg =>
@@ -62,20 +56,7 @@ namespace BanksDB.Web
                 Console.WriteLine($"Ошибка конфигурации маппинга: {ex.Message}");
             }
 
-            // блок авторизации
-            //builder.Services.AddRazorPages();
-            //builder.Services.AddServerSideBlazor();
-            //builder.Services.AddHttpContextAccessor();
-
-            //builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            //    .AddCookie(options =>
-            //{
-            //    options.Cookie.Name = "auth_token";
-            //    options.LoginPath = "/login";
-            //    options.LogoutPath = "/logout";
-            //    options.AccessDeniedPath = "/access-denied";
-            //    options.ExpireTimeSpan = TimeSpan.FromDays(7);
-            //});
+            
             builder.Services.AddAuthentication("Cookies").AddCookie("Cookies", options =>
                 {
                     options.LoginPath = "/login";
@@ -93,18 +74,12 @@ namespace BanksDB.Web
 
 
             builder.Services.AddAuthorizationCore();
-
-            //builder.Services.AddAntiforgery();
-
-            //builder.Services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
-            //builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStateProvider>();
-            // конец блока авторизации
+            
 
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
-            //.AddInteractiveWebAssemblyComponents();
-            //builder.Services.AddHttpClient();
+            
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 
@@ -126,23 +101,7 @@ namespace BanksDB.Web
 
 
 
-            app.MapStaticAssets();
-            //app.MapRazorComponents<App>()
-            //    .AddInteractiveServerRenderMode()
-            //    //.AddInteractiveWebAssemblyRenderMode()
-            //    .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
-            //app.MapRazorComponents<BanksDB.Web.Components.App>()
-            //      .AddInteractiveServerRenderMode()
-            //      .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
-
-            // тоже связано с авторизацией
-            //if (!app.Environment.IsDevelopment())
-            //{
-            //    app.UseExceptionHandler("/Error");
-            //    app.UseHsts();
-            //}
-
-            //app.UseHttpsRedirection();
+            app.MapStaticAssets();           
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -153,7 +112,7 @@ namespace BanksDB.Web
             app.MapRazorPages();
             app.MapBlazorHub();
             app.MapFallbackToPage("/_Host");
-            //
+            
 
             app.Run();
         }

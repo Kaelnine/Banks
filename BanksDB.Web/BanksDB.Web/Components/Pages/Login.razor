@@ -62,30 +62,22 @@
 
     protected override void OnInitialized()
     {          
-        // Если пользователь уже авторизован, перенаправляем на главную
-        // if (AuthenticationService.IsAuthenticated)
-        // {
-        //     Navigation.NavigateTo("/");
-        // }
+        
     }
 
     private async Task HandleLogin()
     {       
         if (isLoading || isRedirecting) return;
         isLoading = true;
-        errorMessage = null;
-        //StateHasChanged();
+        errorMessage = null;        
 
         try
-        {            
-            //var result = await AuthenticationService.LoginAsync(loginModel);
-            //var result = AuthenticationService.Login(loginModel.Login, loginModel.Password);
+        {                        
             var result = await AuthenticationService.LoginAsync(loginModel.Login, loginModel.Password, loginModel.Remember);            
             if (result)
             {   
                 isRedirecting = true;
-                await Task.Delay(100);                
-                //Navigation.NavigateTo("/", forceLoad: true);
+                await Task.Delay(100);              
                 Navigation.NavigateTo("/");
             }
             else
@@ -99,8 +91,7 @@
             Console.WriteLine($"Login error: {ex.Message}");                    }
         finally
         {
-            isLoading = false;
-            //StateHasChanged();
+            isLoading = false;           
         }
     }
     private class LoginModel

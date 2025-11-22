@@ -3,32 +3,14 @@
 @inject IAuthenticationService AuthenticationService
 @inject NavigationManager Navigation
 
-@* @Body
 
-<div id="blazor-error-ui" data-nosnippet>
-    Что то пошло не так.
-    <a href="." class="reload">Перезагрузить</a>
-    <span class="dismiss">🗙</span>
-</div> *@
 <div class="page">
     <div class="sidebar">
         <NavMenu />
     </div>
 
     <main>
-        @* <div class="top-row px-4 auth-bar">
-            @if (AuthenticationService.IsAuthenticated)
-            {
-                <span>Добро пожаловать!</span>
-                <a href="/logout" @onclick="HandleLogout" class="btn btn-link">Выйти</a>
-            }
-            else
-            {
-                <a href="/login">Войти</a>
-                <span>|</span>
-                
-            }
-        </div> *@
+        
 
         <article class="content px-4">
             @Body
@@ -39,8 +21,7 @@
 @code {
     private async Task HandleLogout()
     {
-        await AuthenticationService.LogoutAsync();
-        //AuthenticationService.Logout();
+        await AuthenticationService.LogoutAsync();        
         Navigation.NavigateTo("/login");
     }
 }

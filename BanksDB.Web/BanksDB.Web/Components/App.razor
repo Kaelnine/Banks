@@ -8,9 +8,7 @@
 
 <CascadingAuthenticationState>
     
-    @* <Routes @rendermode="InteractiveServer" /> *@
     
-    @* <Routes @rendermode="InteractiveServer"> *@
     <Router AppAssembly="typeof(App).Assembly">        
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
@@ -29,22 +27,13 @@
             </LayoutView>
         </NotFound>
     </Router>   
-    @* </Routes>   *@  
+    
 </CascadingAuthenticationState>
     
 
 
 
-@code {   
-
-    // protected override void OnInitialized()
-    // {        
-    //     var currentUri = Navigation.Uri;
-    //     if (currentUri.EndsWith("/") || currentUri == Navigation.BaseUri)
-    //     {
-    //         Navigation.NavigateTo("/index");
-    //     }
-    // }
+@code {      
     protected override async Task OnInitializedAsync()
     {
         await AuthenticationService.InitializeAsync();

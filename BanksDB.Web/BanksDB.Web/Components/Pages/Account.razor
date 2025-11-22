@@ -190,43 +190,8 @@
                         <li>Файл должен быть в кодировке Windows-1251</li>
                         <li>Формат: TXT</li>
                         <li>Должны содержаться секции "Платежное поручение"</li>
-                    </ul>
-                    @* <h6>Формат файла (TXT):</h6>
-                    <p>Каждая строка должна содержать данные в формате:</p>
-                    <code>Дата;Тип;Сумма;Описание;Контрагент;Счет;ИНН;Документ</code>
-                    <p><strong>Пример:</strong></p>
-                    <code>01.12.2024;Приход;100000,50;Оплата за услуги;ООО "Заказчик";40702810000000012345;1234567890;СЧ-123</code> *@
-                </div>
-
-                @* <div class="file-upload-area">
-                    <input type="file" @ref="fileInput" @onchange="HandleFileSelected" accept=".txt" class="file-input" />
-                    <div class="upload-placeholder" @onclick="TriggerFileInput">
-                        <div>📎</div>
-                        <p>Нажмите для выбора файла TXT</p>
-                        <small>Поддерживается только формат TXT</small>
-                    </div>
-                </div> *@
-                @* <div class="file-upload-area">
-                    <input type="file" @ref="fileInputElement" @onchange="HandleFileSelected" accept=".txt" class="file-input" style="display: none;" />
-                    <InputFile @ref="fileInput" OnChange="HandleFileSelected" accept=".txt" class="file-input" />
-                    <div class="upload-placeholder" @onclick="TriggerFileInput">
-                        <div class="upload-placeholder" @onclick="() => fileInput?.Click()">
-                        <div class="upload-placeholder" @onclick="() => fileInputElement?.Click()">
-                        <div>📎</div>
-                        <p>Нажмите для выбора файла TXT</p>
-                        <small>Поддерживается только формат TXT</small>
-                    </div>
-                </div> *@
-                @* <InputFile OnChange="HandleInputFileSelected" accept=".txt" class="file-upload-input">
-                    <div class="file-upload-area">
-                        <div class="upload-placeholder">
-                            <div>📎</div>
-                            <p>Нажмите для выбора файла выписки</p>
-                            <small>Поддерживается только формат TXT</small>
-                        </div>
-                    </div>
-                </InputFile> *@
-
+                    </ul>                    
+                </div>   
                 <div class="file-upload-section">
                     <InputFile OnChange="HandleFileSelected"
                                accept=".txt"
@@ -247,12 +212,10 @@
                         @uploadError
                     </div>
                 }
-
-                @* @if (parsedTransactions.Any()) *@
+                
                 @if (parserResult?.Transactions.Any() == true)
                 {
-                    <div class="parsed-transactions">
-                        @* <h6>Найдено транзакций: @parsedTransactions.Count</h6> *@
+                    <div class="parsed-transactions">                       
                         <h6>Найдено транзакций: @parserResult.TotalTransactionsFound</h6>
                         <div class="transaction-preview">
                             @foreach (var transaction in parsedTransactions.Take(3))
@@ -308,8 +271,7 @@
                         <span>Загрузка...</span>
                     }
                     else
-                    {
-                        @* <span>📤 Загрузить (@parsedTransactions.Count)</span> *@
+                    {                        
                         <span>📤 Загрузить (@parserResult?.TotalTransactionsFound)</span>
                     }
                 </button>
@@ -329,8 +291,7 @@
     private bool showUploadModal = false;
     private bool isUploading = false;
     private string uploadError = string.Empty;
-    private List<TransactionInputModel> parsedTransactions = new();
-    //private ElementReference fileInput;
+    private List<TransactionInputModel> parsedTransactions = new();    
     private InputFile? fileInput;
     private BankParserResult parserResult;
     private ElementReference fileInputElement;
@@ -448,29 +409,20 @@
     {
         showUploadModal = true;
         uploadError = string.Empty;
-        parsedTransactions.Clear();
-        // StateHasChanged();
+        parsedTransactions.Clear();        
     }
 
     private void CloseUploadModal()
     {
-        showUploadModal = false;
-        //parsedTransactions.Clear();
-        uploadError = string.Empty;
-        //StateHasChanged();
+        showUploadModal = false;        
+        uploadError = string.Empty;        
         parserResult = null;
         isUploading = false;
-    }
-
-    // private void TriggerFileInput()
-    // {
-    //     JSRuntime.InvokeVoidAsync("clickElement", fileInput);
-    // }
+    }    
 
     private async Task HandleFileSelected(InputFileChangeEventArgs e)
     {
-        uploadError = string.Empty;
-        //parsedTransactions.Clear();
+        uploadError = string.Empty;        
         parserResult = null;
 
         var file = e.File;
@@ -483,10 +435,7 @@
         }
 
         try
-        {
-            // Здесь будет логика парсинга файла
-            //parsedTransactions = GenerateTestTransactions();
-            //StateHasChanged();
+        {            
             using var stream = file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024);
             parserResult = await TransactionService.BankParserStatementAsync(stream, Id);
             if (!parserResult.IsValid && parserResult.Errors.Any())
@@ -502,8 +451,7 @@
     }
 
     private async Task UploadTransactions()
-    {
-        //if (!parsedTransactions.Any()) return;
+    {        
         if (parserResult?.Transactions.Any() != true)
         {
             return;

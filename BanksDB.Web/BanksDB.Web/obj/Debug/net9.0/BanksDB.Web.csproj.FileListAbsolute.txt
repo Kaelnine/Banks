@@ -291,4 +291,4 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\7q
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\8boe08urzv-gfj3d9im7b.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Authorization.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Authorization.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-zy2j1ud2j4.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-mytap380xe.gz
