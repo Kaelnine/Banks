@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BanksDB.Core.Dtos;
 using BanksDB.Core.Entities;
+using BanksDB.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,8 @@ namespace BanksDB.BLL.Mapping
             CreateMap<Bank, BankDto>().ReverseMap();
             CreateMap<Organization, OrganizationDto>().ReverseMap();
             CreateMap<Transaction, TransactionDto>().ReverseMap();
-            CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<Core.Models.User, UserDto>().ReverseMap();
+            CreateMap<UserDto, Core.Models.User>();
             CreateMap<AccountSummary, AccountSummaryDto>();
         }
     }

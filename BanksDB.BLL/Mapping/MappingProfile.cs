@@ -3,6 +3,7 @@ using BanksDB.Core.Dtos;
 using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
 using BanksDB.Core.Entities;
+using BanksDB.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,10 @@ namespace BanksDB.BLL.Mapping
             CreateMap<OrganizationDto, Organization>();
             CreateMap<BankDto, Bank>();
             CreateMap<TransactionDto, Transaction>();
+
+            // Маппинг модели и DTO
+            CreateMap<Core.Models.User, UserDto>();
+            CreateMap<UserDto, Core.Models.User>();
         }
     }
 }

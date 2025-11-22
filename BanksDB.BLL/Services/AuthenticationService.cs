@@ -41,15 +41,12 @@ namespace BanksDB.BLL.Services
         public event Action OnAuthenticationStateChanged;
 
         public AuthenticationService(IUserRepository users, ILocalStorageService localStorageService, IMapper mapper)
-        {
-            //_context = context;
-            //_authenticationStateProvider = authenticationStateProvider;
+        {            
             _users = users;
             _localStorage = localStorageService;
             _mapper = mapper;
         }
-
-        //public bool IsAuthenticated => _context.HttpContext?.User?.Identity?.IsAuthenticated ?? false;
+        
         public async Task InitializeAsync()
         {
             await TryRestoreUserFromStorageAsync();
@@ -100,6 +97,7 @@ namespace BanksDB.BLL.Services
                     Console.WriteLine($"Неверный пароль пользователя {username}");
                     return false;
                 }
+                _currentUser = _mapper.Map<User>(user);
                 if (user != null)
                 {
                     await _localStorage.SetStringAsync("auth_username", user.UserName);
@@ -108,22 +106,12 @@ namespace BanksDB.BLL.Services
                     OnAuthenticationStateChanged?.Invoke();
                     return true;
                 }
-                //_currentUser = _mapper.Map<User>(user);
-                //var claims = new List<Claim>
-                //{
-                //    new Claim(ClaimTypes.Name, user.UserName),
-                //    new Claim(ClaimTypes.Role, user.Role),
-                //    new Claim("FullName", user.FullName ?? ""),
-                //    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-                //};
-                //var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                //var principal = new ClaimsPrincipal(identity);
+                
                 if (_authenticationStateProvider is CustomAuthStateProvider customAuthStateProvider)
                 {
                     await customAuthStateProvider.LoginAsync(user.UserName, user.Role, user.FullName);
                 }
-                //OnAuthenticationStateChanged?.Invoke();
-                //Console.WriteLine($"Пользователь {username}: успешный вход. Роль: {user.Role}");
+                
                 return true;
 
             }
@@ -132,19 +120,7 @@ namespace BanksDB.BLL.Services
                 Console.WriteLine($"Ошибка входа: {ex}");
                 return false;
             }
-            //var user = await _users.GetByNameAsync(username);
-            //if (user == null) return false;
-            //if (!PasswordHasher.VerifyPassword(password, user.PasswordHash)) return false;
-            //var claims = new List<Claim>
-            //{
-            //    new Claim(ClaimTypes.Name, user.UserName),
-            //    new Claim(ClaimTypes.Role, user.Role),
-            //    new Claim("FullName", user.FullName ?? "")
-            //};
-            //var identity = new ClaimsIdentity(claims, "Cookies");
-            //var principal = new ClaimsPrincipal(identity);
-            //await _context.HttpContext.SignInAsync("Cookies",  principal);
-            //return true;
+            
         }
 
         public async Task LogoutAsync()
@@ -160,49 +136,10 @@ namespace BanksDB.BLL.Services
             catch (Exception ex)
             {
                 Console.WriteLine($"Ошибка при выходе: {ex}");
-            }
-        
-            //await _context.HttpContext.SignOutAsync("Cookies");
-
-            //////////////это работало
-            //if (_authenticationStateProvider is CustomAuthStateProvider customProvider)
-            //{
-            //    customProvider.Logout();
-            //}
-
-            //_currentUser = null;
-            //OnAuthenticationStateChanged?.Invoke();
-            //Console.WriteLine("Успешный выход");
-            ////////////////////////вот досюда
-        }
-        //public bool Login(string username, string password)
-        //{
-        //    var users = new List<User>();
+            }       
             
-        //    var user = users.FirstOrDefault(u => u.UserName == username && u.Password == password);
-        //    if (user != null)
-        //    {
-        //        _currentUser = user;
-        //        OnAuthenticationStateChanged.Invoke();
-        //        return true;
-        //    }
-        //    return false;
-        //}
-
-        //public void Logout()
-        //{
-        //    _currentUser = null;
-        //    OnAuthenticationStateChanged.Invoke();
-        //}
-
-        //public bool HasRole(string role) => _currentUser?.Role == role;
-
-        //public async Task LogoutAsync()
-        //{
-        //    IsAuthenticated = false;
-        //    OnAuthenticationStateChanged?.Invoke();
-        //    await Task.CompletedTask;
-        //}
+        }
+        
     }
 }        
     
