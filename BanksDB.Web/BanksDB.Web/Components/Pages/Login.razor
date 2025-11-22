@@ -58,18 +58,20 @@
     private LoginModel loginModel = new();
     private string errorMessage;
     private bool isLoading;
+    private bool isRedirecting = false;
 
     protected override void OnInitialized()
     {          
         // Если пользователь уже авторизован, перенаправляем на главную
         // if (AuthenticationService.IsAuthenticated)
         // {
-        //     Navigation.NavigateTo("/", true);
+        //     Navigation.NavigateTo("/");
         // }
     }
 
     private async Task HandleLogin()
-    {        
+    {       
+        if (isLoading || isRedirecting) return;
         isLoading = true;
         errorMessage = null;
         //StateHasChanged();
@@ -78,10 +80,11 @@
         {            
             //var result = await AuthenticationService.LoginAsync(loginModel);
             //var result = AuthenticationService.Login(loginModel.Login, loginModel.Password);
-            var result = await AuthenticationService.LoginAsync(loginModel.Login, loginModel.Password);            
+            var result = await AuthenticationService.LoginAsync(loginModel.Login, loginModel.Password, loginModel.Remember);            
             if (result)
-            {               
-                await Task.Delay(1);                
+            {   
+                isRedirecting = true;
+                await Task.Delay(100);                
                 //Navigation.NavigateTo("/", forceLoad: true);
                 Navigation.NavigateTo("/");                
             }
@@ -99,5 +102,11 @@
             isLoading = false;
             //StateHasChanged();
         }
+    }
+    private class LoginModel
+    {
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public bool Remember { get; set; }
     }
 }

@@ -26,6 +26,7 @@ namespace BanksDB.Web
             builder.Services.AddTransient<IAccountService, AccountService>();
             builder.Services.AddTransient<ITransactionService, TransactionService>();
             builder.Services.AddServerSideBlazor();
+            builder.Services.AddScoped<ILocalStorageService, LocalStorageService>();
             builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
             builder.Services.AddScoped<AuthenticationService>();
             //builder.Services.AddScoped<ITransactionService, TransactionService>();

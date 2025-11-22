@@ -317,6 +317,48 @@ h3 {
     ::-webkit-scrollbar-thumb:hover {
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     }
+/*-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+.user-header {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;        
+}
+    .user-header h3 {
+        margin: 0;
+        color: #2c3e50;
+    }
 
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
-    
+    .user-info span {
+        font-weight: 500;
+        color: #495057;
+        text-align: right;
+    }
+
+    .user-info small {
+        color: #6c757d;
+        font-size: 0.875rem;
+    }
+
+.btn-logout {
+    max-width: 200px;
+    margin-left: auto;
+}

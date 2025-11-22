@@ -1,7 +1,9 @@
-﻿@using BanksDB.Web.Components.Layout
+﻿@using BanksDB.BLL.Services
+@using BanksDB.Web.Components.Layout
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Routing
 @inject NavigationManager Navigation
+@inject IAuthenticationService AuthenticationService
 
 
 <CascadingAuthenticationState>
@@ -35,12 +37,16 @@
 
 @code {   
 
-    protected override void OnInitialized()
-    {        
-        var currentUri = Navigation.Uri;
-        if (currentUri.EndsWith("/") || currentUri == Navigation.BaseUri)
-        {
-            Navigation.NavigateTo("/index");
-        }
+    // protected override void OnInitialized()
+    // {        
+    //     var currentUri = Navigation.Uri;
+    //     if (currentUri.EndsWith("/") || currentUri == Navigation.BaseUri)
+    //     {
+    //         Navigation.NavigateTo("/index");
+    //     }
+    // }
+    protected override async Task OnInitializedAsync()
+    {
+        await AuthenticationService.InitializeAsync();
     }
 }

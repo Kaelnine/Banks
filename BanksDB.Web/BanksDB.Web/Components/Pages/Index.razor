@@ -13,15 +13,116 @@
 @inject NavigationManager Navigation
 @inject IMapper Mapper
 @inject IAuthenticationService AuthenticationService
+@implements IDisposable
 
+@* @attribute [Authorize] *@
+@if (!AuthenticationService.IsAuthenticated)
+{
+	<div style="text-align: center; padding: 3rem;">
+		<div class="spinner-border text-primary" role="status">
+			<span class="visually-hidden">Загрузка...</span>
+		</div>
+		<p class="mt-2">Проверка авторизации...</p>
+	</div>
 
-@attribute [Authorize]
-<!DOCTYPE html>
-<h3>🏦Все счета</h3>
+	@* @code {
+		protected override async Task OnInitializedAsync()
+		{	
+			await Task.Delay(100);
+			Navigation.NavigateTo("/login");
+		}
+	} *@
+}
+else
+{
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<link href="css/site.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="page-container">
+		<!-- Шапка с пользователем и кнопкой выхода -->
+		@* <div class="user-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 8px;"> *@
+			<div class="user-header">
+			
+			<div class="user-info">
+				<span>
+					👤 @AuthenticationService.CurrentUser.FullName
+					<small>(@AuthenticationService.CurrentUser.RoleDisplayName)</small>
+				</span>
+					<button @onclick="Logout" class="btn-login btn-logout">
+						Выйти
+					</button>
+			</div>
+				
+				
+		</div>
+		
+		</div>
+		<!-- Панель управления для бухгалтера -->
+		@if (AuthenticationService.CurrentUser.Role == "Accountant")
+		{
+			<div class="admin-panel" style="background: #e8f5e8; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #28a745; margin-bottom: 2rem;">
+				<h5 style="margin-top: 0;">📊 Панель управления бухгалтера</h5>
+				<div class="admin-buttons" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+					<button class="btn-login btn-success" @onclick="ShowBankModal" style="padding: 0.5rem 1rem;">
+						➕ Банки
+					</button>
+					<button class="btn-login btn-primary" @onclick="ShowOrganizationModal" style="padding: 0.5rem 1rem;">
+						🏢 Организации
+					</button>
+					<button class="btn-login btn-info" @onclick="ShowAccountModal" style="padding: 0.5rem 1rem;">
+						💳 Счета
+					</button>
+				</div>
+			</div>
+		}
+		<div class="page-container">
+			<h3>🏦 Все счета</h3>
+		</div>
+		@if (isLoading)
+		{
+			<p>Загрузка счетов...</p>
+		}
+		@if (organizations.Any())
+		{
+			@foreach (var org in organizations)
+			{
+				<div class="organization-card">
+					<h4>@org.Name</h4>
+					<div class="account-list">
+						@foreach (var account in org.Accounts)
+						{
+							<div class="account-item">
+								<p><strong>Номер счета: </strong><span>@account.AccountNumber</span></p>
+								<p><strong>Название: </strong><span>@account.Name</span></p>
+								@* <p><strong>Тип счета: </strong>@account.AccountType</p> *@
+								<p><strong>Банк: </strong><span>@account.BankName</span></p>
+								<p><strong>Остаток: </strong><span>@account.CurrentBalance.ToString("C")</span></p>
+								<button @onclick="@(() => ViewAccountDetails(account.Id))" class="btn-login btn-info">Подробнее</button>
+							</div>
+						}
+					</div>
+				</div>
+			}
+		}
+		else
+		{
+			<div class="empty-state">
+				<h4>📊 Счета не найдены</h4>
+				<p>В системе пока нет зарегистрированных счетов</p>
+			</div>
+		}
+	</body>
+	</html>
+}
+@* <!DOCTYPE html> *@
+@* <h3>🏦Все счета</h3>
 <head>
 	<link href="css/site.css" rel="stylesheet"/>
-</head>
-@if (isLoading)
+</head> *@
+@* @if (isLoading)
 {
 	<p>Загрузка счетов...</p>
 }
@@ -37,7 +138,7 @@
 					<div class="account-item">
 						<p><strong>Номер счета: </strong><span>@account.AccountNumber</span></p>
 						<p><strong>Название: </strong><span>@account.Name</span></p>
-						@* <p><strong>Тип счета: </strong>@account.AccountType</p> *@
+						<p><strong>Тип счета: </strong>@account.AccountType</p>
 						<p><strong>Банк: </strong><span>@account.BankName</span></p>
 						<p><strong>Остаток: </strong><span>@account.CurrentBalance.ToString("C")</span></p>
 						<button @onclick="@(() => ViewAccountDetails(account.Id))" class="btn-login btn-info">Подробнее</button>
@@ -53,12 +154,43 @@ else
 		<h4>📊 Счета не найдены</h4>
 		<p>В системе пока нет зарегистрированных счетов</p>
 	</div>
-}
+} *@
 
 @code {
 	private List<OrganizationOutputModel> organizations = new();
 	private bool isLoading = true;
+	private bool showBankModal = false;
+	private bool showOrganizationModal = false;
+	private bool showAccountModal = false;
+	private bool isRedirecting = false;
+
 	protected override async Task OnInitializedAsync()
+	{
+		// try
+		// {
+		// 	organizations = await LoadOrganizationsWithAccounts();
+		// }
+		// finally
+		// {
+		// 	isLoading = false;
+		// }
+		// AuthenticationService.OnAuthenticationStateChanged += StateHasChanged;
+
+		// if (AuthenticationService.IsAuthenticated)
+		// {
+		// 	await LoadData();
+		// }
+		if (!AuthenticationService.IsAuthenticated)
+		{
+			await Task.Delay(100);
+			Navigation.NavigateTo("/login");
+			return;
+		}
+		AuthenticationService.OnAuthenticationStateChanged += StateHasChanged;
+		await LoadData();
+	}
+
+	private async Task LoadData()
 	{
 		try
 		{
@@ -86,11 +218,43 @@ else
 		try
 		{
 			Console.WriteLine($"Нажата кнопка для accountId: {accountId}");
-			Navigation.NavigateTo($"/account/{accountId}", true);
+			Navigation.NavigateTo($"/account/{accountId}");
 		}
 		catch (Exception ex)
 		{
 			Console.WriteLine($"Ошибка навигации: {ex.Message}");
 		}
+	}
+
+	private async Task Logout()
+	{
+		// await AuthenticationService.LogoutAsync();
+		// Navigation.NavigateTo("/login");
+		if (isRedirecting) return;
+
+		isRedirecting = true;
+		await AuthenticationService.LogoutAsync();
+		
+		Navigation.NavigateTo("/login");
+	}
+
+	private void ShowBankModal()
+	{
+		showBankModal = true;		
+	}
+
+	private void ShowOrganizationModal()
+	{
+		showOrganizationModal = true;		
+	}
+
+	private void ShowAccountModal()
+	{
+		showAccountModal = true;		
+	}
+
+	public void Dispose()
+	{
+		AuthenticationService.OnAuthenticationStateChanged -= StateHasChanged;
 	}
 }

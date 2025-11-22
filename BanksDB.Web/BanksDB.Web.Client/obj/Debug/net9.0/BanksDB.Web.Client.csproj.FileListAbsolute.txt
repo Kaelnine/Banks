@@ -2058,9 +2058,6 @@ D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\blazor.webassembly.js
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.js
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.js.map
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.native.9ih887ebfz.js
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.native.21mns4qp4i.wasm
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.runtime.st3wwc8rqy.js
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.runtime.js.map
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\icudt_CJK.tjcz0u77k5.dat
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\icudt_EFIGS.tptq2av103.dat
@@ -2349,7 +2346,6 @@ D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Text.Encoding.pd31zmnukr.wasm.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Data.jc9hvsoz9b.wasm.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\Microsoft.Extensions.Primitives.08rjikrqbs.wasm.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.runtime.st3wwc8rqy.js.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.IO.Pipes.AccessControl.c8tonf5uy5.wasm.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Runtime.Serialization.6y35mmxzrq.wasm.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\Microsoft.Extensions.Logging.2h3t8m6coa.wasm.gz
@@ -2369,7 +2365,6 @@ D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\icudt_CJK.tjcz0u77k5.dat.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Net.Http.Json.osyg7lnynd.wasm.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.ca8rpd37di.wasm.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.native.21mns4qp4i.wasm.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Core.i2gfsit2dg.wasm.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Globalization.Extensions.vj2hxw2cxd.wasm.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Security.AccessControl.15bbw5su7q.wasm.gz
@@ -2425,7 +2420,6 @@ D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Threading.ThreadPool.456kqrtr37.wasm.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\Microsoft.VisualBasic.ocn5mkr2m2.wasm.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\Microsoft.AspNetCore.Components.65wbz7t8mt.wasm.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.native.9ih887ebfz.js.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Net.ServicePoint.qn67lxbu1q.wasm.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Threading.Channels.mdjwqmcrfg.wasm.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.ComponentModel.Annotations.v1y4pnhy9x.wasm.gz
@@ -3060,12 +3054,6 @@ D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\ssr8rrz45n-xd6mv31d55.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\0mmerst8nz-kaml52uspo.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\ky49rm6eix-uqnhzdwypx.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\xvytu4jlpw-g4ekh6zsr7.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\8knjopj6d0-h795qunhva.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\uvsni27tqp-9ih887ebfz.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\m8x4o7gxci-21mns4qp4i.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\hu0dt2u4cb-st3wwc8rqy.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\61al47uxvv-zbl9qys38n.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\m73wp6kvmr-tjcz0u77k5.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\gwcdwrbkiv-tptq2av103.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\abdznpr4v2-lfu7j35m59.gz
@@ -3079,13 +3067,6 @@ D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\refint\BanksDB.Web.Client.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\BanksDB.Web.Client.pdb
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\ref\BanksDB.Web.Client.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.l8ecrwnxcn.pdb
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.vwtk5g05wb.wasm
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.l8ecrwnxcn.pdb.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.vwtk5g05wb.wasm.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\5c2r9cic7o-vwtk5g05wb.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\2zcqaf90qf-l8ecrwnxcn.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\sc31b0co7g-3yvpd5q6fh.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.vju4nr9viv.pdb
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.qyzjv4wb4v.wasm
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.vju4nr9viv.pdb.gz
@@ -3093,3 +3074,22 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroo
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\5c2r9cic7o-qyzjv4wb4v.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\2zcqaf90qf-vju4nr9viv.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\sc31b0co7g-qkcajjiubq.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.dtdu7oqxik.pdb
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.4qkvf85gcp.wasm
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.native.noby4tlk4d.js
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.native.qe75a9vfqn.wasm
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.runtime.9o45ky8ejm.js
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.dtdu7oqxik.pdb.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.4qkvf85gcp.wasm.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.runtime.9o45ky8ejm.js.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.native.qe75a9vfqn.wasm.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.native.noby4tlk4d.js.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\xvytu4jlpw-jfe1scx8ig.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\8knjopj6d0-nbfbcejn8k.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\uvsni27tqp-noby4tlk4d.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\m8x4o7gxci-qe75a9vfqn.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\hu0dt2u4cb-9o45ky8ejm.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\61al47uxvv-itwjppbl6y.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\5c2r9cic7o-4qkvf85gcp.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\2zcqaf90qf-dtdu7oqxik.gz
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\sc31b0co7g-ouwytfrss8.gz

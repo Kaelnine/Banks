@@ -102,13 +102,11 @@ D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Mic
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.ClientModel.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Drawing.Common.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Formats.Asn1.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Memory.Data.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Runtime.Caching.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Security.Permissions.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Text.Json.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Windows.Extensions.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
@@ -281,7 +279,6 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.p
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.genruntimeconfig.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\ref\BanksDB.Web.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-pjehtp0nq8.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-pjehtp0nq8.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\hjbu2o4o39-e0g4uhnh83.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\1f7nnsgevt-zoufc1fd19.gz
 D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\1f7nnsgevt-zoufc1fd19.gz
@@ -293,3 +290,5 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\Com
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\7q242g7x9r-gfj3d9im7b.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\8boe08urzv-gfj3d9im7b.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Authorization.dll
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Authorization.dll
+D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-zy2j1ud2j4.gz
