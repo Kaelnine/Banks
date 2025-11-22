@@ -342,12 +342,11 @@
               "Title": "Login.razor",
               "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\Login.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Pages\\Login.razor",
-              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\Login.razor*",
-              "RelativeToolTip": "BanksDB.Web\\Components\\Pages\\Login.razor*",
+              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\Login.razor",
+              "RelativeToolTip": "BanksDB.Web\\Components\\Pages\\Login.razor",
               "ViewState": "AgIAAE4AAAAAAAAAAAAAAF0AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T08:46:42.855Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T08:46:42.855Z"
             },
             {
               "$type": "Document",
@@ -355,12 +354,11 @@
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Program.cs",
               "RelativeDocumentMoniker": "BanksDB.Web\\Program.cs",
-              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Program.cs*",
-              "RelativeToolTip": "BanksDB.Web\\Program.cs*",
+              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Program.cs",
+              "RelativeToolTip": "BanksDB.Web\\Program.cs",
               "ViewState": "AgIAAFsAAAAAAAAAAAAgwHIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T09:55:42.236Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T09:55:42.236Z"
             },
             {
               "$type": "Document",
@@ -368,12 +366,11 @@
               "Title": "Index.razor",
               "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\Index.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Pages\\Index.razor",
-              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\Index.razor*",
-              "RelativeToolTip": "BanksDB.Web\\Components\\Pages\\Index.razor*",
+              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\Index.razor",
+              "RelativeToolTip": "BanksDB.Web\\Components\\Pages\\Index.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAK0AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T08:44:21.82Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T08:44:21.82Z"
             },
             {
               "$type": "Document",
@@ -385,8 +382,7 @@
               "RelativeToolTip": "BanksDB.Web\\wwwroot\\css\\login.css",
               "ViewState": "AgIAAGMAAAAAAAAAAAAAAFcAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-10-30T10:32:22.876Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-30T10:32:22.876Z"
             },
             {
               "$type": "Document",
@@ -398,8 +394,7 @@
               "RelativeToolTip": "BanksDB.Web\\wwwroot\\css\\site.css",
               "ViewState": "AgIAAHMBAAAAAAAAAAAAAIUBAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-04T12:15:34.541Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-04T12:15:34.541Z"
             },
             {
               "$type": "Document",
@@ -407,12 +402,11 @@
               "Title": "Account.razor",
               "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\Account.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Pages\\Account.razor",
-              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\Account.razor*",
-              "RelativeToolTip": "BanksDB.Web\\Components\\Pages\\Account.razor*",
+              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\Account.razor",
+              "RelativeToolTip": "BanksDB.Web\\Components\\Pages\\Account.razor",
               "ViewState": "AgIAAAEAAAAAAAAAAAAAANABAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T08:45:47.69Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T08:45:47.69Z"
             },
             {
               "$type": "Document",
@@ -420,12 +414,11 @@
               "Title": "_Host.cshtml",
               "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\_Host.cshtml",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Pages\\_Host.cshtml",
-              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\_Host.cshtml*",
-              "RelativeToolTip": "BanksDB.Web\\Components\\Pages\\_Host.cshtml*",
+              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\_Host.cshtml",
+              "RelativeToolTip": "BanksDB.Web\\Components\\Pages\\_Host.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T10:25:41.051Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T10:25:41.051Z"
             },
             {
               "$type": "Document",
@@ -433,12 +426,11 @@
               "Title": "App.razor",
               "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\App.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\App.razor",
-              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\App.razor*",
-              "RelativeToolTip": "BanksDB.Web\\Components\\App.razor*",
+              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\App.razor",
+              "RelativeToolTip": "BanksDB.Web\\Components\\App.razor",
               "ViewState": "AgIAABUAAAAAAAAAAAAAACMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T09:20:07.7Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T09:20:07.7Z"
             },
             {
               "$type": "Document",
@@ -446,8 +438,8 @@
               "Title": "MainLayout.razor",
               "DocumentMoniker": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Layout\\MainLayout.razor",
-              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Layout\\MainLayout.razor*",
-              "RelativeToolTip": "BanksDB.Web\\Components\\Layout\\MainLayout.razor*",
+              "ToolTip": "D:\\\u041C\u043E\u0451\\Programming\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "BanksDB.Web\\Components\\Layout\\MainLayout.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-29T09:36:54.18Z",
@@ -463,8 +455,7 @@
               "RelativeToolTip": "BanksDB.Web\\wwwroot\\css\\account.css",
               "ViewState": "AgIAAE8AAAAAAAAAAAAAAJkCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-22T12:45:57.387Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-22T12:45:57.387Z"
             },
             {
               "$type": "Document",
@@ -501,10 +492,6 @@
               "ViewState": "AgIAABQAAAAAAAAAAAAiwCsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-15T14:45:26.387Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
@@ -1485,6 +1472,10 @@
               "RelativeToolTip": "..\\..\\..\\..\\..\\For Jobs\\BanksDB\\BanksDB.BLL\\Class1.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-28T12:40:45.058Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }
