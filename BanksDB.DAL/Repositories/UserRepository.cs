@@ -3,7 +3,6 @@ using BanksDB.Core.Data;
 using BanksDB.Core.Dtos;
 using BanksDB.Core.Entities;
 using BanksDB.Core.Interfaces;
-using BanksDB.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

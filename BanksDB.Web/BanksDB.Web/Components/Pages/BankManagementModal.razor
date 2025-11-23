@@ -1,0 +1,213 @@
+﻿@using BanksDB.BLL.Interfaces
+@using BanksDB.Core.Entities
+@using BanksDB.Core.Models
+@inject IBankService BankService
+@inject IJSRuntime JSRuntime
+
+
+<div class="modal-overlay">
+    <div class="modal-content wide-modal">
+        <div class="modal-header">
+            <h5>🏦 Управление банками</h5>
+            <button @onclick="Close" class="btn-close">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <!-- Форма добавления/редактирования -->
+            <div class="form-section">
+                <h6>@(editingBank == null ? "Добавить новый банк" : "Редактировать банк")</h6>
+                <EditForm Model="currentBank" OnValidSubmit="SaveBank">
+                    <DataAnnotationsValidator />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Название банка *</label>
+                                <InputText @bind-Value="currentBank.Name" class="form-control" />
+                                <ValidationMessage For="@(() => currentBank.Name)" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>БИК *</label>
+                                <InputText @bind-Value="currentBank.Bik" class="form-control" />
+                                <ValidationMessage For="@(() => currentBank.Bik)" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Корреспондентский счет</label>
+                                <InputText @bind-Value="currentBank.CorrespondentAccount" class="form-control" />
+                                <ValidationMessage For="@(() => currentBank.CorrespondentAccount)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Адрес</label>
+                        <InputText @bind-Value="currentBank.Address" class="form-control" />
+                        <ValidationMessage For="@(() => currentBank.Address)" />
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-success">
+                            @(editingBank == null ? "Добавить" : "Сохранить")
+                        </button>
+                        @if (editingBank != null)
+                        {
+                            <button type="button" @onclick="CancelEdit" class="btn btn-secondary">Отмена</button>
+                        }
+                    </div>
+                </EditForm>
+            </div>
+
+            <!-- Список банков -->
+            <div class="list-section">
+                <h6>Список банков</h6>
+                @if (isLoading)
+                {
+                    <div class="loading">Загрузка...</div>
+                }
+                else if (!banks.Any())
+                {
+                    <div class="empty-state">Нет добавленных банков</div>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th>БИК</th>
+                                    <th>Корр. счет</th>
+                                    <th>Адрес</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var bank in banks.Where(b => !b.IsDeleted))
+                                {
+                                    <tr>
+                                        <td>@bank.Name</td>
+                                        <td>@bank.Bik</td>
+                                        <td>@bank.CorrespondentAccount</td>
+                                        <td>@bank.Address</td>
+                                        <td>
+                                            <button @onclick="@(() => EditBank(bank))"
+                                                    class="btn btn-sm btn-outline-primary" title="Редактировать">
+                                                ✏️
+                                            </button>
+                                            <button @onclick="@(() => DeleteBank(bank.Id))"
+                                                    class="btn btn-sm btn-outline-danger" title="Удалить">
+                                                🗑️
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private List<Bank> banks = new();
+    private Bank currentBank = new();
+    private Bank editingBank = null;
+    private bool isLoading = true;
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadBanks();
+    }
+
+    private async Task LoadBanks()
+    {
+        isLoading = true;
+        try
+        {
+            banks = await BankService.GetAllBanksAsync();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Ошибка загрузки: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task SaveBank()
+    {
+        try
+        {
+            if (editingBank == null)
+            {
+                await BankService.AddBankAsync(currentBank);
+            }
+            else
+            {
+                await BankService.UpdateBankAsync(currentBank);
+            }
+
+            await LoadBanks();
+            ResetForm();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Ошибка сохранения: {ex.Message}";
+        }
+    }
+
+    private void EditBank(Bank bank)
+    {
+        editingBank = bank;
+        currentBank = new Bank
+        {
+            Id = bank.Id,
+            Name = bank.Name,
+            Bik = bank.Bik,
+            CorrespondentAccount = bank.CorrespondentAccount,
+            Address = bank.Address
+        };
+    }
+
+    private async Task DeleteBank(int id)
+    {
+        if (await JSRuntime.InvokeAsync<bool>("confirm", "Вы уверены, что хотите удалить этот банк?"))
+        {
+            try
+            {
+                await BankService.DeleteBankAsync(id);
+                await LoadBanks();
+            }
+            catch (Exception ex)
+            {
+                errorMessage = $"Ошибка удаления: {ex.Message}";
+            }
+        }
+    }
+
+    private void CancelEdit()
+    {
+        editingBank = null;
+        ResetForm();
+    }
+
+    private void ResetForm()
+    {
+        currentBank = new Bank();
+        editingBank = null;
+    }
+
+    private void Close()
+    {
+        OnClose.InvokeAsync();
+    }
+}

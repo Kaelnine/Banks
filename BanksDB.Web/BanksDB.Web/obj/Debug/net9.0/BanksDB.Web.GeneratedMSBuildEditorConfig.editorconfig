@@ -28,6 +28,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBdXRoZW50aWNhdGlvblZpZXcucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Моё/Programming/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/AccountManagementModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50TWFuYWdlbWVudE1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Моё/Programming/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -42,6 +46,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Моё/Programming/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Моё/Programming/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/OrganizationManagementModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xPcmdhbml6YXRpb25NYW5hZ2VtZW50TW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Моё/Programming/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/Test.razor]
@@ -67,6 +75,10 @@ build_metadata.AdditionalFiles.CssScope = b-hqw4h8qk4h
 [D:/Моё/Programming/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/Account.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-3p0kpfey00
+
+[D:/Моё/Programming/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/BankManagementModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCYW5rTWFuYWdlbWVudE1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-wjl67vzif4
 
 [D:/Моё/Programming/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xfSG9zdC5jc2h0bWw=

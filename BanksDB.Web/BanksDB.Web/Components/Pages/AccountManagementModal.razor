@@ -1,0 +1,275 @@
+﻿@using BanksDB.BLL.Interfaces
+@using BanksDB.Core.Entities
+@using BanksDB.Core.Models
+@inject IAccountService AccountService
+@inject IBankService BankService
+@inject IOrganizationService OrganizationService
+@inject IJSRuntime JSRuntime
+
+
+<div class="modal-overlay">
+    <div class="modal-content wide-modal">
+        <div class="modal-header">
+            <h5>💳 Управление счетами</h5>
+            <button @onclick="Close" class="btn-close">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <!-- Форма добавления/редактирования -->
+            <div class="form-section">
+                <h6>@(editingAccount == null ? "Добавить новый счет" : "Редактировать счет")</h6>
+                <EditForm Model="currentAccount" OnValidSubmit="SaveAccount">
+                    <DataAnnotationsValidator />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Название счета *</label>
+                                <InputText @bind-Value="currentAccount.Name" class="form-control" />
+                                <ValidationMessage For="@(() => currentAccount.Name)" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Номер счета *</label>
+                                <InputText @bind-Value="currentAccount.AccountNumber" class="form-control" />
+                                <ValidationMessage For="@(() => currentAccount.AccountNumber)" />
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Банк *</label>
+                                @if (isLoadingBanks)
+                                {
+                                    <div>Загрузув банков...</div>
+                                }
+                                else
+                                {
+                                    <InputSelect @bind-Value="currentAccount.BankId" class="form-control">
+                                        <option value="0">-- Выберите банк --</option>
+                                        @foreach (var bank in banks.Where(b => !b.IsDeleted))
+                                        {
+                                            <option value="@bank.Id">@bank.Name (@bank.Bik)</option>
+                                        }
+                                    </InputSelect>
+                                }
+                                <ValidationMessage For="@(() => currentAccount.BankId)"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Организация *</label>
+                                @if (isLoadingOrganizations)
+                                {
+                                    <div>Загрузув организаций...</div>
+                                }
+                                else
+                                {
+                                    <InputSelect @bind-Value="currentAccount.OrganizationId" class="form-control">
+                                        <option value="0">-- Выберите организацию --</option>
+                                        @foreach (var org in organizations.Where(o => !o.IsDeleted))
+                                        {
+                                            <option value="@org.Id">@org.Name (@org.Inn)</option>
+                                        }
+                                    </InputSelect>
+                                }
+                                <ValidationMessage For="@(() => currentAccount.OrganizationId)" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-success">
+                            @(editingAccount == null ? "Добавить" : "Сохранить")
+                        </button>
+                        @if (editingAccount != null)
+                        {
+                            <button type="button" @onclick="CancelEdit" class="btn btn-secondary">Отмена</button>
+                        }
+                    </div>
+                </EditForm>
+            </div>
+
+            <!-- Список счетов -->
+            <div class="list-section">
+                <h6>Список счетов</h6>
+                @if (isLoading)
+                {
+                    <div class="loading">Загрузка...</div>
+                }
+                else if (!accounts.Any())
+                {
+                    <div class="empty-state">Нет добавленных счетов</div>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Номер счета</th>
+                                    <th>Банк</th>
+                                    <th>Организация</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var account in accounts.Where(a => !a.IsDeleted))
+                                {
+                                    <tr>
+                                        <td>@account.Name</td>
+                                        <td>@account.AccountNumber</td>
+                                        <td>@account.Bank.Name</td>
+                                        <td>@account.Organization.Name</td>
+                                        <td>
+                                            <button @onclick="@(() => EditAccount(account))"
+                                                    class="btn btn-sm btn-outline-primary" title="Редактировать">
+                                                ✏️
+                                            </button>
+                                            <button @onclick="@(() => DeleteAccount(account.Id))"
+                                                    class="btn btn-sm btn-outline-danger" title="Удалить">
+                                                🗑️
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private List<Core.Entities.Account> accounts = new();
+    private List<Bank> banks = new();
+    private List<Organization> organizations = new();
+    private Core.Entities.Account currentAccount = new();
+    private Core.Entities.Account editingAccount = null;
+    private bool isLoading = true;
+    private bool isLoadingBanks = true;
+    private bool isLoadingOrganizations = true;
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAllData();
+    }
+
+    private async Task LoadAllData()
+    {
+        try
+        {
+            var accountsTask = AccountService.GetAllFullInfoAsync();
+            var banksTask = BankService.GetAllBanksAsync();
+            var organizationsTask = OrganizationService.GetAllOrganizationsAsync();
+            await Task.WhenAll(accountsTask, banksTask, organizationsTask);
+            accounts = await accountsTask;
+            banks = await banksTask;
+            organizations = await organizationsTask;
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Ошибка загрузки: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+            isLoadingBanks = false;
+            isLoadingOrganizations = false;
+        }
+    }
+
+    // private async Task LoadAccounts()
+    // {
+    //     isLoading = true;
+    //     try
+    //     {
+    //         accounts = await AccountService.GetAllFullInfoAsync();
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         errorMessage = $"Ошибка загрузки: {ex.Message}";
+    //     }
+    //     finally
+    //     {
+    //         isLoading = false;
+    //     }
+    // }
+
+    private async Task SaveAccount()
+    {
+        try
+        {
+            if (editingAccount == null)
+            {
+                await AccountService.AddAsync(currentAccount);
+            }
+            else
+            {
+                await AccountService.UpdateAsync(currentAccount);
+            }
+
+            await LoadAllData();
+            ResetForm();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Ошибка сохранения: {ex.Message}";
+        }
+    }
+
+    private void EditAccount(Core.Entities.Account account)
+    {
+        editingAccount = account;
+        currentAccount = new Core.Entities.Account
+        {
+            Id = account.Id,
+            Name = account.Name,
+            OrganizationId = account.Organization.Id,
+            //OrganizationName = account.Organization.Name,
+            BankId = account.Bank.Id,
+            //BankName = account.Bank.Name,
+            AccountNumber = account.AccountNumber
+        };
+    }
+
+    private async Task DeleteAccount(int id)
+    {
+        if (await JSRuntime.InvokeAsync<bool>("confirm", "Вы уверены, что хотите удалить этот счет?"))
+        {
+            try
+            {
+                await AccountService.DeleteAsync(id);
+                await LoadAllData();
+            }
+            catch (Exception ex)
+            {
+                errorMessage = $"Ошибка удаления: {ex.Message}";
+            }
+        }
+    }
+
+    private void CancelEdit()
+    {
+        editingAccount = null;
+        ResetForm();
+    }
+
+    private void ResetForm()
+    {
+        currentAccount = new Core.Entities.Account();
+        editingAccount = null;
+    }
+
+    private void Close()
+    {
+        OnClose.InvokeAsync();
+    }
+}

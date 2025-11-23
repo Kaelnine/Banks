@@ -1,4 +1,5 @@
-﻿using BanksDB.Core.Models.InputModels;
+﻿using BanksDB.Core.Entities;
+using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,13 @@ namespace BanksDB.BLL.Interfaces
     public interface IAccountService
     {
         Task<List<AccountOutputModel>> GetAllAsync();
+        Task<List<Account>> GetAllFullInfoAsync();
         Task<AccountOutputModel> GetByIdAsync(int id);
         Task<List<AccountOutputModel>> GetAccountSummaryAsync();
-        Task AddAsync(AccountInputModel inputModel);
-        Task UpdateAsync(int id, AccountInputModel inputModel);
+        //Task AddAsync(AccountInputModel inputModel);
+        Task AddAsync(Account account);
+        //Task UpdateAsync(int id, AccountInputModel inputModel);
+        Task UpdateAsync(Account account);
         Task DeleteAsync(int id);
         Task<List<AccountOutputModel>> GetByOrganizationIdAsync(int organizationId);
     }

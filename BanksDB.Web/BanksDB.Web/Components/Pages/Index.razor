@@ -65,7 +65,7 @@ else
 							💳 Счета
 						</button>
 						<button class="btn-login" @onclick="ShowBankModal">
-							➕ Банки
+							🏦 Банки
 						</button>
 					</div>
 				</div>
@@ -110,6 +110,18 @@ else
 		}
 	</body>
 	</html>
+	@if (showBankModal)
+	{
+		<BankManagementModal OnClose="CloseModals" />
+	}
+	@if (showOrganizationModal)
+	{
+		<OrganizationManagementModal OnClose="CloseModals" />
+	}
+	@if (showAccountModal)
+	{
+		<AccountManagementModal OnClose="CloseModals" />
+	}
 }
 
 
@@ -120,6 +132,18 @@ else
 	private bool showOrganizationModal = false;
 	private bool showAccountModal = false;
 	private bool isRedirecting = false;
+
+	private void ShowBankModal() => showBankModal = true;
+	private void ShowOrganizationModal() => showOrganizationModal = true;
+	private void ShowAccountModal() => showAccountModal = true;
+
+	private void CloseModals()
+	{
+		showBankModal = false;
+		showOrganizationModal = false;
+		showAccountModal = false;
+		StateHasChanged();
+	}
 
 	protected override async Task OnInitializedAsync()
 	{
@@ -180,20 +204,20 @@ else
 		Navigation.NavigateTo("/login");
 	}
 
-	private void ShowBankModal()
-	{
-		showBankModal = true;		
-	}
+	// private void ShowBankModal()
+	// {
+	// 	showBankModal = true;		
+	// }
 
-	private void ShowOrganizationModal()
-	{
-		showOrganizationModal = true;		
-	}
+	// private void ShowOrganizationModal()
+	// {
+	// 	showOrganizationModal = true;		
+	// }
 
-	private void ShowAccountModal()
-	{
-		showAccountModal = true;		
-	}
+	// private void ShowAccountModal()
+	// {
+	// 	showAccountModal = true;		
+	// }
 
 	public void Dispose()
 	{

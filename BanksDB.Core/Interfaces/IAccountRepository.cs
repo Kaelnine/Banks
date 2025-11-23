@@ -11,7 +11,7 @@ namespace BanksDB.Core.Interfaces
 {
     public interface IAccountRepository
     {
-        Task<IEnumerable<AccountDto>> GetAllAsync();// получение всех счетов // AccountDto
+        Task<IEnumerable<Account>> GetAllAsync();// получение всех счетов // AccountDto
         Task<AccountDto> GetByIdAsync(int id);// получение счета по id // AccountDto              
         Task AddAsync(Account account);// создание счета //AccountDto
         Task UpdateAsync(Account account);// изменение счета // AccountDto

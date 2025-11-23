@@ -28,10 +28,15 @@ namespace BanksDB.BLL.Services
             _db = db;
         }
         // добавление счета
-        public async Task AddAsync(AccountInputModel inputModel)
+        //public async Task AddAsync(AccountInputModel inputModel)
+        //{
+        //    var account = _mapper.Map<Account>(inputModel);
+        //    await _accountRepository.AddAsync(account);            
+        //}
+        public async Task AddAsync(Account account)
         {
-            var account = _mapper.Map<Account>(inputModel);
-            await _accountRepository.AddAsync(account);            
+            //var account = _mapper.Map<Account>(inputModel);
+            await _accountRepository.AddAsync(account);
         }
 
         // удаление счета
@@ -47,11 +52,19 @@ namespace BanksDB.BLL.Services
             return _mapper.Map<List<AccountOutputModel>>(summary);
         }
 
-        // получение всех счетов
+        // получение всех счетов короткая информация
         public async Task<List<AccountOutputModel>> GetAllAsync()
         {
             var accounts = await _accountRepository.GetAllAsync();
             return _mapper.Map<List<AccountOutputModel>>(accounts);
+        }
+
+        // получение всех счетов полная информация
+        public async Task<List<Account>> GetAllFullInfoAsync()
+        {
+            var accounts = await _accountRepository.GetAllAsync();
+            //return _mapper.Map<List<Account>>(accounts);
+            return accounts.ToList();
         }
 
         // получение счета по id
@@ -91,11 +104,17 @@ namespace BanksDB.BLL.Services
         }
 
         // обновление счета
-        public async Task UpdateAsync(int id, AccountInputModel inputModel)
+        //public async Task UpdateAsync(int id, AccountInputModel inputModel)
+        //{
+        //    var account = _mapper.Map<Account>(inputModel);
+        //    account.Id = id;
+        //    await _accountRepository.UpdateAsync(account);            
+        //}
+        public async Task UpdateAsync(Account account)
         {
-            var account = _mapper.Map<Account>(inputModel);
-            account.Id = id;
-            await _accountRepository.UpdateAsync(account);            
+            //var account = _mapper.Map<Account>(inputModel);
+            //account.Id = id;
+            await _accountRepository.UpdateAsync(account);
         }
     }
 }

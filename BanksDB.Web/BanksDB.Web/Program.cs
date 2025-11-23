@@ -30,8 +30,10 @@ namespace BanksDB.Web
             builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
             builder.Services.AddScoped<AuthenticationService>();            
             builder.Services.AddAntiforgery();
+            builder.Services.AddScoped<IBankService, BankService>();
             builder.Services.AddScoped<IBankRepository, BankRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+            builder.Services.AddScoped<IOrganizationService, OrganizationService>();
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
             builder.Services.AddScoped<BankParser>();

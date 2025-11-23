@@ -61,6 +61,7 @@ namespace DBBanks.DAL.Repositories
                 .Select(a => new AccountSummaryDto
                 {
                     Id = a.Id,
+                    Name = a.Name,
                     OrganizationName = a.Organization.Name,
                     OrganizationInn = a.Organization.Inn,
                     BankName = a.Bank.Name,
@@ -83,18 +84,28 @@ namespace DBBanks.DAL.Repositories
         }
 
         // получение всех счетов
-        public async Task<IEnumerable<AccountDto>> GetAllAsync() // AccountDto
+        //public async Task<IEnumerable<AccountDto>> GetAllAsync() // AccountDto
+        //{
+        //    await using var db = await _db.CreateDbContextAsync();
+        //    //return await _db.Accounts.Where(a => !a.IsDeleted).ToListAsync();
+        //    //return await db.Accounts.Where(a => !a.IsDeleted).ToListAsync();
+        //    var accounts = await db.Accounts
+        //        .Include(a => a.Bank)
+        //        .Include(a => a.Organization)
+        //        .Where(a => !a.IsDeleted)
+        //        .ToListAsync();
+        //    return _mapper.Map<IEnumerable<AccountDto>>(accounts);
+        //}
+        public async Task<IEnumerable<Account>> GetAllAsync() // AccountDto
         {
-            await using var db = await _db.CreateDbContextAsync();
-            //return await _db.Accounts.Where(a => !a.IsDeleted).ToListAsync();
-            //return await db.Accounts.Where(a => !a.IsDeleted).ToListAsync();
+            await using var db = await _db.CreateDbContextAsync();            
             var accounts = await db.Accounts
                 .Include(a => a.Bank)
                 .Include(a => a.Organization)
                 .Where(a => !a.IsDeleted)
                 .ToListAsync();
-            return _mapper.Map<IEnumerable<AccountDto>>(accounts);
-        }       
+            return accounts;
+        }
 
         // получение счета по id
         public async Task<AccountDto> GetByIdAsync(int id) // AccountDto

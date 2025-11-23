@@ -1,0 +1,213 @@
+﻿@using BanksDB.BLL.Interfaces
+@using BanksDB.Core.Entities
+@using BanksDB.Core.Models
+@inject IOrganizationService OrganizationService
+@inject IJSRuntime JSRuntime
+
+
+<div class="modal-overlay">
+    <div class="modal-content wide-modal">
+        <div class="modal-header">
+            <h5>🏢 Управление органиизациями</h5>
+            <button @onclick="Close" class="btn-close">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <!-- Форма добавления/редактирования -->
+            <div class="form-section">
+                <h6>@(editingOrganization == null ? "Добавить новую организацию" : "Редактировать организацию")</h6>
+                <EditForm Model="currentOrganization" OnValidSubmit="SaveOrganization">
+                    <DataAnnotationsValidator />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Название организации *</label>
+                                <InputText @bind-Value="currentOrganization.Name" class="form-control" />
+                                <ValidationMessage For="@(() => currentOrganization.Name)" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>ИНН *</label>
+                                <InputText @bind-Value="currentOrganization.Inn" class="form-control" />
+                                <ValidationMessage For="@(() => currentOrganization.Inn)" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>КПП</label>
+                                <InputText @bind-Value="currentOrganization.Kpp" class="form-control" />
+                                <ValidationMessage For="@(() => currentOrganization.Kpp)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Адрес</label>
+                        <InputText @bind-Value="currentOrganization.Address" class="form-control" />
+                        <ValidationMessage For="@(() => currentOrganization.Address)" />
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-success">
+                            @(editingOrganization == null ? "Добавить" : "Сохранить")
+                        </button>
+                        @if (editingOrganization != null)
+                        {
+                            <button type="button" @onclick="CancelEdit" class="btn btn-secondary">Отмена</button>
+                        }
+                    </div>
+                </EditForm>
+            </div>
+
+            <!-- Список организаций -->
+            <div class="list-section">
+                <h6>Список организаций</h6>
+                @if (isLoading)
+                {
+                    <div class="loading">Загрузка...</div>
+                }
+                else if (!organizations.Any())
+                {
+                    <div class="empty-state">Нет добавленных организаций</div>
+                }
+                else
+                {
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th>ИНН</th>
+                                    <th>КПП</th>
+                                    <th>Адрес</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var organization in organizations.Where(o => !o.IsDeleted))
+                                {
+                                    <tr>
+                                        <td>@organization.Name</td>
+                                        <td>@organization.Inn</td>
+                                        <td>@organization.Kpp</td>
+                                        <td>@organization.Address</td>
+                                        <td>
+                                            <button @onclick="@(() => EditOrganization(organization))"
+                                                    class="btn btn-sm btn-outline-primary" title="Редактировать">
+                                                ✏️
+                                            </button>
+                                            <button @onclick="@(() => DeleteOrganization(organization.Id))"
+                                                    class="btn btn-sm btn-outline-danger" title="Удалить">
+                                                🗑️
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private List<Organization> organizations = new();
+    private Organization currentOrganization = new();
+    private Organization editingOrganization = null;
+    private bool isLoading = true;
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadOrganizations();
+    }
+
+    private async Task LoadOrganizations()
+    {
+        isLoading = true;
+        try
+        {
+            organizations = await OrganizationService.GetAllOrganizationsAsync();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Ошибка загрузки: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task SaveOrganization()
+    {
+        try
+        {
+            if (editingOrganization == null)
+            {
+                await OrganizationService.AddOrganizationAsync(currentOrganization);
+            }
+            else
+            {
+                await OrganizationService.UpdateOrganizationAsync(currentOrganization);
+            }
+
+            await LoadOrganizations();
+            ResetForm();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Ошибка сохранения: {ex.Message}";
+        }
+    }
+
+    private void EditOrganization(Organization organization)
+    {
+        editingOrganization = organization;
+        currentOrganization = new Organization
+        {
+            Id = organization.Id,
+            Name = organization.Name,
+            Inn = organization.Inn,
+            Kpp = organization.Kpp,
+            Address = organization.Address
+        };
+    }
+
+    private async Task DeleteOrganization(int id)
+    {
+        if (await JSRuntime.InvokeAsync<bool>("confirm", "Вы уверены, что хотите удалить эту оргпнизацию?"))
+        {
+            try
+            {
+                await OrganizationService.DeleteOrganizationAsync(id);
+                await LoadOrganizations();
+            }
+            catch (Exception ex)
+            {
+                errorMessage = $"Ошибка удаления: {ex.Message}";
+            }
+        }
+    }
+
+    private void CancelEdit()
+    {
+        editingOrganization = null;
+        ResetForm();
+    }
+
+    private void ResetForm()
+    {
+        currentOrganization = new Organization();
+        editingOrganization = null;
+    }
+
+    private void Close()
+    {
+        OnClose.InvokeAsync();
+    }
+}
