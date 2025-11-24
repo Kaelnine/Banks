@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BanksDB.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a4753c76f2ecf612e66ee842fa9ced89d4176617")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16581fb0c0806ba7334b18dbf73da32917252eda")]
 [assembly: System.Reflection.AssemblyProductAttribute("BanksDB.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BanksDB.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

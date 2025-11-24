@@ -15,6 +15,26 @@
 <PageTitle>Информация по счету</PageTitle>
 <head><link href="/css/account.css" rel="stylesheet"/></head>
 
+@if (shouldRedirect)
+{
+    <div style="text-align: center; padding: 3rem;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Загрузка...</span>
+        </div>
+        <p class="mt-2">Перенаправление на страницу входа...</p>
+    </div>
+}
+else if (!isInitialized)
+{
+    <div style="text-align: center; padding: 3rem;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Загрузка...</span>
+        </div>
+        <p class="mt-2">Инициализация...</p>
+    </div>
+}
+else
+{
 <div class="account-details-container">    
         <div class="page-header">
         <div class="header-content">
@@ -23,7 +43,7 @@
             </button>
             <h3>📊 Детали счета</h3>
             <div class="header-actions">
-                @* @if (AuthenticationService.HasAccessToEdit())//пока поставил заглушку на все что связано с аутентификацией
+                @* @if (AuthenticationService.HasAccessToEdit())
                 { *@
                     <button @onclick="ShowUploadModal" class="btn-upload">
                         📁 Загрузить транзакции
@@ -278,8 +298,8 @@
             </div>
         </div>
     </div>
+    }
 }
-
 
 @code {
     [Parameter] public int Id { get; set; }
@@ -295,7 +315,43 @@
     private InputFile? fileInput;
     private BankParserResult parserResult;
     private ElementReference fileInputElement;
-    
+
+    private bool isInitialized = false;
+	private bool shouldRedirect = false;
+
+    protected override void OnInitialized()
+    {
+        AuthenticationService.OnAuthenticationStateChanged += StateHasChanged;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                await AuthenticationService.InitializeAsync();
+                if (!AuthenticationService.IsAuthenticated)
+                {
+                    shouldRedirect = true;
+                    StateHasChanged();
+                    return;
+                }
+                else
+                {
+                    await LoadAccountInfo();
+                    SetCurrentMonth();
+                    await LoadDailySummary();
+                    isInitialized = true;
+                    StateHasChanged();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка инициализации: {ex}");
+            }
+        }
+    }
     private async Task HandleInputFileSelected(InputFileChangeEventArgs e)
     {
         uploadError = string.Empty;
@@ -335,19 +391,27 @@
         }
     }
 
-    protected override async Task OnInitializedAsync()
-    {
-        await LoadAccountInfo();
-        SetCurrentMonth();
-        await LoadDailySummary();
-    }
+    // protected override async Task OnInitializedAsync()
+    // {        
+    //     await LoadAccountInfo();
+    //     SetCurrentMonth();   
+    //     await LoadDailySummary();
+    // }
 
     protected override async Task OnParametersSetAsync()
     {
-        if (Id > 0)
+        // if (Id > 0)
+        // {
+        //     dateRange.AccountId = Id;
+        //     await LoadAccountInfo();
+        // }
+        if (Id > 0 && AuthenticationService.IsAuthenticated)
         {
             dateRange.AccountId = Id;
-            await LoadAccountInfo();
+            if (isInitialized)
+            {
+                await LoadAccountInfo();
+            }
         }
     }
 
@@ -365,6 +429,7 @@
 
     private async Task LoadDailySummary()
     {
+        if (!AuthenticationService.IsAuthenticated) return;
         isLoading = true;
         StateHasChanged();
 

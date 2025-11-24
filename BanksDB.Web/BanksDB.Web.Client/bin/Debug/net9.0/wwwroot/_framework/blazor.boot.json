@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BanksDB.Web.Client",
   "resources": {
-    "hash": "sha256-zutvnqDv0uezoQCx2VvFWgd6dHvf4Vo+TKobVc9fCAg=",
+    "hash": "sha256-2wNPYu5pdHfUKLPTS2o9meJohCHOmqVeDHKYVSeNVFY=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.z6jo10m0rd.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.65wbz7t8mt.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -195,23 +195,23 @@
       "netstandard.kaml52uspo.wasm": "netstandard.wasm",
       "System.Private.CoreLib.uqnhzdwypx.wasm": "System.Private.CoreLib.wasm",
       "dotnet.js": "dotnet.js",
-      "dotnet.native.noby4tlk4d.js": "dotnet.native.js",
-      "dotnet.native.qe75a9vfqn.wasm": "dotnet.native.wasm",
-      "dotnet.runtime.9o45ky8ejm.js": "dotnet.runtime.js",
+      "dotnet.native.9ih887ebfz.js": "dotnet.native.js",
+      "dotnet.native.21mns4qp4i.wasm": "dotnet.native.wasm",
+      "dotnet.runtime.st3wwc8rqy.js": "dotnet.runtime.js",
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "BanksDB.Web.Client.4qkvf85gcp.wasm": "BanksDB.Web.Client.wasm",
-      "BanksDB.Web.Client.dtdu7oqxik.pdb": "BanksDB.Web.Client.pdb"
+      "BanksDB.Web.Client.sd95iuzu8t.wasm": "BanksDB.Web.Client.wasm",
+      "BanksDB.Web.Client.l0xzae6l4g.pdb": "BanksDB.Web.Client.pdb"
     },
     "jsModuleNative": {
-      "dotnet.native.noby4tlk4d.js": "sha256-p9eEzXhQIsI0a5bBJhfzW15iRafgplTxT8XrO5FiH9o="
+      "dotnet.native.9ih887ebfz.js": "sha256-oS7IRiQoVt9ThQ7Y2UM3XoeY0JqPD02cg9IvRdufn2w="
     },
     "jsModuleRuntime": {
-      "dotnet.runtime.9o45ky8ejm.js": "sha256-6QIZYgG+ftoT9N1H1EEJeXIhD/qbKqEcnmawDskiwdI="
+      "dotnet.runtime.st3wwc8rqy.js": "sha256-oBRKHAqZUsvCRnCzkQfB7zc45cpKLNq2NKyrG10IKx8="
     },
     "wasmNative": {
-      "dotnet.native.qe75a9vfqn.wasm": "sha256-Po2dalLvTpf5jAS+jt0TzuBYybYiL1F6qAacZJ8UAdo="
+      "dotnet.native.21mns4qp4i.wasm": "sha256-RtuwNrUOdAJ5A4aS4ZmceO4ySriaYqTdC7X++6yd9lM="
     },
     "icu": {
       "icudt_CJK.tjcz0u77k5.dat": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -412,10 +412,10 @@
       "WindowsBase.vy2l5u79y6.wasm": "sha256-ufB9Mo5joMyUs3DzXWWBFFIZNEVrt6h9N5stYB6Oln4=",
       "mscorlib.xd6mv31d55.wasm": "sha256-1YSLR2eZt3ceALFV//vZUF2AloxVil3VlrW1zZYPSEI=",
       "netstandard.kaml52uspo.wasm": "sha256-HLEwBpLfzKw2/zGSVzHzFJxznCkt/WIjahrziiMrOpA=",
-      "BanksDB.Web.Client.4qkvf85gcp.wasm": "sha256-rFn7NsJ4jWhVv/rXIUhpWVJpnsA3j+C3dwxOFHl8GO0="
+      "BanksDB.Web.Client.sd95iuzu8t.wasm": "sha256-wPi235X67+otr6XqU+FmXRSTciDC699gS7G+tAGtJvk="
     },
     "pdb": {
-      "BanksDB.Web.Client.dtdu7oqxik.pdb": "sha256-j7cnsIjJnqerSbfyxQsu75iEkgY+SdjBY1yBHSr/OAc="
+      "BanksDB.Web.Client.l0xzae6l4g.pdb": "sha256-5XO41O77c3sqNt512Nmupi2AlEHx8ZsUIWiVt/FUjOk="
     }
   },
   "cacheBootResources": true,

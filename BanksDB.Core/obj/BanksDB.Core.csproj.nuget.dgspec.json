@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj": {}
+    "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj": {}
   },
   "projects": {
-    "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj": {
+    "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj",
+        "projectUniqueName": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj",
         "projectName": "BanksDB.Core",
-        "projectPath": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj",
-        "packagesPath": "C:\\Users\\adamc\\.nuget\\packages\\",
-        "outputPath": "D:\\Моё\\Programming\\BanksDB\\Banks\\BanksDB.Core\\obj\\",
+        "projectPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\BanksDB.Core.csproj",
+        "packagesPath": "C:\\Users\\Илья\\.nuget\\packages\\",
+        "outputPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\adamc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Илья\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -66,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

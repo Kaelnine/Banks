@@ -19,6 +19,8 @@ namespace BanksDB.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            
+
             builder.Services.AddRazorPages(options =>
             {
                 options.RootDirectory = "/Components/Pages";

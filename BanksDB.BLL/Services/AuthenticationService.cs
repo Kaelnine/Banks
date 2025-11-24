@@ -28,6 +28,7 @@ namespace BanksDB.BLL.Services
         Task<bool> LoginAsync(string username, string password, bool rememberMe = false);        
         Task LogoutAsync();
         Task InitializeAsync();
+        bool HasAccessToEdit();
     }
     public class AuthenticationService : IAuthenticationService
     {        
@@ -49,7 +50,16 @@ namespace BanksDB.BLL.Services
         
         public async Task InitializeAsync()
         {
-            await TryRestoreUserFromStorageAsync();
+            try
+            {
+                Console.WriteLine("Начало инициализации");
+                await TryRestoreUserFromStorageAsync();
+                Console.WriteLine($"Инициализация завершена. Аутентификация: {IsAuthenticated}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка инициализации: {ex}");
+            }
         }
 
         private async Task TryRestoreUserFromStorageAsync()
@@ -138,6 +148,11 @@ namespace BanksDB.BLL.Services
                 Console.WriteLine($"Ошибка при выходе: {ex}");
             }       
             
+        }
+
+        public bool HasAccessToEdit()
+        {
+            return IsAuthenticated && (CurrentUser?.Role == "Accountat");
         }
         
     }

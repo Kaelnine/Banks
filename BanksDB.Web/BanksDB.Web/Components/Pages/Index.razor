@@ -15,7 +15,7 @@
 @implements IDisposable
 
 
-@if (!AuthenticationService.IsAuthenticated)
+@* @if (!AuthenticationService.IsAuthenticated)
 {
 	<div style="text-align: center; padding: 3rem;">
 		<div class="spinner-border text-primary" role="status">
@@ -24,6 +24,31 @@
 		<p class="mt-2">Проверка авторизации...</p>
 	</div>
 	
+} *@
+@if (shouldRedirect)
+{
+    <div style="text-align: center; padding: 3rem;">
+        <p>Перенаправление на страницу входа...</p>
+    </div>
+    
+    @code {
+        protected override void OnAfterRender(bool firstRender)
+        {
+            if (shouldRedirect)
+            {
+                Navigation.NavigateTo("/login");
+            }
+        }
+    }
+}
+else if (!isInitialized)
+{
+    <div style="text-align: center; padding: 3rem;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Загрузка...</span>
+        </div>
+        <p class="mt-2">Инициализация...</p>
+    </div>
 }
 else
 {
@@ -39,8 +64,10 @@ else
 			
 			<div class="user-info">
 				<span>
-					👤 @AuthenticationService.CurrentUser.FullName
-					<small>(@AuthenticationService.CurrentUser.RoleDisplayName)</small>
+					@* 👤 @AuthenticationService.CurrentUser.FullName *@
+					👤 @(AuthenticationService.CurrentUser?.FullName ?? "Пользователь")
+					@* <small>(@AuthenticationService.CurrentUser.RoleDisplayName)</small> *@
+					<small>(@(AuthenticationService.CurrentUser?.RoleDisplayName ?? "Неизвестно"))</small>
 				</span>
 					<button @onclick="Logout" class="btn-login btn-logout">
 						Выйти
@@ -52,7 +79,8 @@ else
 		
 		</div>
 		<!-- Панель управления для бухгалтера -->
-		@if (AuthenticationService.CurrentUser.Role == "Accountant")
+		@* @if (AuthenticationService.CurrentUser.Role == "Accountant") *@
+		@if (AuthenticationService.CurrentUser?.Role == "Accountant")
 		{
 			<div class="page-container">
 				<div class="admin-panel">
@@ -133,6 +161,9 @@ else
 	private bool showAccountModal = false;
 	private bool isRedirecting = false;
 
+	private bool isInitialized = false;
+	private bool shouldRedirect = false;
+
 	private void ShowBankModal() => showBankModal = true;
 	private void ShowOrganizationModal() => showOrganizationModal = true;
 	private void ShowAccountModal() => showAccountModal = true;
@@ -147,17 +178,45 @@ else
 
 	protected override async Task OnInitializedAsync()
 	{
-		
-		if (!AuthenticationService.IsAuthenticated)
-		{
-			await Task.Delay(100);
-			Navigation.NavigateTo("/login");
-			return;
-		}
+		//await Task.Delay(500);
+		////await AuthenticationService.InitializeAsync();
+		// if (!AuthenticationService.IsAuthenticated)
+		// {
+		// 	//await Task.Delay(100);
+		// 	Navigation.NavigateTo("/login");
+		// 	return;
+		// }
 		AuthenticationService.OnAuthenticationStateChanged += StateHasChanged;
-		await LoadData();
+		//await LoadData();
+		//isInitialized = true;
 	}
-
+	//
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+			try
+			{
+				await AuthenticationService.InitializeAsync();
+				if (!AuthenticationService.IsAuthenticated)
+				{
+					shouldRedirect = true;
+					StateHasChanged();
+				}
+				else
+				{
+					await LoadData();
+					isInitialized = true;
+					StateHasChanged();
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Ошибка: {ex}");
+			}
+		}
+	}
+	//
 	private async Task LoadData()
 	{
 		try
@@ -199,6 +258,19 @@ else
 		if (isRedirecting) return;
 
 		isRedirecting = true;
+		//
+		// try
+		// {        
+		// 	var userName = AuthenticationService.CurrentUser?.UserName ?? "Unknown";        
+		// 	await AuthenticationService.LogoutAsync();        
+		// 	await Task.Delay(100);        
+		// 	Navigation.NavigateTo("/login", forceLoad: true);
+		// }
+		// catch (Exception ex)
+		// {        
+		// 	isRedirecting = false;
+		// }
+		//
 		await AuthenticationService.LogoutAsync();
 		
 		Navigation.NavigateTo("/login");
