@@ -1,7 +1,7 @@
 ﻿using BanksDB.Core.Dtos;
 using BanksDB.Core.Interfaces;
 using BanksDB.Core.Models.OutputModels;
-using BanksDB.Core.Data;
+using BanksDB.DAL.Data;
 using BanksDB.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;

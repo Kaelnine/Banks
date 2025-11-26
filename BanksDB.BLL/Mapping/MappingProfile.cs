@@ -45,6 +45,8 @@ namespace BanksDB.BLL.Mapping
             // Маппинг модели и DTO
             CreateMap<Core.Models.User, UserDto>();
             CreateMap<UserDto, Core.Models.User>();
+
+            CreateMap<TransactionInputModel, Transaction>();
         }
     }
 }

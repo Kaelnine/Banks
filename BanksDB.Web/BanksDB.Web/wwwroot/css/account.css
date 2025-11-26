@@ -149,6 +149,7 @@
 .form-group {
     display: flex;
     flex-direction: column;
+    margin: 10px;
     gap: 5px;
 }
 
@@ -174,10 +175,10 @@
     background: #3498db;
     color: white;
     border: none;
-    padding: 8px 20px;    
+    padding: 8px 20px;
     border-radius: 8px;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease;    
 }
 
     .btn-apply:hover:not(:disabled) {

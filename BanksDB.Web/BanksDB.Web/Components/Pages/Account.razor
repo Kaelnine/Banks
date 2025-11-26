@@ -13,7 +13,7 @@
 @inject IJSRuntime JSRuntime
 
 <PageTitle>Информация по счету</PageTitle>
-<head><link href="/css/account.css" rel="stylesheet"/></head>
+@* <head><link href="/css/account.css" rel="stylesheet"/></head> *@
 
 @if (shouldRedirect)
 {
@@ -43,12 +43,12 @@ else
             </button>
             <h3>📊 Детали счета</h3>
             <div class="header-actions">
-                @* @if (AuthenticationService.HasAccessToEdit())
-                { *@
+                @if (AuthenticationService.HasAccessToEdit())
+                {
                     <button @onclick="ShowUploadModal" class="btn-upload">
                         📁 Загрузить транзакции
                     </button>
-                @* } *@
+                }
             </div>
         </div>
     </div>

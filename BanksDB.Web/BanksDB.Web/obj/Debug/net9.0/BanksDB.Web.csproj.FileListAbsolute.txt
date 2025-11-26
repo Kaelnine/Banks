@@ -1,142 +1,16 @@
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.staticwebassets.runtime.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.staticwebassets.endpoints.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\appsettings.Development.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\appsettings.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\BrowserDebugHost.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\BrowserDebugHost.runtimeconfig.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\BrowserDebugProxy.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\Microsoft.CodeAnalysis.CSharp.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\Microsoft.CodeAnalysis.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\Microsoft.CodeAnalysis.Scripting.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\Microsoft.FileFormats.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\Microsoft.NET.WebAssembly.Webcil.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\Microsoft.SymbolStore.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\Newtonsoft.Json.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.staticwebassets.runtime.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.staticwebassets.endpoints.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.exe
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.deps.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.runtimeconfig.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.pdb
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\AutoMapper.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Authorization.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Forms.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Web.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.WebAssembly.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.WebAssembly.Server.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Metadata.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.Configuration.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Binder.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.Configuration.FileExtensions.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Json.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Abstractions.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Physical.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.FileSystemGlobbing.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.JSInterop.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.JSInterop.WebAssembly.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.BLL.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Core.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.BLL.pdb
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Core.pdb
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.pdb
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.csproj.AssemblyReference.cache
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\rpswa.dswa.cache.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.GeneratedMSBuildEditorConfig.editorconfig
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.AssemblyInfoInputs.cache
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.AssemblyInfo.cs
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.csproj.CoreCompileInputs.cache
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.MvcApplicationPartsAssemblyInfo.cache
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.RazorAssemblyInfo.cache
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.RazorAssemblyInfo.cs
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.sourcelink.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\rjimswa.dswa.cache.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\bundle\BanksDB.Web.styles.css
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\projectbundle\BanksDB.Web.bundle.scp.css
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\iad5zvhm75-4kywy7iv6g.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\y2l34x0t57-p2zu52r2ot.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.build.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.build.json.cache
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.development.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB..1A015724.Up2Date
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\refint\BanksDB.Web.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.pdb
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.genruntimeconfig.cache
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\ref\BanksDB.Web.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Azure.Core.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Azure.Identity.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Identity.Client.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.ClientModel.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Drawing.Common.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Memory.Data.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Runtime.Caching.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Security.Permissions.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Windows.Extensions.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.DAL.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.DAL.pdb
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Npgsql.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Net.Http.Formatting.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.TeamFoundation.Common.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.VisualStudio.Services.Common.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.VisualStudio.Services.WebApi.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Newtonsoft.Json.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Newtonsoft.Json.Bson.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Data.SqlClient.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Xml.XPath.XmlDocument.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win-arm64\native\sni.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win-x64\native\sni.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win-x86\native\sni.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.csproj.AssemblyReference.cache
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.GeneratedMSBuildEditorConfig.editorconfig
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.AssemblyInfoInputs.cache
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.AssemblyInfo.cs
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.csproj.CoreCompileInputs.cache
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.MvcApplicationPartsAssemblyInfo.cache
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.RazorAssemblyInfo.cache
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.RazorAssemblyInfo.cs
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.sourcelink.json
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.MvcApplicationPartsAssemblyInfo.cs
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.staticwebassets.runtime.json
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.staticwebassets.endpoints.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\appsettings.Development.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\appsettings.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\BrowserDebugHost.dll
@@ -150,8 +24,6 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugPr
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\Microsoft.NET.WebAssembly.Webcil.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\Microsoft.SymbolStore.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BlazorDebugProxy\Newtonsoft.Json.dll
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.staticwebassets.runtime.json
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.staticwebassets.endpoints.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.staticwebassets.runtime.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.staticwebassets.endpoints.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.exe
@@ -165,13 +37,16 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Azure.Identit
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Net.Http.Formatting.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Authorization.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Authorization.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Forms.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Web.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.WebAssembly.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.WebAssembly.Server.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.JsonPatch.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Metadata.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.DotNet.PlatformAbstractions.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
@@ -185,6 +60,7 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Ext
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Json.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Abstractions.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Physical.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.Extensions.FileSystemGlobbing.dll
@@ -249,24 +125,22 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.BLL.p
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Core.pdb
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.DAL.pdb
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.pdb
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.csproj.AssemblyReference.cache
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\rpswa.dswa.cache.json
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.GeneratedMSBuildEditorConfig.editorconfig
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.AssemblyInfoInputs.cache
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.AssemblyInfo.cs
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.csproj.CoreCompileInputs.cache
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.MvcApplicationPartsAssemblyInfo.cache
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.RazorAssemblyInfo.cache
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.RazorAssemblyInfo.cs
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.sourcelink.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\rjimswa.dswa.cache.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\Components\Layout\MainLayout.razor.rz.scp.css
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\Components\Pages\Account.razor.rz.scp.css
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\Components\Pages\BankManagementModal.razor.rz.scp.css
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\bundle\BanksDB.Web.styles.css
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\projectbundle\BanksDB.Web.bundle.scp.css
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\iad5zvhm75-4kywy7iv6g.gz
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\hjbu2o4o39-q4575bzx4h.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\y2l34x0t57-p2zu52r2ot.gz
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\ymioigveaw-zlgsvmaa2v.gz
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-41d8p433p3.gz
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\1f7nnsgevt-zoufc1fd19.gz
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\7q242g7x9r-uqf3uzkgph.gz
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\8boe08urzv-uqf3uzkgph.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.build.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.development.json
@@ -278,21 +152,3 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\refint\BanksD
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.pdb
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.genruntimeconfig.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\ref\BanksDB.Web.dll
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\1f7nnsgevt-zoufc1fd19.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\1f7nnsgevt-zoufc1fd19.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\hjbu2o4o39-e0g4uhnh83.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\Components\Pages\Account.razor.rz.scp.css
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Authorization.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Components.Authorization.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\Components\Pages\BankManagementModal.razor.rz.scp.css
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\7q242g7x9r-uqf3uzkgph.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\8boe08urzv-uqf3uzkgph.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-41d8p433p3.gz
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\ymioigveaw-yv24i99kck.gz
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\Components\Pages\BankManagementModal.razor.rz.scp.css
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\ymioigveaw-yv24i99kck.gz
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-41d8p433p3.gz
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\scopedcss\Components\Pages\Account.razor.rz.scp.css
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\7q242g7x9r-uqf3uzkgph.gz
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\8boe08urzv-uqf3uzkgph.gz
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\hjbu2o4o39-3j7xfldp7u.gz

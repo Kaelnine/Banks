@@ -152,7 +152,7 @@ namespace BanksDB.BLL.Services
 
         public bool HasAccessToEdit()
         {
-            return IsAuthenticated && (CurrentUser?.Role == "Accountat");
+            return IsAuthenticated && (CurrentUser?.Role == "Accountant");
         }
         
     }

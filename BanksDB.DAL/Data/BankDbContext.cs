@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BanksDB.Core.Data
+namespace BanksDB.DAL.Data
 {
     public class BankDbContext : DbContext
     {

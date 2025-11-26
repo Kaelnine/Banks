@@ -1,18 +1,7 @@
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Core\bin\Debug\net9.0\BanksDB.Core.deps.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Core\bin\Debug\net9.0\BanksDB.Core.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Core\bin\Debug\net9.0\BanksDB.Core.pdb
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\BanksDB.Core.GeneratedMSBuildEditorConfig.editorconfig
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\BanksDB.Core.AssemblyInfoInputs.cache
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\BanksDB.Core.AssemblyInfo.cs
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\BanksDB.Core.csproj.CoreCompileInputs.cache
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\BanksDB.Core.sourcelink.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\BanksDB.Core.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\refint\BanksDB.Core.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\BanksDB.Core.pdb
-D:\Моё\Programming\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\ref\BanksDB.Core.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Core\bin\Debug\net9.0\BanksDB.Core.deps.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Core\bin\Debug\net9.0\BanksDB.Core.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Core\bin\Debug\net9.0\BanksDB.Core.pdb
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\BanksDB.Core.csproj.AssemblyReference.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\BanksDB.Core.GeneratedMSBuildEditorConfig.editorconfig
 D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\BanksDB.Core.AssemblyInfoInputs.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Debug\net9.0\BanksDB.Core.AssemblyInfo.cs

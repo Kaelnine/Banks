@@ -18,7 +18,10 @@ namespace BanksDB.Core.Dtos
         public string CounterpartyAccount { get; set; }
         public string CounterpartyInn { get; set; }
         public string DocumentNumber { get; set; }
-        public decimal BalanceAfter { get; set; }
+        public string PayerName { get; set; }
+        public string PayerInn { get; set; }
+        public string PayerAccount { get; set; }
+        //public decimal BalanceAfter { get; set; }
         public DateTime CreatedDate { get; set; }
         public AccountDto Account { get; set; }
         public bool IsDeleted { get; set; }

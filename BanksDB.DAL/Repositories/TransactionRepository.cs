@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using BanksDB.Core.Data;
+using BanksDB.DAL.Data;
 using BanksDB.Core.Dtos;
 using BanksDB.Core.Entities;
 using BanksDB.Core.Interfaces;
@@ -127,7 +127,7 @@ namespace DBBanks.DAL.Repositories
                 CounterpartyAccount = transaction.CounterpartyAccount,
                 CounterpartyInn = transaction.CounterpartyInn,
                 DocumentNumber = transaction.DocumentNumber,
-                BalanceAfter = transaction.BalanceAfter,
+                //BalanceAfter = transaction.BalanceAfter,
                 CreatedDate = transaction.CreatedDate
                 // проверить надо ли возвращать все дто или хватить id
                 //Account = new AccountDto

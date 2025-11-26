@@ -79,13 +79,13 @@
         color: #495057;
     }
 
-.form-control {
+/*.form-control {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ced4da;
     border-radius: 4px;
     font-size: 0.875rem;
-}
+}*/
 
     .form-control:focus {
         border-color: #80bdff;
@@ -140,11 +140,11 @@
     margin-top: 1rem;
 }
 
-.list-section h6 {
-    color: #2c3e50;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-}
+    .list-section h6 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+    }
 
 .table {
     width: 100%;
@@ -180,7 +180,7 @@
     }
 
     .table tbody tr:last-child td {
-        border-bottom: 2px solid #667eea; 
+        border-bottom: 2px solid #667eea;
     }
 
     .table tbody tr:hover {
@@ -203,21 +203,21 @@
     margin-top: 0.25rem;
 }
 /*-----------------------------------------------------*/
-.form-control {
+/*.form-control {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ced4da;
     border-radius: 4px;
     font-size: 0.875rem;
-}
+}*/
 
 select.form-control {
     background-color: white;
     cursor: pointer;
 }
 
-    select.form-control:focus {
+    /*select.form-control:focus {
         border-color: #80bdff;
         outline: 0;
         box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
-    }
+    }*/

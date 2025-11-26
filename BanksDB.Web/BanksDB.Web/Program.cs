@@ -3,7 +3,7 @@ using BanksDB.BLL.Interfaces;
 using BanksDB.BLL.Mapping;
 using BanksDB.BLL.Parsers;
 using BanksDB.BLL.Services;
-using BanksDB.Core.Data;
+using BanksDB.DAL.Data;
 using BanksDB.Core.Interfaces;
 using BanksDB.DAL.Repositories;
 using DBBanks.DAL.Repositories;

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using BanksDB.Core.Data;
+using BanksDB.DAL.Data;
 using BanksDB.Core.Dtos;
 using BanksDB.Core.Entities;
 using BanksDB.Core.Interfaces;

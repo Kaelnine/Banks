@@ -50,10 +50,22 @@ namespace BanksDB.BLL.Parsers
                     if (line == "КонецДокумента" && inDocumentSection)
                     {
                         inDocumentSection = false;
-                        if (IsValidTransaction(currentTransaction))
-                        {
+                        //if (IsValidTransaction(currentTransaction))
+                        //{
+                        //    DetermineTransactionType(currentTransaction);
+                        //    transactions.Add(currentTransaction);
+                        //}
+                        if (currentTransaction != null)
+                        {                            
                             DetermineTransactionType(currentTransaction);
-                            transactions.Add(currentTransaction);
+                            if (IsValidTransaction(currentTransaction))
+                            {
+                                transactions.Add(currentTransaction);
+                            }
+                            else
+                            {
+                                errors.Add($"Строка {lineNumber}: Невалидная транзакция - {currentTransaction.DocumentNumber}");
+                            }
                         }
                         currentTransaction = null;
                         continue;
@@ -93,10 +105,17 @@ namespace BanksDB.BLL.Parsers
             switch (key)
             {
                 case "Дата":
-                    if (DateTime.TryParseExact(value, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))
+                    if (DateTime.TryParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))//dd-MM-yyyy
                     {
                         currentTransaction.TransactionDate = date;                        
                     }
+                    //дополнительная проверка
+                    else
+                    {                        
+                        DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out date);
+                        currentTransaction.TransactionDate = date;
+                    }
+                    //
                     break;
                 case "Сумма":
                     if (decimal.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var amount))
@@ -150,26 +169,41 @@ namespace BanksDB.BLL.Parsers
         }
         private void DetermineTransactionType(TransactionInputModel currentTransaction)
         {
-            if (!string.IsNullOrEmpty(currentTransaction.CounterpartyName))
+            //if (!string.IsNullOrEmpty(currentTransaction.CounterpartyName))
+            //{
+            //    if (currentTransaction.CounterpartyName.Contains("Сбербанк") || currentTransaction.CounterpartyName.Contains("Банк"))
+            //    {
+            //        currentTransaction.TransactionType = TransactionType.Расход.ToString();
+            //    }
+            //    else
+            //    {
+            //        if (currentTransaction.WriteOffDate != default && currentTransaction.ReceiptDate == default)
+            //        {
+            //            currentTransaction.TransactionType = TransactionType.Расход.ToString();
+            //        }
+            //        else if (currentTransaction.ReceiptDate != default && currentTransaction.WriteOffDate == default)
+            //        {
+            //            currentTransaction.TransactionType = TransactionType.Приход.ToString();
+            //        }
+            //        else
+            //        {
+            //            currentTransaction.TransactionType = TransactionType.Расход.ToString();
+            //        }
+            //    }
+            //}
+            if (currentTransaction.ReceiptDate != default && currentTransaction.WriteOffDate == default)
             {
-                if (currentTransaction.CounterpartyName.Contains("Сбербанк") || currentTransaction.CounterpartyName.Contains("Банк"))
+                currentTransaction.TransactionType = TransactionType.Приход.ToString();
+            }
+            else if (currentTransaction.WriteOffDate != default && currentTransaction.ReceiptDate == default)
+            {
+                currentTransaction.TransactionType = TransactionType.Расход.ToString();
+            }
+            else
+            {                
+                if (string.IsNullOrEmpty(currentTransaction.TransactionType))
                 {
-                    currentTransaction.TransactionType = TransactionType.Расход.ToString();
-                }
-                else
-                {
-                    if (currentTransaction.WriteOffDate != default && currentTransaction.ReceiptDate == default)
-                    {
-                        currentTransaction.TransactionType = TransactionType.Расход.ToString();
-                    }
-                    else if (currentTransaction.ReceiptDate != default && currentTransaction.WriteOffDate == default)
-                    {
-                        currentTransaction.TransactionType = TransactionType.Приход.ToString();
-                    }
-                    else
-                    {
-                        currentTransaction.TransactionType = TransactionType.Расход.ToString();
-                    }
+                    currentTransaction.TransactionType = TransactionType.Приход.ToString();
                 }
             }
         }

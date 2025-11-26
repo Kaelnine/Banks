@@ -1,36 +1,18 @@
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.BLL.deps.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.BLL.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.BLL.pdb
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.Core.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.Core.pdb
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.csproj.AssemblyReference.cache
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.GeneratedMSBuildEditorConfig.editorconfig
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.AssemblyInfoInputs.cache
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.AssemblyInfo.cs
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.csproj.CoreCompileInputs.cache
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.sourcelink.json
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB..3F22D69F.Up2Date
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\refint\BanksDB.BLL.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.pdb
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\ref\BanksDB.BLL.dll
-D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.BLL.deps.json
-D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.BLL.dll
-D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.BLL.pdb
-D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.Core.dll
-D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.Core.pdb
 D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.csproj.AssemblyReference.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.GeneratedMSBuildEditorConfig.editorconfig
 D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.AssemblyInfoInputs.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.AssemblyInfo.cs
 D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.csproj.CoreCompileInputs.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.sourcelink.json
+D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.BLL.deps.json
+D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.BLL.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.BLL.pdb
+D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.Core.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.DAL.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.Core.pdb
+D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.DAL.pdb
 D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB..3F22D69F.Up2Date
 D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\refint\BanksDB.BLL.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\BanksDB.BLL.pdb
 D:\For Jobs\BanksDB\Banks\BanksDB.BLL\obj\Debug\net9.0\ref\BanksDB.BLL.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.DAL.dll
-D:\Моё\Programming\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.DAL.pdb
-D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.DAL.dll
-D:\For Jobs\BanksDB\Banks\BanksDB.BLL\bin\Debug\net9.0\BanksDB.DAL.pdb
