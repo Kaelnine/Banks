@@ -1,5 +1,6 @@
 ﻿using BanksDB.Core.Dtos;
 using BanksDB.Core.Entities;
+using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
 using System;
 using System.Collections.Generic;
@@ -22,5 +23,8 @@ namespace BanksDB.Core.Interfaces
         //Task AddSeveralAsync(IEnumerable<Transaction> transactions);
         Task<IEnumerable<TransactionDto>> AddSeveralAsync(IEnumerable<Transaction> transactions);// создание списка транзакций
         Task<List<DailySummaryOutputModel>> GetDailySummaryAsync(int accountId, DateTime startDate, DateTime endDate);// получение общих прихода и расхода по дням
+        Task<bool> IsDuplicateTransactionAsync(TransactionInputModel transaction);
+        Task<List<TransactionInputModel>> FilterDuplicateTransactionsAsync(List<TransactionInputModel> transactions);
+        Task<int> GetDuplicateCountAsync(List<TransactionInputModel> transactions);
     }
 }

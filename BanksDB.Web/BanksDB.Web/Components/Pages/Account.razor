@@ -237,13 +237,34 @@ else
                 {
                     <div class="parsed-transactions">                       
                         <h6>Найдено транзакций: @parserResult.TotalTransactionsFound</h6>
-                        <div class="transaction-preview">
+                        @if (duplicateCount > 0)
+                        {
+                                <div class="alert alert-warning">
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                    Обнаружено дубликатов: @duplicateCount
+                                    <br />
+                                    <small>Будет загружено: @(parserResult.TotalTransactionsFound - duplicateCount) новых транзакций</small>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-success">
+                                    <i class="bi bi-check-circle"></i>
+                                    Дубликатов не обнаружено
+                                </div>
+                            }
+                            <div class="transaction-preview">
                             @foreach (var transaction in parsedTransactions.Take(3))
                             {
-                                <div class="preview-item">
+                                var isDuplicate = duplicateTransactions.Contains(transaction);
+                                <div class="preview-item @(isDuplicate ? "duplicate" : "")">
                                     <span>@transaction.TransactionDate.ToString("dd.MM.yyyy")</span>
                                     <span class="@(transaction.TransactionType == "Приход" ? "income" : "expense")">
                                         @transaction.TransactionType
+                                        @if (isDuplicate)
+                                        {
+                                            <span class="duplicate-label">(дубликат)</span>
+                                        }
                                     </span>
                                     <span>@transaction.Amount.ToString("C")</span>
                                  <div class="preview-description">
@@ -252,6 +273,12 @@ else
                                 <div class="preview-counterparty">
                                     Контрагент: @(transaction.CounterpartyName ?? transaction.PayerName ?? "Не указан")
                                 </div>
+                                @if (isDuplicate)
+                                {
+                                    <div class="duplicate-warning">
+                                        ⚠️ Эта транзакция уже существует в системе
+                                    </div>
+                                }
                                 </div>
                             }
                             @if (parsedTransactions.Count > 5)
@@ -315,6 +342,9 @@ else
     private InputFile? fileInput;
     private BankParserResult parserResult;
     private ElementReference fileInputElement;
+    private int duplicateCount = 0;
+    private List<TransactionInputModel> duplicateTransactions = new();
+    private List<TransactionInputModel> uniqueTransactions = new();
 
     private bool isInitialized = false;
 	private bool shouldRedirect = false;
@@ -356,6 +386,9 @@ else
     {
         uploadError = string.Empty;
         parserResult = null;
+        duplicateCount = 0;
+        duplicateTransactions.Clear();
+        uniqueTransactions.Clear();
 
         var file = e.File;
         if (file == null) return;
@@ -370,7 +403,18 @@ else
         {
             using var stream = file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024);
             parserResult = await TransactionService.BankParserStatementAsync(stream, Id);
-
+            if (parserResult?.Transactions.Any() == true)
+            {                
+                duplicateCount = await TransactionService.GetDuplicateCountAsync(parserResult.Transactions);
+                uniqueTransactions = await TransactionService.FilterDuplicateTransactionsAsync(parserResult.Transactions);               
+                foreach (var transaction in parserResult.Transactions)
+                {
+                    if (await TransactionService.IsDuplicateTransactionAsync(transaction))
+                    {
+                        duplicateTransactions.Add(transaction);
+                    }
+                }
+            }
             if (!parserResult.IsValid && parserResult.Errors.Any())
             {
                 uploadError = string.Join("; ", parserResult.Errors.Take(3));
@@ -525,12 +569,15 @@ else
         StateHasChanged();
 
         try
-        {
-            // Здесь будет логика сохранения транзакций
-            //await Task.Delay(1000); // Имитация загрузки
+        {            
             var importedTransactions = await TransactionService.ImportTransactionsAsync(parserResult.Transactions);
-            await JSRuntime.InvokeVoidAsync("alert", $"✅ Успешно загружено {importedTransactions.Count} транзакций");
-            // После успешной загрузки обновляем данные
+            var message = $"✅ Успешно загружено {importedTransactions.Count} транзакций";
+            if (duplicateCount > 0)
+            {
+                message += $"\n⚠️ Пропущено {duplicateCount} дубликатов";
+            }
+            await JSRuntime.InvokeVoidAsync("alert", message);
+            // await JSRuntime.InvokeVoidAsync("alert", $"✅ Успешно загружено {importedTransactions.Count} транзакций");            
             await LoadDailySummary();
             CloseUploadModal();
         }

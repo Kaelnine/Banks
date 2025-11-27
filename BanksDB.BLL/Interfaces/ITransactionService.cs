@@ -1,4 +1,5 @@
 ﻿using BanksDB.BLL.Parsers;
+using BanksDB.Core.Entities;
 using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
 using System;
@@ -15,7 +16,7 @@ namespace BanksDB.BLL.Interfaces
         Task<List<TransactionOutputModel>> GetAllTransactionsAsync();
         Task<TransactionOutputModel> GetTransactionByIdAsync(int id);
         Task<List<TransactionOutputModel>> GetTransactionsByAccountAsync(int accountId);
-        Task<List<TransactionOutputModel>> GetTransactionsByAccountAndDateAsync(int accountId, DateTime date);
+        Task<List<Transaction>> GetTransactionsByAccountAndDateAsync(int accountId, DateTime date);
         Task<List<TransactionOutputModel>> GetTransactionsByAccountAndPeriodAsync(int accountId, DateTime startDate, DateTime endDate);
         Task<List<DailySummaryOutputModel>> GetDailySummaryAsync(int accountId, DateTime startDate, DateTime endDate);
         Task AddTransactionAsync(TransactionInputModel inputModel);
@@ -23,6 +24,9 @@ namespace BanksDB.BLL.Interfaces
         Task DeleteTransactionAsync(int id);
         Task<List<TransactionOutputModel>> AddSeveralTransactionsAsync(List<TransactionInputModel> inputModels);
         Task<BankParserResult> BankParserStatementAsync(Stream fileStream, int accountId);
-        Task<List<TransactionOutputModel>> ImportTransactionsAsync(List<TransactionInputModel> transactions);
+        Task<List<Transaction>> ImportTransactionsAsync(List<TransactionInputModel> transactions);
+        Task<bool> IsDuplicateTransactionAsync(TransactionInputModel transaction);
+        Task<List<TransactionInputModel>> FilterDuplicateTransactionsAsync(List<TransactionInputModel> transactions);
+        Task<int> GetDuplicateCountAsync(List<TransactionInputModel> transactions);
     }
 }

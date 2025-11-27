@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using BanksDB.Core.Models.InputModels;
 
 namespace DBBanks.DAL.Repositories
 {
@@ -89,8 +90,8 @@ namespace DBBanks.DAL.Repositories
             //return await db.Transactions.Where(t => t.AccountId == accountId && t.CreatedDate == date && !t.IsDeleted).ToListAsync();
             var transactions = await db.Transactions
                 .Include(t => t.Account)
-                .Where(t => t.AccountId == accountId && t.CreatedDate == date && !t.IsDeleted)
-                .ToListAsync();
+                .Where(t => t.AccountId == accountId && t.TransactionDate == date && !t.IsDeleted)
+                .ToListAsync();            
             return _mapper.Map<IEnumerable<TransactionDto>>(transactions);
         }
 
@@ -208,5 +209,54 @@ namespace DBBanks.DAL.Repositories
         //        throw;
         //    }
         //}
+        public async Task<bool> IsDuplicateTransactionAsync(TransactionInputModel transaction)
+        {
+            await using var db = await _db.CreateDbContextAsync();
+            return await db.Transactions.AnyAsync(t =>
+                t.AccountId == transaction.AccountId &&
+                t.DocumentNumber == transaction.DocumentNumber &&
+                t.TransactionDate == transaction.TransactionDate &&
+                t.Amount == transaction.Amount &&
+                !t.IsDeleted);
+        }
+
+        public async Task<List<TransactionInputModel>> FilterDuplicateTransactionsAsync(List<TransactionInputModel> transactions)
+        {
+            if (!transactions.Any()) return transactions;
+            await using var db = await _db.CreateDbContextAsync();
+            var uniqueTransactions = new List<TransactionInputModel>();
+            foreach (var transaction in transactions)
+            {
+                var isDuplicate = await db.Transactions.AnyAsync(t =>
+                    t.AccountId == transaction.AccountId &&
+                    t.DocumentNumber == transaction.DocumentNumber &&
+                    t.TransactionDate == transaction.TransactionDate &&
+                    t.Amount == transaction.Amount &&
+                    !t.IsDeleted);
+                if (!isDuplicate)
+                {
+                    uniqueTransactions.Add(transaction);
+                }
+            }
+            return uniqueTransactions;
+        }
+
+        public async Task<int> GetDuplicateCountAsync(List<TransactionInputModel> transactions)
+        {
+            if (!transactions.Any()) return 0;
+            await using var db = await _db.CreateDbContextAsync();
+            var duplicateCount = 0;
+            foreach (var transaction in transactions)
+            {
+                var isDuplicate = await db.Transactions.AnyAsync(t =>
+                    t.AccountId == transaction.AccountId &&
+                    t.DocumentNumber == transaction.DocumentNumber &&
+                    t.TransactionDate == transaction.TransactionDate &&
+                    t.Amount == transaction.Amount &&
+                    !t.IsDeleted);
+                if (isDuplicate) duplicateCount++;
+            }
+            return duplicateCount;
+        }
     }
 }

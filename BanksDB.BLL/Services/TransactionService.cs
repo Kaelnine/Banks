@@ -48,21 +48,27 @@ namespace BanksDB.BLL.Services
             return result;
         }
 
-        public async Task<List<TransactionOutputModel>> ImportTransactionsAsync(List<TransactionInputModel> transactions)
+        public async Task<List<Transaction>> ImportTransactionsAsync(List<TransactionInputModel> transactions)
         {
             if (!transactions.Any())
             {
-                throw new ArgumentException("Список транзакций пуст");
+                return new List<Transaction>();
             }
             var validationResult = ValidateTransactions(transactions);
             if (!validationResult.IsValid)
             {
                 throw new ArgumentException($"Ошибки валидации: {string.Join("; ", validationResult.Errors)}");
             }
-            var transactionsEntity = _mapper.Map<List<Transaction>>(transactions);
+            var uniqueTransactions = await FilterDuplicateTransactionsAsync(transactions);
+            if (!uniqueTransactions.Any())
+            {
+                throw new InvalidOperationException("Весь список транзакций уже существует");
+            }
+
+            var transactionsEntity = _mapper.Map<List<Transaction>>(uniqueTransactions);
             var createdTransactions = await _transactionRepository.AddSeveralAsync(transactionsEntity);
             await UpdateAccountBalances(transactions);
-            return _mapper.Map<List<TransactionOutputModel>>(createdTransactions);
+            return _mapper.Map<List<Transaction>>(createdTransactions);
         }
 
         private async Task UpdateAccountBalances(List<TransactionInputModel> transactions)
@@ -179,10 +185,10 @@ namespace BanksDB.BLL.Services
             return _mapper.Map<TransactionOutputModel>(transaction);
         }
 
-        public async Task<List<TransactionOutputModel>> GetTransactionsByAccountAndDateAsync(int accountId, DateTime date)
+        public async Task<List<Transaction>> GetTransactionsByAccountAndDateAsync(int accountId, DateTime date)
         {
             var transactions = await _transactionRepository.GetByAccountIdForDayAsync(accountId, date);
-            return _mapper.Map<List<TransactionOutputModel>>(transactions);
+            return _mapper.Map<List<Transaction>>(transactions);
         }
 
         public async Task<List<TransactionOutputModel>> GetTransactionsByAccountAndPeriodAsync(int accountId, DateTime startDate, DateTime endDate)
@@ -209,6 +215,20 @@ namespace BanksDB.BLL.Services
             return _mapper.Map<TransactionOutputModel>(transaction);
         }
 
+        public async Task<bool> IsDuplicateTransactionAsync(TransactionInputModel transaction)
+        {
+            return await _transactionRepository.IsDuplicateTransactionAsync(transaction);
+        }
+
+        public async Task<List<TransactionInputModel>> FilterDuplicateTransactionsAsync(List<TransactionInputModel> transactions)
+        {
+            return await _transactionRepository.FilterDuplicateTransactionsAsync(transactions);
+        }
+
+        public async Task<int> GetDuplicateCountAsync(List<TransactionInputModel> transactions)
+        {
+            return await _transactionRepository.GetDuplicateCountAsync(transactions);
+        }
         //private async Task UpdateAccountBalance()
     }
 

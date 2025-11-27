@@ -28,6 +28,7 @@ namespace BanksDB.Core.Models.InputModels
         public string PayerName { get; set; }
         public string PayerInn { get; set; }
         public string PayerAccount { get; set; }
+        public DateTime CreatedDate { get; set; }
         public DateTime WriteOffDate { get; set; }
         public DateTime ReceiptDate { get; set; }
     }

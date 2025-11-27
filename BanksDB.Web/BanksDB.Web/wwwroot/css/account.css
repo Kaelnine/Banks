@@ -664,3 +664,29 @@
     font-size: 0.8em;
     color: #6c757d;
 }
+
+/* Дубликаты */
+.duplicate {
+    opacity: 0.6;
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+}
+
+.duplicate-badge {
+    text-decoration: line-through;
+}
+
+.duplicate-label {
+    font-size: 0.7rem;
+    color: #856404;
+    margin-left: 0.5rem;
+}
+
+.duplicate-warning {
+    color: #856404;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    padding: 0.25rem;
+    background: #fff3cd;
+    border-radius: 0.25rem;
+}
