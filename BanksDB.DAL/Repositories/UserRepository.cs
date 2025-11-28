@@ -1,14 +1,9 @@
 ﻿using AutoMapper;
-using BanksDB.DAL.Data;
 using BanksDB.Core.Dtos;
 using BanksDB.Core.Entities;
 using BanksDB.Core.Interfaces;
+using BanksDB.DAL.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BanksDB.DAL.Repositories
 {
@@ -24,14 +19,14 @@ namespace BanksDB.DAL.Repositories
 
         public async Task AddAsync(User user)
         {
-            await using var db = await _db.CreateDbContextAsync();            
+            await using var db = await _db.CreateDbContextAsync();
             await db.Users.AddAsync(user);
             await db.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int userId)
         {
-            await using var db = await _db.CreateDbContextAsync();            
+            await using var db = await _db.CreateDbContextAsync();
             var user = await db.Users.FindAsync(userId);
             if (user == null) return;
             user.IsDeleted = true;
@@ -40,14 +35,14 @@ namespace BanksDB.DAL.Repositories
 
         public async Task<IEnumerable<UserDto>> GetAllAsync()
         {
-            await using var db = await _db.CreateDbContextAsync();            
+            await using var db = await _db.CreateDbContextAsync();
             var users = await db.Users.Where(b => !b.IsDeleted).ToListAsync();
             return _mapper.Map<IEnumerable<UserDto>>(users);
         }
 
         public async Task<UserDto> GetByIdAsync(int id)
         {
-            await using var db = await _db.CreateDbContextAsync();            
+            await using var db = await _db.CreateDbContextAsync();
             var user = await db.Users.FirstOrDefaultAsync(u => u.Id == id && !u.IsDeleted);
             if (user == null) return null;
             return new UserDto
@@ -77,7 +72,7 @@ namespace BanksDB.DAL.Repositories
 
         public async Task UpdateAsync(User user)
         {
-            await using var db = await _db.CreateDbContextAsync();            
+            await using var db = await _db.CreateDbContextAsync();
             db.Users.Update(user);
             await db.SaveChangesAsync();
         }

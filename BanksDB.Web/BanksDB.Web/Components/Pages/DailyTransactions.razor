@@ -99,10 +99,10 @@ else
                                     </td>
                                     <td>
                                         <div class="counterparty-info">
-                                            <div class="counterparty-name">@transaction.CounterpartyName</div>
-                                            @if (!string.IsNullOrEmpty(transaction.CounterpartyInn))
+                                            <div class="counterparty-name">@(transaction.DisplayCounterparty ?? "Не указан")</div>
+                                            @if (!string.IsNullOrEmpty(transaction.DisplayCounterpartyInn))
                                             {
-                                                <div class="counterparty-inn">ИНН: @transaction.CounterpartyInn</div>
+                                                <div class="counterparty-inn">ИНН: @transaction.DisplayCounterpartyInn</div>
                                             }
                                         </div>
                                     </td>
@@ -220,23 +220,22 @@ else
                             </table>
                         </div>
                     </div>
-
-                    <!-- Получатель -->
+                    
                     <div class="mt-3">
-                        <h6>Получатель</h6>
+                        <h6>@(selectedTransaction.TransactionType == "Приход" ? "Плательщик" : "Получатель")</h6>
                         <div class="card card-body bg-light">
                             <table class="table table-sm table-borderless mb-0">
                                 <tr>
                                     <td class="fw-bold" style="width: 120px;">Наименование:</td>
-                                    <td>@selectedTransaction.CounterpartyName</td>
+                                    <td>@selectedTransaction.DisplayCounterparty</td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">ИНН:</td>
-                                    <td>@selectedTransaction.CounterpartyInn</td>
+                                    <td>@selectedTransaction.DisplayCounterpartyInn</td>
                                 </tr>
                                 <tr>
                                     <td class="fw-bold">Счет:</td>
-                                    <td>@selectedTransaction.CounterpartyAccount</td>
+                                    <td>@selectedTransaction.DisplayCounterpartyAccount</td>
                                 </tr>
                             </table>
                         </div>
@@ -279,37 +278,7 @@ else
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        // if (firstRender)
-        // {
-        //     try
-        //     {
-        //         await AuthenticationService.InitializeAsync();
-        //         if (!AuthenticationService.IsAuthenticated)
-        //         {
-        //             shouldRedirect = true;
-        //             StateHasChanged();                    
-
-        //             await Task.Delay(2000);
-        //             Navigation.NavigateTo("/login", true);
-        //             return;
-        //         }
-        //         else
-        //         {
-        //             await LoadTransactions();
-        //             isInitialized = true;
-        //             StateHasChanged();
-        //         }
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         Console.WriteLine($"Ошибка инициализации: {ex}");                
-        //         shouldRedirect = true;
-        //         StateHasChanged();
-        //         await Task.Delay(2000);
-        //         Navigation.NavigateTo("/login", true);
-        //     }
-        // }
+    {        
         if (firstRender && !isAuthChecked)
         {
             await CheckAuthenticationAndInitialize();
@@ -428,10 +397,5 @@ else
     public void Dispose()
     {
         AuthenticationService.OnAuthenticationStateChanged -= OnAuthenticationChanged;
-    }
-
-    // public void Dispose()
-    // {
-    //     AuthenticationService.OnAuthenticationStateChanged -= StateHasChanged;
-    // }
+    }        
 }

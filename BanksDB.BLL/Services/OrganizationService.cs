@@ -2,11 +2,6 @@
 using BanksDB.BLL.Interfaces;
 using BanksDB.Core.Entities;
 using BanksDB.Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BanksDB.BLL.Services
 {
@@ -14,7 +9,7 @@ namespace BanksDB.BLL.Services
     {
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IMapper _mapper;
-        public OrganizationService(IOrganizationRepository  organizationRepository, IMapper mapper)
+        public OrganizationService(IOrganizationRepository organizationRepository, IMapper mapper)
         {
             _organizationRepository = organizationRepository;
             _mapper = mapper;

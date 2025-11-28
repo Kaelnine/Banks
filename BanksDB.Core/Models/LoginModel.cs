@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BanksDB.Core.Models
 {
     public class LoginModel
     {
-        [Required(ErrorMessage = "Логин обязателен")]        
+        [Required(ErrorMessage = "Логин обязателен")]
         public string Login { get; set; }
 
         [Required(ErrorMessage = "Пароль обязателен")]

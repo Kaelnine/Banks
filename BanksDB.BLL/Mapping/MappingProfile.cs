@@ -1,14 +1,8 @@
 ﻿using AutoMapper;
 using BanksDB.Core.Dtos;
+using BanksDB.Core.Entities;
 using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
-using BanksDB.Core.Entities;
-using BanksDB.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BanksDB.BLL.Mapping
 {
@@ -21,7 +15,7 @@ namespace BanksDB.BLL.Mapping
             CreateMap<TransactionInputModel, TransactionDto>();
 
             // Маппинг из DTO в OutputModel
-            CreateMap<AccountDto, AccountOutputModel>();           
+            CreateMap<AccountDto, AccountOutputModel>();
             CreateMap<TransactionDto, TransactionOutputModel>();
             CreateMap<AccountSummaryDto, AccountOutputModel>();
             CreateMap<AccountOutputModel, AccountSummaryDto>();
@@ -46,6 +40,7 @@ namespace BanksDB.BLL.Mapping
             CreateMap<Core.Models.User, UserDto>();
             CreateMap<UserDto, Core.Models.User>();
 
+            // Маппинг из InputModel в ENTITY
             CreateMap<TransactionInputModel, Transaction>();
         }
     }

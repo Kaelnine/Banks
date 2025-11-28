@@ -13,7 +13,7 @@
 @inject IJSRuntime JSRuntime
 
 <PageTitle>Информация по счету</PageTitle>
-@* <head><link href="/css/account.css" rel="stylesheet"/></head> *@
+
 
 @if (shouldRedirect)
 {
@@ -241,7 +241,7 @@ else
                         {
                                 <div class="alert alert-warning">
                                     <i class="bi bi-exclamation-triangle"></i>
-                                    Обнаружено дубликатов: @duplicateCount
+                                    Обнаружено дубликатов: @duplicateCount                                    
                                     <br />
                                     <small>Будет загружено: @(parserResult.TotalTransactionsFound - duplicateCount) новых транзакций</small>
                                 </div>
@@ -347,7 +347,7 @@ else
     private List<TransactionInputModel> uniqueTransactions = new();
 
     private bool isInitialized = false;
-	private bool shouldRedirect = false;
+    private bool shouldRedirect = false;
 
     protected override void OnInitialized()
     {
@@ -403,10 +403,15 @@ else
         {
             using var stream = file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024);
             parserResult = await TransactionService.BankParserStatementAsync(stream, Id);
+            foreach (var transaction in parserResult.Transactions)
+            {
+                transaction.AccountId = Id;
+            }
             if (parserResult?.Transactions.Any() == true)
             {                
                 duplicateCount = await TransactionService.GetDuplicateCountAsync(parserResult.Transactions);
-                uniqueTransactions = await TransactionService.FilterDuplicateTransactionsAsync(parserResult.Transactions);               
+                uniqueTransactions = await TransactionService.FilterDuplicateTransactionsAsync(parserResult.Transactions);
+                duplicateTransactions.Clear();
                 foreach (var transaction in parserResult.Transactions)
                 {
                     if (await TransactionService.IsDuplicateTransactionAsync(transaction))
@@ -435,20 +440,9 @@ else
         }
     }
 
-    // protected override async Task OnInitializedAsync()
-    // {        
-    //     await LoadAccountInfo();
-    //     SetCurrentMonth();   
-    //     await LoadDailySummary();
-    // }
-
+    
     protected override async Task OnParametersSetAsync()
-    {
-        // if (Id > 0)
-        // {
-        //     dateRange.AccountId = Id;
-        //     await LoadAccountInfo();
-        // }
+    {        
         if (Id > 0 && AuthenticationService.IsAuthenticated)
         {
             dateRange.AccountId = Id;
@@ -533,6 +527,9 @@ else
     {
         uploadError = string.Empty;        
         parserResult = null;
+        duplicateCount = 0;
+        duplicateTransactions.Clear();
+        uniqueTransactions.Clear();
 
         var file = e.File;
         if (file == null) return;
@@ -547,6 +544,25 @@ else
         {            
             using var stream = file.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024);
             parserResult = await TransactionService.BankParserStatementAsync(stream, Id);
+            foreach (var transaction in parserResult.Transactions)
+            {
+                transaction.AccountId = Id;
+            }
+            if (parserResult?.Transactions.Any() == true)
+            {
+                duplicateCount = await TransactionService.GetDuplicateCountAsync(parserResult.Transactions);
+                uniqueTransactions = await TransactionService.FilterDuplicateTransactionsAsync(parserResult.Transactions);
+                duplicateTransactions.Clear();
+            foreach (var transaction in parserResult.Transactions)
+            {
+                if (await TransactionService.IsDuplicateTransactionAsync(transaction))
+                {
+                    duplicateTransactions.Add(transaction);
+                }
+            }
+            
+            Console.WriteLine($"✅ Проверка дубликатов завершена: {duplicateCount} дубликатов из {parserResult.TotalTransactionsFound}");
+        }
             if (!parserResult.IsValid && parserResult.Errors.Any())
             {
                 uploadError = string.Join("; ", parserResult.Errors.Take(3));
@@ -576,8 +592,7 @@ else
             {
                 message += $"\n⚠️ Пропущено {duplicateCount} дубликатов";
             }
-            await JSRuntime.InvokeVoidAsync("alert", message);
-            // await JSRuntime.InvokeVoidAsync("alert", $"✅ Успешно загружено {importedTransactions.Count} транзакций");            
+            await JSRuntime.InvokeVoidAsync("alert", message);                        
             await LoadDailySummary();
             CloseUploadModal();
         }

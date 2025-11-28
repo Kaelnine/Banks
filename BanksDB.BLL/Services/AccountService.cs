@@ -1,17 +1,10 @@
 ﻿using AutoMapper;
 using BanksDB.BLL.Interfaces;
-using BanksDB.Core.Dtos;
+using BanksDB.Core.Entities;
 using BanksDB.Core.Interfaces;
-using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
 using BanksDB.DAL.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BanksDB.Core.Entities;
 
 namespace BanksDB.BLL.Services
 {
@@ -27,15 +20,9 @@ namespace BanksDB.BLL.Services
             _mapper = mapper;
             _db = db;
         }
-        // добавление счета
-        //public async Task AddAsync(AccountInputModel inputModel)
-        //{
-        //    var account = _mapper.Map<Account>(inputModel);
-        //    await _accountRepository.AddAsync(account);            
-        //}
+        // добавление счета        
         public async Task AddAsync(Account account)
         {
-            //var account = _mapper.Map<Account>(inputModel);
             await _accountRepository.AddAsync(account);
         }
 
@@ -63,14 +50,12 @@ namespace BanksDB.BLL.Services
         public async Task<List<Account>> GetAllFullInfoAsync()
         {
             var accounts = await _accountRepository.GetAllAsync();
-            //return _mapper.Map<List<Account>>(accounts);
             return accounts.ToList();
         }
 
         // получение счета по id
         public async Task<AccountOutputModel> GetByIdAsync(int id)
         {
-            //await Task.Delay(100);
             await using var db = await _db.CreateDbContextAsync();
             var account = await db.Accounts
             .Where(a => a.Id == id && !a.IsDeleted)
@@ -89,10 +74,6 @@ namespace BanksDB.BLL.Services
                 //AccountTypeName = a.AccountType.Name
             })
             .FirstOrDefaultAsync();
-
-            //return account;
-            //return account;
-            //var account = await _accountRepository.GetByIdAsync(id);
             return _mapper.Map<AccountOutputModel>(account);
         }
 
@@ -103,17 +84,9 @@ namespace BanksDB.BLL.Services
             return _mapper.Map<List<AccountOutputModel>>(acounts);
         }
 
-        // обновление счета
-        //public async Task UpdateAsync(int id, AccountInputModel inputModel)
-        //{
-        //    var account = _mapper.Map<Account>(inputModel);
-        //    account.Id = id;
-        //    await _accountRepository.UpdateAsync(account);            
-        //}
+        // обновление счета        
         public async Task UpdateAsync(Account account)
         {
-            //var account = _mapper.Map<Account>(inputModel);
-            //account.Id = id;
             await _accountRepository.UpdateAsync(account);
         }
     }

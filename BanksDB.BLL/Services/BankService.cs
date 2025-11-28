@@ -2,11 +2,6 @@
 using BanksDB.BLL.Interfaces;
 using BanksDB.Core.Entities;
 using BanksDB.Core.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BanksDB.BLL.Services
 {
@@ -32,7 +27,7 @@ namespace BanksDB.BLL.Services
 
         public async Task<List<Bank>> GetAllBanksAsync()
         {
-            var banks =  await _bankRepository.GetAllAsync();
+            var banks = await _bankRepository.GetAllAsync();
             return _mapper.Map<List<Bank>>(banks);
         }
 

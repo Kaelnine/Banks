@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BanksDB.Core.Dtos
+﻿namespace BanksDB.Core.Dtos
 {
     public class BankDto
     {

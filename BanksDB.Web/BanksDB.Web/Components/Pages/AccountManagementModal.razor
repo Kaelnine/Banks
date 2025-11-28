@@ -184,24 +184,7 @@
             isLoadingBanks = false;
             isLoadingOrganizations = false;
         }
-    }
-
-    // private async Task LoadAccounts()
-    // {
-    //     isLoading = true;
-    //     try
-    //     {
-    //         accounts = await AccountService.GetAllFullInfoAsync();
-    //     }
-    //     catch (Exception ex)
-    //     {
-    //         errorMessage = $"Ошибка загрузки: {ex.Message}";
-    //     }
-    //     finally
-    //     {
-    //         isLoading = false;
-    //     }
-    // }
+    }       
 
     private async Task SaveAccount()
     {
@@ -232,10 +215,8 @@
         {
             Id = account.Id,
             Name = account.Name,
-            OrganizationId = account.Organization.Id,
-            //OrganizationName = account.Organization.Name,
-            BankId = account.Bank.Id,
-            //BankName = account.Bank.Name,
+            OrganizationId = account.Organization.Id,            
+            BankId = account.Bank.Id,            
             AccountNumber = account.AccountNumber
         };
     }

@@ -1,13 +1,7 @@
 ﻿using BanksDB.Core.Enums;
 using BanksDB.Core.Models.InputModels;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.VisualStudio.Services.Common;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BanksDB.BLL.Parsers
 {
@@ -50,14 +44,10 @@ namespace BanksDB.BLL.Parsers
                     if (line == "КонецДокумента" && inDocumentSection)
                     {
                         inDocumentSection = false;
-                        //if (IsValidTransaction(currentTransaction))
-                        //{
-                        //    DetermineTransactionType(currentTransaction);
-                        //    transactions.Add(currentTransaction);
-                        //}
+
                         if (currentTransaction != null)
-                        {                            
-                            DetermineTransactionType(currentTransaction);
+                        {
+                            DetermineTransactionTypeAndCounterparty(currentTransaction);
                             if (IsValidTransaction(currentTransaction))
                             {
                                 transactions.Add(currentTransaction);
@@ -90,7 +80,6 @@ namespace BanksDB.BLL.Parsers
                 Errors = errors,
                 IsValid = !errors.Any(),
                 FileAccountNumber = fileAccountNumber
-                //TotalTransactionsFound = transactions.Count
             };
         }
         private void ParseDocumentLine(string line, TransactionInputModel currentTransaction)
@@ -107,15 +96,13 @@ namespace BanksDB.BLL.Parsers
                 case "Дата":
                     if (DateTime.TryParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))//dd-MM-yyyy
                     {
-                        currentTransaction.TransactionDate = date;                        
+                        currentTransaction.TransactionDate = date;
                     }
-                    //дополнительная проверка
                     else
-                    {                        
+                    {
                         DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out date);
                         currentTransaction.TransactionDate = date;
                     }
-                    //
                     break;
                 case "Сумма":
                     if (decimal.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var amount))
@@ -139,7 +126,7 @@ namespace BanksDB.BLL.Parsers
                     if (!string.IsNullOrEmpty(value))
                     {
                         currentTransaction.CounterpartyInn = value;
-                    }                        
+                    }
                     break;
                 case "Номер":
                     currentTransaction.DocumentNumber = value;
@@ -157,56 +144,64 @@ namespace BanksDB.BLL.Parsers
                     if (DateTime.TryParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var writeOffDate))
                     {
                         currentTransaction.WriteOffDate = writeOffDate;
-                    }                        
+                    }
                     break;
                 case "ДатаПоступило":
                     if (DateTime.TryParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var receiptDate))
                     {
                         currentTransaction.ReceiptDate = receiptDate;
-                    }                        
+                    }
                     break;
             }
         }
-        private void DetermineTransactionType(TransactionInputModel currentTransaction)
+        private void DetermineTransactionTypeAndCounterparty(TransactionInputModel currentTransaction)
         {
-            //if (!string.IsNullOrEmpty(currentTransaction.CounterpartyName))
-            //{
-            //    if (currentTransaction.CounterpartyName.Contains("Сбербанк") || currentTransaction.CounterpartyName.Contains("Банк"))
-            //    {
-            //        currentTransaction.TransactionType = TransactionType.Расход.ToString();
-            //    }
-            //    else
-            //    {
-            //        if (currentTransaction.WriteOffDate != default && currentTransaction.ReceiptDate == default)
-            //        {
-            //            currentTransaction.TransactionType = TransactionType.Расход.ToString();
-            //        }
-            //        else if (currentTransaction.ReceiptDate != default && currentTransaction.WriteOffDate == default)
-            //        {
-            //            currentTransaction.TransactionType = TransactionType.Приход.ToString();
-            //        }
-            //        else
-            //        {
-            //            currentTransaction.TransactionType = TransactionType.Расход.ToString();
-            //        }
-            //    }
-            //}
             if (currentTransaction.ReceiptDate != default && currentTransaction.WriteOffDate == default)
             {
                 currentTransaction.TransactionType = TransactionType.Приход.ToString();
+                currentTransaction.DisplayCounterparty = currentTransaction.PayerName;
+                currentTransaction.DisplayCounterpartyInn = currentTransaction.PayerInn;
+                currentTransaction.DisplayCounterpartyAccount = currentTransaction.PayerAccount;
             }
             else if (currentTransaction.WriteOffDate != default && currentTransaction.ReceiptDate == default)
             {
                 currentTransaction.TransactionType = TransactionType.Расход.ToString();
+                currentTransaction.DisplayCounterparty = currentTransaction.CounterpartyName;
+                currentTransaction.DisplayCounterpartyInn = currentTransaction.CounterpartyInn;
+                currentTransaction.DisplayCounterpartyAccount = currentTransaction.CounterpartyAccount;
             }
             else
-            {                
+            {
                 if (string.IsNullOrEmpty(currentTransaction.TransactionType))
                 {
                     currentTransaction.TransactionType = TransactionType.Приход.ToString();
+                    currentTransaction.DisplayCounterparty = currentTransaction.PayerName;
+                    currentTransaction.DisplayCounterpartyInn = currentTransaction.PayerInn;
+                    currentTransaction.DisplayCounterpartyAccount = currentTransaction.PayerAccount;
                 }
             }
+            if (string.IsNullOrEmpty(currentTransaction.DisplayCounterparty))
+            {
+                currentTransaction.DisplayCounterparty = currentTransaction.CounterpartyName ??
+                                                       currentTransaction.PayerName ??
+                                                       "Не указан";
+            }
+
+            if (string.IsNullOrEmpty(currentTransaction.DisplayCounterpartyInn))
+            {
+                currentTransaction.DisplayCounterpartyInn = currentTransaction.CounterpartyInn ??
+                                                           currentTransaction.PayerInn ??
+                                                           string.Empty;
+            }
+
+            if (string.IsNullOrEmpty(currentTransaction.DisplayCounterpartyAccount))
+            {
+                currentTransaction.DisplayCounterpartyAccount = currentTransaction.CounterpartyAccount ??
+                                                               currentTransaction.PayerAccount ??
+                                                               string.Empty;
+            }
         }
+
         private bool IsValidTransaction(TransactionInputModel currentTransaction)
         {
             if (currentTransaction.Amount <= 0)
@@ -222,8 +217,8 @@ namespace BanksDB.BLL.Parsers
                 return false;
             }
             return true;
-        }    
-    
+        }
+
     }
     public class BankParserResult
     {

@@ -2,12 +2,6 @@
 using BanksDB.BLL.Security;
 using BanksDB.Core.Dtos;
 using BanksDB.Core.Interfaces;
-using BanksDB.DAL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BanksDB.BLL.Services
 {

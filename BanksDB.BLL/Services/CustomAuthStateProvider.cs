@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace BanksDB.BLL.Services
@@ -12,7 +7,7 @@ namespace BanksDB.BLL.Services
     public class CustomAuthStateProvider : AuthenticationStateProvider
     {
         private ClaimsPrincipal _currentUser = new ClaimsPrincipal(new ClaimsIdentity());
-        
+
         public override Task<AuthenticationState> GetAuthenticationStateAsync()
         {
             return Task.FromResult(new AuthenticationState(_currentUser));

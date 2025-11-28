@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BanksDB.Core.Models.InputModels
 {
     public class TransactionInputModel
-    {      
+    {
         [Required]
         [Range(0.01, double.MaxValue)]
         public decimal Amount { get; set; }
@@ -25,9 +20,12 @@ namespace BanksDB.Core.Models.InputModels
         public DateTime TransactionDate { get; set; }
         [Required]
         public int AccountId { get; set; }
-        public string PayerName { get; set; }
-        public string PayerInn { get; set; }
-        public string PayerAccount { get; set; }
+        public string? PayerName { get; set; }
+        public string? PayerInn { get; set; }
+        public string? PayerAccount { get; set; }
+        public string? DisplayCounterparty { get; set; }
+        public string? DisplayCounterpartyInn { get; set; }
+        public string? DisplayCounterpartyAccount { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime WriteOffDate { get; set; }
         public DateTime ReceiptDate { get; set; }

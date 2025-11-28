@@ -6,9 +6,7 @@
 @inject IAuthenticationService AuthenticationService
 
 
-<CascadingAuthenticationState>
-    
-    
+<CascadingAuthenticationState>    
     <Router AppAssembly="typeof(App).Assembly">        
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
@@ -26,8 +24,7 @@
                 <p role="alert">Страница не найдена</p>
             </LayoutView>
         </NotFound>
-    </Router>   
-    
+    </Router>       
 </CascadingAuthenticationState>
     
 

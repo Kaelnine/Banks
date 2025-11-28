@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BanksDB.Core.Dtos
+﻿namespace BanksDB.Core.Dtos
 {
     public class TransactionDto
     {
@@ -21,6 +15,9 @@ namespace BanksDB.Core.Dtos
         public string PayerName { get; set; }
         public string PayerInn { get; set; }
         public string PayerAccount { get; set; }
+        public string? DisplayCounterparty { get; set; }
+        public string? DisplayCounterpartyInn { get; set; }
+        public string? DisplayCounterpartyAccount { get; set; }
         //public decimal BalanceAfter { get; set; }
         public DateTime CreatedDate { get; set; }
         public AccountDto Account { get; set; }

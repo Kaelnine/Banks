@@ -178,7 +178,8 @@
     padding: 8px 20px;
     border-radius: 8px;
     font-weight: 600;
-    transition: all 0.3s ease;    
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
 }
 
     .btn-apply:hover:not(:disabled) {
@@ -189,10 +190,11 @@
     background: #6c757d;
     color: white;
     border: none;
-    padding: 8px 20px;    
+    padding: 8px 20px;
     border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
+    margin: 20px 5px;
 }
 
     .btn-secondary:hover {

@@ -1,19 +1,11 @@
 ﻿using AutoMapper;
 using BanksDB.BLL.Interfaces;
 using BanksDB.BLL.Parsers;
-using BanksDB.Core.Dtos;
 using BanksDB.Core.Entities;
 using BanksDB.Core.Enums;
 using BanksDB.Core.Interfaces;
 using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
-using Microsoft.VisualStudio.Services.FormInput;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace BanksDB.BLL.Services
@@ -36,7 +28,6 @@ namespace BanksDB.BLL.Services
         {
             var account = await _accountRepository.GetByIdAsync(accountId);
             var accountNumber = account?.AccountNumber;
-            //var result = _bankParser.ParseFile(fileStream, accountNumber);
             using var memoryStream = new MemoryStream();
             await fileStream.CopyToAsync(memoryStream);
             memoryStream.Position = 0;
@@ -114,7 +105,7 @@ namespace BanksDB.BLL.Services
                 if (transaction.TransactionType != "Приход" && transaction.TransactionType != "Расход")
                 {
                     result.Errors.Add($"Транзакция {i + 1}: Тип транзакции должен быть 'Приход' или 'Расход'");
-                }                       
+                }
             }
             result.IsValid = !result.Errors.Any();
             return result;
@@ -139,10 +130,9 @@ namespace BanksDB.BLL.Services
                 var accountEntity = _mapper.Map<Account>(account);
                 await _accountRepository.UpdateAsync(accountEntity);
             }
-                //var transactionsDto = _mapper.Map<List<TransactionDto>>(inputModels);
-                var transactionsEntity = _mapper.Map<List<Transaction>>(inputModels);
-                var createdTransactions = await _transactionRepository.AddSeveralAsync(transactionsEntity);
-                return _mapper.Map<List<TransactionOutputModel>>(createdTransactions);            
+            var transactionsEntity = _mapper.Map<List<Transaction>>(inputModels);
+            var createdTransactions = await _transactionRepository.AddSeveralAsync(transactionsEntity);
+            return _mapper.Map<List<TransactionOutputModel>>(createdTransactions);
         }
 
         public async Task AddTransactionAsync(TransactionInputModel inputModel)
@@ -156,10 +146,8 @@ namespace BanksDB.BLL.Services
             {
                 throw new ArgumentException("Сумма транзакции должна быть больше 0");
             }
-            //var transactionDto = _mapper.Map<TransactionDto>(inputModel);
             var transactionEntity = _mapper.Map<Transaction>(inputModel);
             await _transactionRepository.AddAsync(transactionEntity);
-            //await UpdateAccountBalance(account, inputModel.Amount, inputModel.TransactionType);            
         }
 
         public async Task DeleteTransactionAsync(int id)
@@ -229,7 +217,6 @@ namespace BanksDB.BLL.Services
         {
             return await _transactionRepository.GetDuplicateCountAsync(transactions);
         }
-        //private async Task UpdateAccountBalance()
     }
 
     public class ValidationResult

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Cryptography;
 
 namespace BanksDB.BLL.Security
 {
@@ -12,7 +7,7 @@ namespace BanksDB.BLL.Security
         private const int SaltSize = 16;
         private const int KeySize = 32;
         private const int Iterations = 50000;
-        
+
         public static string HashPassword(string password)
         {
             using var rng = RandomNumberGenerator.Create();
@@ -29,9 +24,9 @@ namespace BanksDB.BLL.Security
             if (parts.Length == 2)
             {
                 byte[] salt = Convert.FromBase64String(parts[0]);
-                byte[] hash = Convert.FromBase64String(parts[1]);                
+                byte[] hash = Convert.FromBase64String(parts[1]);
                 using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256);
-                var computedHash = pbkdf2.GetBytes(32); 
+                var computedHash = pbkdf2.GetBytes(32);
 
                 return computedHash.SequenceEqual(hash);
             }
@@ -50,16 +45,6 @@ namespace BanksDB.BLL.Security
             {
                 return false;
             }
-            //if (parts.Length != 3)
-            //{
-            //    return false;
-            //}
-            //int iterations = int.Parse(parts[0]);
-            //byte[] salt = Convert.FromBase64String(parts[1]);
-            //byte[] hash = Convert.FromBase64String(parts[2]);
-            //using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256);
-            //var computedHash = pbkdf2.GetBytes(KeySize);
-            //return computedHash.SequenceEqual(hash);
         }
     }
 }

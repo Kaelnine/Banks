@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BanksDB.Core.Entities
 {
@@ -14,13 +9,11 @@ namespace BanksDB.Core.Entities
         public string Name { get; set; }
         [Required(ErrorMessage = "Организация обязательна")]
         [Range(1, int.MaxValue, ErrorMessage = "Выберите организацию")]
-        public int OrganizationId { get; set; }
-        //public string OrganizationName { get; set; }
+        public int OrganizationId { get; set; }        
         public Organization Organization { get; set; }
         [Required(ErrorMessage = "Банк обязателен")]
         [Range(1, int.MaxValue, ErrorMessage = "Выберите банк")]
-        public int BankId { get; set; }
-        //public string BankName { get; set; }
+        public int BankId { get; set; }        
         public Bank Bank { get; set; }
         [Required(ErrorMessage = "Номер счета обязателен")]
         public string AccountNumber { get; set; }
