@@ -89,5 +89,74 @@ namespace BanksDB.BLL.Services
         {
             await _accountRepository.UpdateAsync(account);
         }
+
+        public async Task<decimal> CalculateBalanceAsync(int accountId, DateTime? asOfDate = null)
+        {
+            await using var db = await _db.CreateDbContextAsync();
+            var account = await db.Accounts.FirstOrDefaultAsync(a => a.Id == accountId);
+            if (account == null) return 0;
+            var balance = account.InitialBalance;
+            var query = db.Transactions.Where(t =>
+            t.AccountId == accountId &&
+            !t.IsDeleted);
+            if (asOfDate.HasValue)
+            {
+                query = query.Where(t => t.TransactionDate.Date == asOfDate.Value.Date);
+            }
+            var transactions = await query.ToListAsync();
+            foreach (var transaction in transactions)
+            {
+                if (transaction.TransactionType == "Приход")
+                    balance += transaction.Amount;
+                else if (transaction.TransactionType == "Расход")
+                    balance -= transaction.Amount;
+            }
+            return balance;
+        }
+
+        public async Task<decimal> GetBalanceAsOfDateAsync(int accountId, DateTime date)
+        {
+            return await CalculateBalanceAsync(accountId, date);
+        }
+
+        public async Task<List<BalanceHistoryItem>> GetBalanceHistoryAsync(int accountId, DateTime startDate, DateTime endDate)
+        {
+            await using var db = await _db.CreateDbContextAsync();
+            var account = await db.Accounts.FirstOrDefaultAsync(a => a.Id == accountId);
+            if (account == null) return new List<BalanceHistoryItem>();
+            var history = new List<BalanceHistoryItem>();
+            var currentDate = startDate.Date;
+            var initialBalance = await CalculateBalanceAsync(accountId, startDate.AddDays(-1));
+            while (currentDate <= endDate)
+            {
+                var dayTransactions = await db.Transactions
+                    .Where(t => t.AccountId == accountId &&
+                        t.TransactionDate == currentDate &&
+                        !t.IsDeleted)
+                    .ToListAsync();
+                var dayIncome = dayTransactions
+                    .Where(t => t.TransactionType == "Приход")
+                    .Sum(t => t.Amount);
+                var dayExpense = dayTransactions
+                    .Where(t => t.TransactionType == "Расход")
+                    .Sum(t => t.Amount);
+                var dayBalance = initialBalance + dayIncome - dayExpense;
+                history.Add(new BalanceHistoryItem
+                {
+                    Date = currentDate,
+                    Balance = dayBalance,
+                    Income = dayIncome,
+                    Expense = dayExpense
+                });
+                initialBalance = dayBalance;
+                currentDate= currentDate.AddDays(1);
+            }
+            return history;
+        }
+
+        public async Task<decimal>GetBalanceAtDateAsync(int accountId, DateTime date)
+        {
+            return await CalculateBalanceAsync(accountId, date);
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace BanksDB.Core.Entities
         public Bank Bank { get; set; }
         [Required(ErrorMessage = "Номер счета обязателен")]
         public string AccountNumber { get; set; }
+        public decimal InitialBalance { get; set; }
         public decimal CurrentBalance { get; set; }
 
         public DateTime UpdateAccount { get; set; }

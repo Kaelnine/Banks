@@ -16,6 +16,7 @@ namespace BanksDB.Core.Models.InputModels
         [Required(ErrorMessage = "Номер счета обязателен")]
         [StringLength(20, ErrorMessage = "Номер счета должен содержать 20 цифр")]
         public string AccountNumber { get; set; }
+        public decimal InitialBalance { get; set; }
 
         public decimal CurrentBalance { get; set; }
 

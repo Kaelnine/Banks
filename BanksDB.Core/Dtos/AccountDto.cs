@@ -11,6 +11,7 @@ namespace BanksDB.Core.Dtos
         public int BankId { get; set; }
         public string BankName { get; set; }
         public string AccountNumber { get; set; }
+        public decimal InitialBalance { get; set; }
         public decimal CurrentBalance { get; set; }
         //
         //public string AccountType { get; set; }

@@ -45,6 +45,7 @@ namespace BanksDB.BLL.Services
             {
                 return new List<Transaction>();
             }
+            
             var validationResult = ValidateTransactions(transactions);
             if (!validationResult.IsValid)
             {
@@ -58,7 +59,8 @@ namespace BanksDB.BLL.Services
 
             var transactionsEntity = _mapper.Map<List<Transaction>>(uniqueTransactions);
             var createdTransactions = await _transactionRepository.AddSeveralAsync(transactionsEntity);
-            await UpdateAccountBalances(transactions);
+            //await UpdateAccountBalances(transactions);
+            
             return _mapper.Map<List<Transaction>>(createdTransactions);
         }
 

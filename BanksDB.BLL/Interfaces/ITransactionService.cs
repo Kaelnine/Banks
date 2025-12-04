@@ -22,6 +22,6 @@ namespace BanksDB.BLL.Interfaces
         Task<List<Transaction>> ImportTransactionsAsync(List<TransactionInputModel> transactions);
         Task<bool> IsDuplicateTransactionAsync(TransactionInputModel transaction);
         Task<List<TransactionInputModel>> FilterDuplicateTransactionsAsync(List<TransactionInputModel> transactions);
-        Task<int> GetDuplicateCountAsync(List<TransactionInputModel> transactions);
+        Task<int> GetDuplicateCountAsync(List<TransactionInputModel> transactions);        
     }
 }
