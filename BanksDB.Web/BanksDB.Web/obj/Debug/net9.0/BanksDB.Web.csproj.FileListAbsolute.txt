@@ -8,7 +8,6 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.M
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.RazorAssemblyInfo.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.RazorAssemblyInfo.cs
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.sourcelink.json
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.MvcApplicationPartsAssemblyInfo.cs
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.staticwebassets.runtime.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.staticwebassets.endpoints.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\appsettings.Development.json

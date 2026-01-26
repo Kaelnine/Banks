@@ -8,8 +8,6 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroo
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\icudt_CJK.tjcz0u77k5.dat
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\icudt_EFIGS.tptq2av103.dat
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\icudt_no_CJK.lfu7j35m59.dat
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.nul9jr5loo.pdb
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.uu45zth6q4.wasm
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\blazor.boot.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\Microsoft.AspNetCore.Authorization.z6jo10m0rd.wasm
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Forms.ysqd97eroy.wasm
@@ -215,7 +213,6 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroo
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Diagnostics.DiagnosticSource.onf7a771xa.wasm.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Linq.Parallel.f7fejzp6g2.wasm.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Net.WebProxy.f1ecer1rjo.wasm.gz
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.nul9jr5loo.pdb.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\Microsoft.Extensions.Configuration.FileExtensions.du3jbwjtlq.wasm.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.IO.Compression.nf0x03kqm2.wasm.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Net.apmwghm6mr.wasm.gz
@@ -231,7 +228,6 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroo
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Runtime.InteropServices.JavaScript.4iqhe1sblh.wasm.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.ComponentModel.Primitives.r00dr8i32r.wasm.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Text.Encodings.Web.f1xjgsf1dl.wasm.gz
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.uu45zth6q4.wasm.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.IO.FileSystem.278u1momgg.wasm.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\System.Resources.Reader.qab1hgqeqx.wasm.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\dotnet.runtime.js.map.gz
@@ -1017,9 +1013,6 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compre
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\m73wp6kvmr-tjcz0u77k5.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\gwcdwrbkiv-tptq2av103.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\abdznpr4v2-lfu7j35m59.gz
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\5c2r9cic7o-uu45zth6q4.gz
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\2zcqaf90qf-nul9jr5loo.gz
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\sc31b0co7g-uibqdxwfrt.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\staticwebassets.development.json
@@ -1030,3 +1023,10 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\BanksD
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\refint\BanksDB.Web.Client.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\BanksDB.Web.Client.pdb
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\ref\BanksDB.Web.Client.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.2ijpi8hh9k.pdb
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.nk6ywxi8e8.wasm
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.2ijpi8hh9k.pdb.gz
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\bin\Debug\net9.0\wwwroot\_framework\BanksDB.Web.Client.nk6ywxi8e8.wasm.gz
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\5c2r9cic7o-nk6ywxi8e8.gz
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\2zcqaf90qf-2ijpi8hh9k.gz
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Debug\net9.0\compressed\sc31b0co7g-3b8cpq06zz.gz

@@ -290,14 +290,18 @@ else
                         </div>
                     </div>
                 }
-                @if (parserResult?.Errors.Any() == true)
+                @if (parserResult?.Errors.Any() == true || parserResult?.HasAccountMismatch == true)
                 {
-                    <div class="alert alert-warning">
-                        <h6>Предупреждения:</h6>
+                    <div class="alert alert-danger">
+                        <h6>Ошибки загрузки:</h6>
                         <ul>
                             @foreach (var error in parserResult.Errors.Take(3))
                             {
                                 <li>@error</li>
+                            }
+                            @if (parserResult.HasAccountMismatch && !parserResult.Errors.Any(e => e.Contains("не соответствует")))
+                            {
+                                <li>Номер счета в файле не соответствует выбранному расчетному счету</li>
                             }
                         </ul>
                         @if (parserResult.Errors.Count > 3)
@@ -312,7 +316,7 @@ else
                     Отмена
                 </button>
                 <button @onclick="UploadTransactions" class="btn btn-success"                        
-                        disabled="@(parserResult?.Transactions.Any() != true || isUploading)">
+                        disabled="@(!CanUploadTransactions || isUploading)">
                     @if (isUploading)
                     {
                         <span>Загрузка...</span>
@@ -330,7 +334,10 @@ else
 
 @code {
     [Parameter] public int Id { get; set; }
-
+    private bool CanUploadTransactions => 
+        parserResult?.Transactions.Any() == true && 
+        parserResult.IsValid && 
+        !parserResult.HasAccountMismatch;
     private AccountOutputModel? accountInfo;
     private List<DailySummaryOutputModel> dailySummary = new();
     private DateRangeInputModel dateRange = new();

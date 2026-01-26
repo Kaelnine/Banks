@@ -15,6 +15,7 @@ namespace BanksDB.BLL.Parsers
         {
             var transactions = new List<TransactionInputModel>();
             var errors = new List<string>();
+            bool accountMismatch = false;
             using var reader = new StreamReader(fileStream, Encoding.GetEncoding(1251));
             string line;
             var inDocumentSection = false;
@@ -73,13 +74,15 @@ namespace BanksDB.BLL.Parsers
             if (!string.IsNullOrEmpty(expectedAccountNumber) && !string.IsNullOrEmpty(fileAccountNumber) && fileAccountNumber != expectedAccountNumber)
             {
                 errors.Add($"Номер счета в файле ({fileAccountNumber}) не соответствует выбранному номеру счета ({expectedAccountNumber})");
+                accountMismatch = true;
             }
             return new BankParserResult
             {
                 Transactions = transactions,
                 Errors = errors,
-                IsValid = !errors.Any(),
-                FileAccountNumber = fileAccountNumber
+                IsValid = !errors.Any() && !accountMismatch,
+                FileAccountNumber = fileAccountNumber,
+                HasAccountMismatch = accountMismatch
             };
         }
         private void ParseDocumentLine(string line, TransactionInputModel currentTransaction)
@@ -227,5 +230,6 @@ namespace BanksDB.BLL.Parsers
         public bool IsValid { get; set; }
         public string FileAccountNumber { get; set; }
         public int TotalTransactionsFound => Transactions.Count;
+        public bool HasAccountMismatch { get; set; } = false;
     }
 }
