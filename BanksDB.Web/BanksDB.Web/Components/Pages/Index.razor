@@ -65,7 +65,7 @@ else
 			<div class="user-info">
 				<span>
 					@* 👤 @AuthenticationService.CurrentUser.FullName *@
-					👤 @(AuthenticationService.CurrentUser?.FullName ?? "Пользователь")
+					👩🏼 @(AuthenticationService.CurrentUser?.FullName ?? "Пользователь")
 					@* <small>(@AuthenticationService.CurrentUser.RoleDisplayName)</small> *@
 					<small>(@(AuthenticationService.CurrentUser?.RoleDisplayName ?? "Неизвестно"))</small>
 				</span>

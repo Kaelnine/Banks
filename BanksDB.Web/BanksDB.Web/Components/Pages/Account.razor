@@ -225,6 +225,24 @@ else
                         </div>
                     </InputFile>
                 </div>
+                <!---->
+                 @if (parserResult?.HasAccountMismatch == true)
+                {
+                    <div class="alert alert-danger" style="margin-top: 15px;">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-exclamation-circle-fill me-2"></i>
+                            <div>
+                                <strong>Несоответствие расчетного счета!</strong>
+                                <div>
+                                    Номер счета в файле (<strong>@parserResult.FileAccountNumber</strong>) 
+                                    не соответствует выбранному счету (<strong>@accountInfo.AccountNumber</strong>)
+                                </div>
+                                <small class="text-muted">Выберите правильный расчетный счет или загрузите корректный файл</small>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <!---->
 
                 @if (!string.IsNullOrEmpty(uploadError))
                 {
@@ -315,7 +333,8 @@ else
                 <button @onclick="CloseUploadModal" class="btn btn-secondary">
                     Отмена
                 </button>
-                <button @onclick="UploadTransactions" class="btn btn-success"                        
+                <!--<button @onclick="UploadTransactions" class="btn btn-success"-->
+                    <button @onclick="UploadTransactions" class="btn @GetUploadButtonClass()"
                         disabled="@(!CanUploadTransactions || isUploading)">
                     @if (isUploading)
                     {
@@ -334,6 +353,16 @@ else
 
 @code {
     [Parameter] public int Id { get; set; }
+    private string GetUploadButtonClass()
+    {
+        if (isUploading)
+            return "btn-secondary";
+            
+        if (CanUploadTransactions)
+            return "btn-success";
+        else
+            return "btn-outline-secondary disabled-opacity";
+    }
     private bool CanUploadTransactions => 
         parserResult?.Transactions.Any() == true && 
         parserResult.IsValid && 

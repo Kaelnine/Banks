@@ -692,3 +692,42 @@
     background: #fff3cd;
     border-radius: 0.25rem;
 }
+
+/* Стиль для отключенной кнопки */
+.btn.disabled-opacity {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+    /* Стиль для отключенной кнопки при наведении */
+    .btn.disabled-opacity:hover {
+        background-color: #6c757d !important;
+        border-color: #6c757d !important;
+        opacity: 0.6;
+    }
+
+/* Иконка ошибки */
+.bi-exclamation-circle-fill {
+    color: #dc3545;
+    font-size: 1.2rem;
+}
+
+/* Анимация для предупреждения */
+.alert-danger {
+    border-left: 4px solid #dc3545;
+    animation: pulse 2s infinite;
+}
+
+@@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.3);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
