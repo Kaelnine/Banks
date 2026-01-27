@@ -22,6 +22,12 @@ namespace BanksDB.BLL.Parsers
             TransactionInputModel currentTransaction = null;
             var lineNumber = 0;
             string fileAccountNumber = null;
+            var supportedDocTypes = new List<string>
+            {
+                "Платежное поручение",
+                "Банковский ордер",
+                "Прочее"
+            };
             while ((line = reader.ReadLine()) != null)
             {
                 lineNumber++;
@@ -36,11 +42,27 @@ namespace BanksDB.BLL.Parsers
                     {
                         fileAccountNumber = line.Split('=')[1].Trim();
                     }
-                    if (line.StartsWith("СекцияДокумент=Платежное поручение"))
+                    //if (line.StartsWith("СекцияДокумент=Платежное поручение"))
+                    //{
+                    //    inDocumentSection = true;
+                    //    currentTransaction = new TransactionInputModel();
+                    //    continue;
+                    //}
+                    if (line.StartsWith("СекцияДокумент="))
                     {
-                        inDocumentSection = true;
-                        currentTransaction = new TransactionInputModel();
-                        continue;
+                        var docType = line.Replace("СекцияДокумент=", "").Trim();
+                        if (supportedDocTypes.Contains(docType))
+                        {
+                            inDocumentSection = true;
+                            currentTransaction = new TransactionInputModel();
+                            continue;
+                        }
+                        else
+                        {                            
+                            inDocumentSection = false;
+                            currentTransaction = null;
+                            continue;
+                        }
                     }
                     if (line == "КонецДокумента" && inDocumentSection)
                     {
