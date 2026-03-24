@@ -1118,14 +1118,7 @@
           "System.Threading": "4.3.0"
         }
       },
-      "System.Formats.Asn1/9.0.10": {
-        "runtime": {
-          "lib/net9.0/System.Formats.Asn1.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.1025.47515"
-          }
-        }
-      },
+      "System.Formats.Asn1/9.0.10": {},
       "System.Globalization/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -1410,14 +1403,7 @@
         }
       },
       "System.Text.Encodings.Web/8.0.0": {},
-      "System.Text.Json/9.0.10": {
-        "runtime": {
-          "lib/net9.0/System.Text.Json.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.1025.47515"
-          }
-        }
-      },
+      "System.Text.Json/9.0.10": {},
       "System.Text.RegularExpressions/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"

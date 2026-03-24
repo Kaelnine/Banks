@@ -140,13 +140,27 @@ namespace BanksDB.BLL.Parsers
                     currentTransaction.Description = value;
                     break;
                 case "Получатель":
-                    currentTransaction.CounterpartyName = value;
+                //currentTransaction.CounterpartyName = value;
+                //-----
+                case "Получатель1":
+                    if (string.IsNullOrEmpty(currentTransaction.CounterpartyName))
+                    {
+                        currentTransaction.CounterpartyName = value;
+                    }
+                //-----
                     break;
                 case "ПолучательРасчСчет":
-                    if (!string.IsNullOrEmpty(value))
+                //if (!string.IsNullOrEmpty(value))
+                //{
+                //    currentTransaction.CounterpartyAccount = value;
+                //}
+                //-----
+                case "ПолучательСчет":
+                    if (!string.IsNullOrEmpty(value) && string.IsNullOrEmpty(currentTransaction.CounterpartyAccount))
                     {
                         currentTransaction.CounterpartyAccount = value;
                     }
+                //-----
                     break;
                 case "ПолучательИНН":
                     if (!string.IsNullOrEmpty(value))
@@ -158,43 +172,104 @@ namespace BanksDB.BLL.Parsers
                     currentTransaction.DocumentNumber = value;
                     break;
                 case "Плательщик":
-                    currentTransaction.PayerName = value;
+                //currentTransaction.PayerName = value;
+                //-----
+                case "Плательщик1":
+                    if (string.IsNullOrEmpty(currentTransaction.PayerName))
+                    {
+                        currentTransaction.PayerName = value;
+                    }
+                //-----
                     break;
                 case "ПлательщикИНН":
                     currentTransaction.PayerInn = value;
                     break;
                 case "ПлательщикРасчСчет":
-                    currentTransaction.PayerAccount = value;
+                //currentTransaction.PayerAccount = value;
+                //-----
+                case "ПлательщикСчет":
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        currentTransaction.PayerAccount = value;
+                    }
+                //-----
                     break;
                 case "ДатаСписано":
-                    if (DateTime.TryParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var writeOffDate))
+                    //if (DateTime.TryParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var writeOffDate))
+                    //{
+                    //    currentTransaction.WriteOffDate = writeOffDate;
+                    //}
+                    //-----
+                    if (!string.IsNullOrEmpty(value))
                     {
-                        currentTransaction.WriteOffDate = writeOffDate;
+                        if (DateTime.TryParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var writeOffDate))
+                        {
+                            currentTransaction.WriteOffDate = writeOffDate;
+                        }
+                        else if (DateTime.TryParseExact(value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out writeOffDate))
+                        {
+                            currentTransaction.WriteOffDate = writeOffDate;
+                        }
+                        else if (DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out writeOffDate))
+                        {
+                            currentTransaction.WriteOffDate = writeOffDate;
+                        }
                     }
+                    //-----
                     break;
                 case "ДатаПоступило":
-                    if (DateTime.TryParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var receiptDate))
+                    //if (DateTime.TryParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var receiptDate))
+                    //{
+                    //    currentTransaction.ReceiptDate = receiptDate;
+                    //}
+                    //-----
+                    if (!string.IsNullOrEmpty(value))
                     {
-                        currentTransaction.ReceiptDate = receiptDate;
+                        if (DateTime.TryParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var receiptDate))
+                        {
+                            currentTransaction.ReceiptDate = receiptDate;
+                            // Для приходных операций используем дату поступления как дату транзакции
+                            currentTransaction.TransactionDate = receiptDate;
+                        }
+                        else if (DateTime.TryParseExact(value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out receiptDate))
+                        {
+                            currentTransaction.ReceiptDate = receiptDate;
+                            currentTransaction.TransactionDate = receiptDate;
+                        }
+                        else if (DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out receiptDate))
+                        {
+                            currentTransaction.ReceiptDate = receiptDate;
+                            currentTransaction.TransactionDate = receiptDate;
+                        }
                     }
+                    //-----
                     break;
+                    //-----
+                case "ВидОплаты":
+                    currentTransaction.PaymentType = value;
+                    break;
+                    //-----
             }
         }
         private void DetermineTransactionTypeAndCounterparty(TransactionInputModel currentTransaction)
         {
-            if (currentTransaction.ReceiptDate != default && currentTransaction.WriteOffDate == default)
+            //if (currentTransaction.ReceiptDate != default && currentTransaction.WriteOffDate == default)
+            if (currentTransaction.ReceiptDate != default)
             {
                 currentTransaction.TransactionType = TransactionType.Приход.ToString();
                 currentTransaction.DisplayCounterparty = currentTransaction.PayerName;
                 currentTransaction.DisplayCounterpartyInn = currentTransaction.PayerInn;
                 currentTransaction.DisplayCounterpartyAccount = currentTransaction.PayerAccount;
+                currentTransaction.TransactionDate = currentTransaction.ReceiptDate;
             }
-            else if (currentTransaction.WriteOffDate != default && currentTransaction.ReceiptDate == default)
+            //else if (currentTransaction.WriteOffDate != default && currentTransaction.ReceiptDate == default)
+            else if (currentTransaction.WriteOffDate != default)
             {
                 currentTransaction.TransactionType = TransactionType.Расход.ToString();
                 currentTransaction.DisplayCounterparty = currentTransaction.CounterpartyName;
                 currentTransaction.DisplayCounterpartyInn = currentTransaction.CounterpartyInn;
                 currentTransaction.DisplayCounterpartyAccount = currentTransaction.CounterpartyAccount;
+                currentTransaction.TransactionDate = currentTransaction.WriteOffDate;
             }
             else
             {
@@ -205,6 +280,22 @@ namespace BanksDB.BLL.Parsers
                     currentTransaction.DisplayCounterpartyInn = currentTransaction.PayerInn;
                     currentTransaction.DisplayCounterpartyAccount = currentTransaction.PayerAccount;
                 }
+                // Если нет ни той, ни другой даты - определяем по счетам
+                //if (!string.IsNullOrEmpty(currentTransaction.PayerAccount) &&
+                //    currentTransaction.PayerAccount == currentTransaction.FileAccountNumber)
+                //{
+                //    currentTransaction.TransactionType = TransactionType.Расход.ToString();
+                //    currentTransaction.DisplayCounterparty = currentTransaction.CounterpartyName;
+                //    currentTransaction.DisplayCounterpartyInn = currentTransaction.CounterpartyInn;
+                //    currentTransaction.DisplayCounterpartyAccount = currentTransaction.CounterpartyAccount;
+                //}
+                //else
+                //{
+                //    currentTransaction.TransactionType = TransactionType.Приход.ToString();
+                //    currentTransaction.DisplayCounterparty = currentTransaction.PayerName;
+                //    currentTransaction.DisplayCounterpartyInn = currentTransaction.PayerInn;
+                //    currentTransaction.DisplayCounterpartyAccount = currentTransaction.PayerAccount;
+                //}
             }
             if (string.IsNullOrEmpty(currentTransaction.DisplayCounterparty))
             {

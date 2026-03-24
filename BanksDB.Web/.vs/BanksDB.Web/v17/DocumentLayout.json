@@ -3,21 +3,24 @@
   "WorkspaceRootPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C7F9CF6D-AAC7-4E2B-A4C8-210920FEC714}|BanksDB.Web\\BanksDB.Web.csproj|d:\\for jobs\\banksdb\\banks\\banksdb.web\\banksdb.web\\banksdb.web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C7F9CF6D-AAC7-4E2B-A4C8-210920FEC714}|BanksDB.Web\\BanksDB.Web.csproj|solutionrelative:banksdb.web\\banksdb.web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{31B11280-5919-40BF-98D2-2340B287360E}|..\\BanksDB.BLL\\BanksDB.BLL.csproj|d:\\for jobs\\banksdb\\banks\\banksdb.bll\\parsers\\bankparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36B573AA-3280-4758-84CD-2689E1705421}|..\\BanksDB.Core\\BanksDB.Core.csproj|d:\\for jobs\\banksdb\\banks\\banksdb.core\\models\\inputmodels\\transactioninputmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\_\u041F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0434\u043B\u044F \u0431\u0430\u043D\u043A\u043E\u0432\\Portable_1.5\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{31B11280-5919-40BF-98D2-2340B287360E}|..\\BanksDB.BLL\\BanksDB.BLL.csproj|d:\\for jobs\\banksdb\\banks\\banksdb.bll\\interfaces\\ibankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{31B11280-5919-40BF-98D2-2340B287360E}|..\\BanksDB.BLL\\BanksDB.BLL.csproj|d:\\for jobs\\banksdb\\banks\\banksdb.bll\\parsers\\bankparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C7F9CF6D-AAC7-4E2B-A4C8-210920FEC714}|BanksDB.Web\\BanksDB.Web.csproj|d:\\for jobs\\banksdb\\banks\\banksdb.web\\banksdb.web\\components\\pages\\account.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C7F9CF6D-AAC7-4E2B-A4C8-210920FEC714}|BanksDB.Web\\BanksDB.Web.csproj|solutionrelative:banksdb.web\\components\\pages\\account.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7F9CF6D-AAC7-4E2B-A4C8-210920FEC714}|BanksDB.Web\\BanksDB.Web.csproj|d:\\for jobs\\banksdb\\banks\\banksdb.web\\banksdb.web\\banksdb.web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{C7F9CF6D-AAC7-4E2B-A4C8-210920FEC714}|BanksDB.Web\\BanksDB.Web.csproj|solutionrelative:banksdb.web\\banksdb.web.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{31B11280-5919-40BF-98D2-2340B287360E}|..\\BanksDB.BLL\\BanksDB.BLL.csproj|d:\\for jobs\\banksdb\\banks\\banksdb.bll\\services\\transactionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -173,9 +176,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{36B573AA-3280-4758-84CD-2689E1705421}|..\\BanksDB.Core\\BanksDB.Core.csproj|d:\\for jobs\\banksdb\\banks\\banksdb.core\\models\\outputmodels\\dailysummaryoutputmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36B573AA-3280-4758-84CD-2689E1705421}|..\\BanksDB.Core\\BanksDB.Core.csproj|d:\\for jobs\\banksdb\\banks\\banksdb.core\\models\\inputmodels\\transactioninputmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36B573AA-3280-4758-84CD-2689E1705421}|..\\BanksDB.Core\\BanksDB.Core.csproj|d:\\for jobs\\banksdb\\banks\\banksdb.core\\models\\inputmodels\\organizationinputmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -406,7 +406,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -421,12 +421,8 @@
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\_\u041F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0434\u043B\u044F \u0431\u0430\u043D\u043A\u043E\u0432\\Portable_1.5\\appsettings.json",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\_\u041F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0434\u043B\u044F \u0431\u0430\u043D\u043A\u043E\u0432\\Portable_1.5\\appsettings.json",
@@ -439,31 +435,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "BankParser.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Parsers\\BankParser.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.BLL\\Parsers\\BankParser.cs",
               "ToolTip": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Parsers\\BankParser.cs",
               "RelativeToolTip": "..\\BanksDB.BLL\\Parsers\\BankParser.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBwAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAABIBAAAAAAAAAAAAABkBAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-13T09:47:58.389Z"
+              "WhenOpened": "2025-11-13T09:47:58.389Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IBankService.cs",
-              "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Interfaces\\IBankService.cs",
-              "RelativeDocumentMoniker": "..\\BanksDB.BLL\\Interfaces\\IBankService.cs",
-              "ToolTip": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Interfaces\\IBankService.cs",
-              "RelativeToolTip": "..\\BanksDB.BLL\\Interfaces\\IBankService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T12:32:30.538Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "PasswordHasher.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Security\\PasswordHasher.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.BLL\\Security\\PasswordHasher.cs",
@@ -475,7 +460,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "AccountService.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Services\\AccountService.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.BLL\\Services\\AccountService.cs",
@@ -487,7 +472,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "AuthenticationService.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Services\\AuthenticationService.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.BLL\\Services\\AuthenticationService.cs",
@@ -499,7 +484,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "TransactionService.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Services\\TransactionService.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.BLL\\Services\\TransactionService.cs",
@@ -511,7 +496,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Account.razor",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\Account.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Pages\\Account.razor",
@@ -523,7 +508,49 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "BanksDB.Web.csproj",
+              "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\BanksDB.Web.csproj",
+              "RelativeDocumentMoniker": "BanksDB.Web\\BanksDB.Web.csproj",
+              "ToolTip": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\BanksDB.Web.csproj",
+              "RelativeToolTip": "BanksDB.Web\\BanksDB.Web.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-03T14:34:25.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TransactionInputModel.cs",
+              "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Models\\InputModels\\TransactionInputModel.cs",
+              "RelativeDocumentMoniker": "..\\BanksDB.Core\\Models\\InputModels\\TransactionInputModel.cs",
+              "ToolTip": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Models\\InputModels\\TransactionInputModel.cs",
+              "RelativeToolTip": "..\\BanksDB.Core\\Models\\InputModels\\TransactionInputModel.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAwwCEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T11:43:31.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IBankService.cs",
+              "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Interfaces\\IBankService.cs",
+              "RelativeDocumentMoniker": "..\\BanksDB.BLL\\Interfaces\\IBankService.cs",
+              "ToolTip": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Interfaces\\IBankService.cs",
+              "RelativeToolTip": "..\\BanksDB.BLL\\Interfaces\\IBankService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T12:32:30.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "BankService.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Services\\BankService.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.BLL\\Services\\BankService.cs",
@@ -535,19 +562,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BanksDB.Web.csproj",
-              "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\BanksDB.Web.csproj",
-              "RelativeDocumentMoniker": "BanksDB.Web\\BanksDB.Web.csproj",
-              "ToolTip": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\BanksDB.Web.csproj",
-              "RelativeToolTip": "BanksDB.Web\\BanksDB.Web.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-11-03T14:34:25.542Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Index.razor",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\Index.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Pages\\Index.razor",
@@ -559,7 +574,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\appsettings.json",
               "RelativeDocumentMoniker": "BanksDB.Web\\appsettings.json",
@@ -571,7 +586,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "account.css",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\wwwroot\\css\\account.css",
               "RelativeDocumentMoniker": "BanksDB.Web\\wwwroot\\css\\account.css",
@@ -583,7 +598,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "TransactionRepository.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\TransactionRepository.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Repositories\\TransactionRepository.cs",
@@ -595,7 +610,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "ITransactionService.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Interfaces\\ITransactionService.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.BLL\\Interfaces\\ITransactionService.cs",
@@ -607,7 +622,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "AccountRepository.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\AccountRepository.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Repositories\\AccountRepository.cs",
@@ -619,7 +634,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "AccountConfiguration.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\Configurations\\AccountConfiguration.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Configurations\\AccountConfiguration.cs",
@@ -631,7 +646,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Account.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Entities\\Account.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Entities\\Account.cs",
@@ -643,7 +658,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "IAccountService.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\Interfaces\\IAccountService.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.BLL\\Interfaces\\IAccountService.cs",
@@ -655,7 +670,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "AccountOutputModel.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Models\\OutputModels\\AccountOutputModel.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Models\\OutputModels\\AccountOutputModel.cs",
@@ -667,7 +682,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "AccountInputModel.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Models\\InputModels\\AccountInputModel.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Models\\InputModels\\AccountInputModel.cs",
@@ -679,7 +694,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "AccountDto.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Dtos\\AccountDto.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Dtos\\AccountDto.cs",
@@ -691,7 +706,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "DailyTransactions.razor",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\DailyTransactions.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Pages\\DailyTransactions.razor",
@@ -703,7 +718,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "TransactionDto.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Dtos\\TransactionDto.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Dtos\\TransactionDto.cs",
@@ -715,7 +730,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "Transaction.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Entities\\Transaction.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Entities\\Transaction.cs",
@@ -727,7 +742,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "ITransactionRepository.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Interfaces\\ITransactionRepository.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Interfaces\\ITransactionRepository.cs",
@@ -739,7 +754,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Program.cs",
               "RelativeDocumentMoniker": "BanksDB.Web\\Program.cs",
@@ -751,7 +766,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "RedirectToLogin.razor",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\RedirectToLogin.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\RedirectToLogin.razor",
@@ -763,7 +778,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "AuthenticationView.razor",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\AuthenticationView.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\AuthenticationView.razor",
@@ -775,7 +790,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "App.razor",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\App.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\App.razor",
@@ -787,7 +802,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "OrganizationManagementModal.razor",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\OrganizationManagementModal.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Pages\\OrganizationManagementModal.razor",
@@ -799,7 +814,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "Login.razor",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\Login.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Pages\\Login.razor",
@@ -811,7 +826,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "BankManagementModal.razor",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\BankManagementModal.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Pages\\BankManagementModal.razor",
@@ -823,7 +838,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "AccountManagementModal.razor",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\AccountManagementModal.razor",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Pages\\AccountManagementModal.razor",
@@ -835,7 +850,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "_Host.cshtml",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\Components\\Pages\\_Host.cshtml",
               "RelativeDocumentMoniker": "BanksDB.Web\\Components\\Pages\\_Host.cshtml",
@@ -847,7 +862,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "transactions.css",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\wwwroot\\css\\transactions.css",
               "RelativeDocumentMoniker": "BanksDB.Web\\wwwroot\\css\\transactions.css",
@@ -859,7 +874,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "site.css",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "BanksDB.Web\\wwwroot\\css\\site.css",
@@ -871,7 +886,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "modals.css",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\wwwroot\\css\\modals.css",
               "RelativeDocumentMoniker": "BanksDB.Web\\wwwroot\\css\\modals.css",
@@ -883,7 +898,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "login.css",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Web\\BanksDB.Web\\wwwroot\\css\\login.css",
               "RelativeDocumentMoniker": "BanksDB.Web\\wwwroot\\css\\login.css",
@@ -895,7 +910,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Repositories\\UserRepository.cs",
@@ -907,7 +922,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "OrganizationRepository.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\OrganizationRepository.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Repositories\\OrganizationRepository.cs",
@@ -919,7 +934,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "BankRepository.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\Repositories\\BankRepository.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Repositories\\BankRepository.cs",
@@ -931,7 +946,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "BankDbContext.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\Data\\BankDbContext.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Data\\BankDbContext.cs",
@@ -943,7 +958,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "TransactionConfiguration.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\Configurations\\TransactionConfiguration.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Configurations\\TransactionConfiguration.cs",
@@ -955,7 +970,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "OrganizationConfiguration.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\Configurations\\OrganizationConfiguration.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Configurations\\OrganizationConfiguration.cs",
@@ -967,7 +982,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "BankConfiguration.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.DAL\\Configurations\\BankConfiguration.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.DAL\\Configurations\\BankConfiguration.cs",
@@ -980,18 +995,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 51,
-              "Title": "TransactionInputModel.cs",
-              "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Models\\InputModels\\TransactionInputModel.cs",
-              "RelativeDocumentMoniker": "..\\BanksDB.Core\\Models\\InputModels\\TransactionInputModel.cs",
-              "ToolTip": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Models\\InputModels\\TransactionInputModel.cs",
-              "RelativeToolTip": "..\\BanksDB.Core\\Models\\InputModels\\TransactionInputModel.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAABgAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T11:43:31.602Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 50,
               "Title": "DailySummaryOutputModel.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Models\\OutputModels\\DailySummaryOutputModel.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Models\\OutputModels\\DailySummaryOutputModel.cs",
@@ -1003,7 +1006,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "OrganizationOutputModel.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Models\\OutputModels\\OrganizationOutputModel.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Models\\OutputModels\\OrganizationOutputModel.cs",
@@ -1015,7 +1018,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "TransactionOutputModel.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Models\\OutputModels\\TransactionOutputModel.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Models\\OutputModels\\TransactionOutputModel.cs",
@@ -1027,7 +1030,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "LoginModel.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Models\\LoginModel.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Models\\LoginModel.cs",
@@ -1039,7 +1042,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.Core\\Models\\User.cs",
               "RelativeDocumentMoniker": "..\\BanksDB.Core\\Models\\User.cs",

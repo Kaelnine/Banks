@@ -76,13 +76,11 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\System.Configuration.ConfigurationManager.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\System.Data.SqlClient.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\System.Drawing.Common.dll
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\System.Formats.Asn1.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\System.Memory.Data.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\System.Runtime.Caching.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\System.Security.Permissions.dll
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\System.Text.Json.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\System.Windows.Extensions.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\System.Xml.XPath.XmlDocument.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Release\net9.0\PubTmp\Out\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll

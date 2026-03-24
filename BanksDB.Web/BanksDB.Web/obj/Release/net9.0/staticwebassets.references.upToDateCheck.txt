@@ -4,3 +4,5 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Release\net9.0\stat
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Release\net9.0\staticwebassets.build.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Release\net9.0\staticwebassets.build.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Release\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Release\net9.0\staticwebassets.build.json
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web.Client\obj\Release\net9.0\staticwebassets.build.json
