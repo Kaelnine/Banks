@@ -26,6 +26,7 @@ namespace BanksDB.BLL.Parsers
             {
                 "Платежное поручение",
                 "Банковский ордер",
+                "Платежное требование",
                 "Прочее"
             };
             while ((line = reader.ReadLine()) != null)
