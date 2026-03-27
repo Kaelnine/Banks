@@ -8,7 +8,6 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.M
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.RazorAssemblyInfo.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.RazorAssemblyInfo.cs
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.sourcelink.json
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.MvcApplicationPartsAssemblyInfo.cs
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.staticwebassets.runtime.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\BanksDB.Web.Client.staticwebassets.endpoints.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\appsettings.Development.json
@@ -91,13 +90,11 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Client
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Data.SqlClient.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Drawing.Common.dll
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Formats.Asn1.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Memory.Data.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Runtime.Caching.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Security.Permissions.dll
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Text.Json.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Windows.Extensions.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\System.Xml.XPath.XmlDocument.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
@@ -142,14 +139,13 @@ D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebasse
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.development.json
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB..1A015724.Up2Date
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\refint\BanksDB.Web.dll
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.pdb
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\BanksDB.Web.genruntimeconfig.cache
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\ref\BanksDB.Web.dll
-D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\hjbu2o4o39-le5p3rtagw.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\ymioigveaw-e0u8y7o88y.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\x8ib8l9144-3200bgxmas.gz
 D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\oi4rpz70g4-917hxde8kw.gz
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\obj\Debug\net9.0\compressed\hjbu2o4o39-nsfye33y79.gz

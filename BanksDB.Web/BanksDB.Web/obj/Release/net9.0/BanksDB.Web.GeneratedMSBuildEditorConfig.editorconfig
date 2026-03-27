@@ -1,0 +1,89 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = BanksDB.Web
+build_property.RootNamespace = BanksDB.Web
+build_property.ProjectDir = D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/AuthenticationView.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBdXRoZW50aWNhdGlvblZpZXcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/AccountManagementModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50TWFuYWdlbWVudE1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/DailyTransactions.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xEYWlseVRyYW5zYWN0aW9ucy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/OrganizationManagementModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xPcmdhbml6YXRpb25NYW5hZ2VtZW50TW9kYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/Test.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUZXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/RedirectToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSZWRpcmVjdFRvTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-hqw4h8qk4h
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/Account.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-3p0kpfey00
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/BankManagementModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCYW5rTWFuYWdlbWVudE1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-wjl67vzif4
+
+[D:/For Jobs/BanksDB/Banks/BanksDB.Web/BanksDB.Web/Components/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xfSG9zdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

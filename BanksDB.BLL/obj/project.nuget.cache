@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6FYsIVeJhw0=",
+  "dgSpecHash": "eH7gpl7Nw3Q=",
   "success": true,
   "projectFilePath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\BanksDB.BLL.csproj",
   "expectedPackageFiles": [
@@ -150,5 +150,18 @@
     "C:\\Users\\Илья\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
     "C:\\Users\\Илья\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "У пакета \"AutoMapper\" 15.1.0 есть известная уязвимость https://github.com/advisories/GHSA-rvv3-g6hj-g44x (уровень серьезности: высокий)",
+      "projectPath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\BanksDB.BLL.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\For Jobs\\BanksDB\\Banks\\BanksDB.BLL\\BanksDB.BLL.csproj",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
 }

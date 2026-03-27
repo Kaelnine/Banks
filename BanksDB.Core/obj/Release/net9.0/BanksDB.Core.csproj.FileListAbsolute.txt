@@ -1,0 +1,13 @@
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\bin\Release\net9.0\BanksDB.Core.deps.json
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\bin\Release\net9.0\BanksDB.Core.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\bin\Release\net9.0\BanksDB.Core.pdb
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Release\net9.0\BanksDB.Core.csproj.AssemblyReference.cache
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Release\net9.0\BanksDB.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Release\net9.0\BanksDB.Core.AssemblyInfoInputs.cache
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Release\net9.0\BanksDB.Core.AssemblyInfo.cs
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Release\net9.0\BanksDB.Core.csproj.CoreCompileInputs.cache
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Release\net9.0\BanksDB.Core.sourcelink.json
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Release\net9.0\BanksDB.Core.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Release\net9.0\refint\BanksDB.Core.dll
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Release\net9.0\BanksDB.Core.pdb
+D:\For Jobs\BanksDB\Banks\BanksDB.Core\obj\Release\net9.0\ref\BanksDB.Core.dll

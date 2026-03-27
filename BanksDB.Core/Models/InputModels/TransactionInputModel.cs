@@ -29,5 +29,7 @@ namespace BanksDB.Core.Models.InputModels
         public DateTime CreatedDate { get; set; }
         public DateTime WriteOffDate { get; set; }
         public DateTime ReceiptDate { get; set; }
+        public DateTime DocumentDate { get; set; } // Дата документа (из поля "Дата")
+        public string PaymentType { get; set; }
     }
 }

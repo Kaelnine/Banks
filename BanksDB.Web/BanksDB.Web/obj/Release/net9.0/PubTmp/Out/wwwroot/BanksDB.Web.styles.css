@@ -1,0 +1,286 @@
+/* _content/BanksDB.Web/Components/Layout/MainLayout.razor.rz.scp.css */
+#blazor-error-ui[b-hqw4h8qk4h] {
+    color-scheme: light only;
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss[b-hqw4h8qk4h] {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
+/* _content/BanksDB.Web/Components/Pages/Account.razor.rz.scp.css */
+/* Account.razor.css */
+.transparent-file-input[b-3p0kpfey00] {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+
+    .transparent-file-input input[type="file"][b-3p0kpfey00] {
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+    }
+
+.file-upload-section[b-3p0kpfey00] {
+    position: relative;
+    width: 100%;
+}
+
+.file-upload-area[b-3p0kpfey00] {
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+    .file-upload-area:hover[b-3p0kpfey00] {
+        border-color: #007bff;
+        background: #e9ecef;
+    }
+
+.upload-placeholder div[b-3p0kpfey00] {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.upload-placeholder p[b-3p0kpfey00] {
+    margin: 0;
+    font-weight: 500;
+}
+
+.upload-placeholder small[b-3p0kpfey00] {
+    color: #6c757d;
+}
+
+.parsed-transactions[b-3p0kpfey00] {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    background: #f8f9fa;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.transaction-preview-item[b-3p0kpfey00] {
+    padding: 10px;
+    border-bottom: 1px solid #e9ecef;
+    background: white;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+    .transaction-preview-item:last-child[b-3p0kpfey00] {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+.preview-row[b-3p0kpfey00] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.preview-description[b-3p0kpfey00] {
+    font-size: 0.85em;
+    color: #6c757d;
+}
+
+.preview-more[b-3p0kpfey00] {
+    text-align: center;
+    padding: 10px;
+    font-style: italic;
+}
+/* _content/BanksDB.Web/Components/Pages/BankManagementModal.razor.rz.scp.css */
+.modal-overlay[b-wjl67vzif4] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content[b-wjl67vzif4] {
+    background: white;
+    border-radius: 8px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.wide-modal[b-wjl67vzif4] {
+    width: 800px;
+    max-width: 95%;
+}
+
+.modal-header[b-wjl67vzif4] {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+}
+
+    .modal-header h5[b-wjl67vzif4] {
+        margin: 0;
+        color: #2c3e50;
+    }
+
+.btn-close[b-wjl67vzif4] {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6c757d;
+}
+
+    .btn-close:hover[b-wjl67vzif4] {
+        color: #dc3545;
+    }
+
+.modal-body[b-wjl67vzif4] {
+    padding: 1.5rem;
+}
+
+.form-section[b-wjl67vzif4] {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+    .form-section h6[b-wjl67vzif4] {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+
+.form-group[b-wjl67vzif4] {
+    margin-bottom: 1rem;
+}
+
+    .form-group label[b-wjl67vzif4] {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        display: block;
+        color: #495057;
+    }
+
+.form-control[b-wjl67vzif4] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+    .form-control:focus[b-wjl67vzif4] {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+    }
+
+.form-buttons[b-wjl67vzif4] {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn[b-wjl67vzif4] {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.btn-success[b-wjl67vzif4] {
+    background: #28a745;
+    color: white;
+}
+
+.btn-secondary[b-wjl67vzif4] {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-outline-primary[b-wjl67vzif4] {
+    background: transparent;
+    border: 1px solid #007bff;
+    color: #007bff;
+}
+
+.btn-outline-danger[b-wjl67vzif4] {
+    background: transparent;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+}
+
+.btn:hover[b-wjl67vzif4] {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.list-section h6[b-wjl67vzif4] {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.table[b-wjl67vzif4] {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .table th[b-wjl67vzif4],
+    .table td[b-wjl67vzif4] {
+        padding: 0.75rem;
+        border-bottom: 1px solid #dee2e6;
+        text-align: left;
+    }
+
+    .table th[b-wjl67vzif4] {
+        background: #f8f9fa;
+        font-weight: 600;
+        color: #495057;
+    }
+
+.table-responsive[b-wjl67vzif4] {
+    overflow-x: auto;
+}
+
+.loading[b-wjl67vzif4], .empty-state[b-wjl67vzif4] {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+}
+
+.validation-message[b-wjl67vzif4] {
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
