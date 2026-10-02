@@ -392,3 +392,395 @@ h3 {
         width: auto;
         padding: 0.5rem 3rem;
     }
+/* пивот */
+.pivot-wrap {
+    overflow: auto;
+    max-height: 70vh;
+    border: 1px solid #cfe8d0;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #66bb6a #f3faf3;
+}
+
+/* Chrome / Edge / Opera */
+.pivot-wrap::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+}
+
+.pivot-wrap::-webkit-scrollbar-track {
+    background: #f3faf3;
+    border-radius: 8px;
+}
+
+.pivot-wrap::-webkit-scrollbar-thumb {
+    background: #66bb6a;
+    border-radius: 8px;
+    border: 2px solid #f3faf3;
+}
+
+.pivot-wrap::-webkit-scrollbar-thumb:hover {
+    background: #43a047;
+}
+
+.pivot-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: max-content;
+    font-size: 0.9rem;
+    color: #1f2d20;
+}
+
+    .pivot-table th,
+    .pivot-table td {
+        padding: 6px 8px;
+        text-align: right;
+        min-width: 46px; /* ровные колонки */
+        white-space: nowrap;
+        border-bottom: 1px solid #eef3ee;
+        border-right: 1px solid #eef3ee;
+    }
+
+    .pivot-table thead th {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        background: linear-gradient(180deg, #f3faf3, #e7f4e8);
+        color: #1b5e20;
+        font-weight: 700;
+        border-bottom: 2px solid #cfe8d0;
+        text-align: center;
+    }
+
+    /* Первая колонка — «Категория», липнет по горизонтали */
+    .pivot-table th:first-child,
+    .pivot-table td:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        background: #fff;
+        text-align: left;
+        min-width: 200px;
+        max-width: 260px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-right: 2px solid #cfe8d0;
+    }
+
+    .pivot-table thead th:first-child {
+        z-index: 4;
+        background: linear-gradient(180deg, #f3faf3, #e7f4e8);
+    }
+
+    /* Зебра по строкам */
+    .pivot-table tbody tr:nth-child(even) td {
+        background: #fafdfa;
+    }
+
+        .pivot-table tbody tr:nth-child(even) td:first-child {
+            background: #fafdfa;
+        }
+
+    /* Расходы — красноватый акцент, приходы — зелёный */
+    .pivot-table tbody tr.row-expense td:first-child {
+        color: #b71c1c;
+        font-weight: 600;
+        border-left: 4px solid #ef5350;
+    }
+
+    .pivot-table tbody tr.row-income td:first-child {
+        color: #1b5e20;
+        font-weight: 600;
+        border-left: 4px solid #66bb6a;
+    }
+
+    /* Кликабельные ячейки */
+    .pivot-table td.cell-clickable {
+        cursor: pointer;
+        transition: background .12s;
+    }
+
+        .pivot-table td.cell-clickable:hover {
+            background: #fff8e1 !important;
+            box-shadow: inset 0 0 0 1px #f0c36d;
+        }
+
+    /* Итоговая строка «Итого по дням» */
+    .pivot-table tfoot td {
+        background: linear-gradient(180deg, #e7f4e8, #dbecdd);
+        font-weight: 700;
+        color: #1b5e20;
+        border-top: 2px solid #cfe8d0;
+        border-bottom: none;
+    }
+
+        .pivot-table tfoot td:first-child {
+            background: linear-gradient(180deg, #e7f4e8, #dbecdd);
+            z-index: 2;
+        }
+
+    /* Колонка «Итого» справа — выделяем */
+    .pivot-table th:last-child,
+    .pivot-table td:last-child {
+        position: sticky;
+        right: 0;
+        z-index: 2;
+        background: #f3faf3;
+        font-weight: 700;
+        border-left: 2px solid #cfe8d0;
+        box-shadow: -2px 0 0 #cfe8d0;
+    }
+
+    .pivot-table thead th:last-child {
+        z-index: 4;
+    }
+
+    .pivot-table tfoot td:last-child {
+        z-index: 2;
+    }
+
+    /* Пустые ячейки — не режем фон зебры */
+    .pivot-table td:empty {
+        background: inherit;
+    }
+
+/* ---- Селекты в стиле приложения ---- */
+select.form-select,
+.filter-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%232e7d32' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    border: 2px solid #2e7d32;
+    color: #1b5e20;
+    font-weight: 600;
+    padding: 10px 40px 10px 16px;
+    border-radius: 24px;
+    min-width: 180px;
+    height: 46px;
+    cursor: pointer;
+    outline: none;
+    transition: box-shadow .15s, border-color .15s;
+}
+
+    select.form-select:hover {
+        border-color: #1b5e20;
+    }
+
+    select.form-select:focus {
+        border-color: #1b5e20;
+        box-shadow: 0 0 0 3px rgba(46,125,50,0.25);
+    }
+
+/* стрелки ‹ › рядом с месяцем — тоже округлим */
+.month-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    border: 2px solid #2e7d32;
+    border-radius: 24px;
+    padding: 4px 6px;
+}
+
+    .month-nav .nav-arrow {
+        width: 38px;
+        height: 38px;
+        border: none;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #43a047, #2e7d32);
+        color: #fff;
+        font-size: 18px;
+        line-height: 1;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform .1s;
+    }
+
+        .month-nav .nav-arrow:hover {
+            transform: scale(1.07);
+        }
+
+        .month-nav .nav-arrow:active {
+            transform: scale(0.97);
+        }
+
+    .month-nav .month-title {
+        min-width: 130px;
+        text-align: center;
+        font-weight: 700;
+        color: #1b5e20;
+        text-transform: capitalize;
+    }
+
+    /* сводка */
+.summary-panel {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    align-items: baseline;
+    padding: 1rem 1.25rem;
+    background: #fff;
+    border: 1px solid #cfe8d0;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+    .summary-panel .label {
+        color: #5b6b5d;
+        font-weight: 600;
+        margin-right: 6px;
+    }
+
+    .summary-panel .income {
+        color: #1b5e20;
+        font-weight: 700;
+    }
+
+    .summary-panel .expense {
+        color: #b71c1c;
+        font-weight: 700;
+    }
+
+    .summary-panel .saldo {
+        color: #1f2d20;
+        font-weight: 700;
+    }
+
+/* модалка */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 30, 20, 0.45);
+    backdrop-filter: blur(2px);
+    z-index: 1000;
+    animation: fadeIn .15s ease;
+}
+
+.modal-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    min-width: 440px;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow: auto;
+    z-index: 1001;
+    animation: popIn .18s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -46%) scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.modal-header {
+    padding: 1rem 1.25rem;
+    background: linear-gradient(180deg, #f3faf3, #e7f4e8);
+    border-bottom: 1px solid #cfe8d0;
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .modal-header h5 {
+        margin: 0;
+        color: #1b5e20;
+        font-weight: 700;
+    }
+
+.modal-close {
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: #5b6b5d;
+    cursor: pointer;
+    padding: 0 6px;
+    border-radius: 50%;
+    transition: background .12s, color .12s;
+}
+
+    .modal-close:hover {
+        color: #1b5e20;
+        background: #e7f4e8;
+    }
+
+.modal-body {
+    padding: 1rem 1.25rem;
+}
+
+.modal-footer {
+    padding: 0.75rem 1.25rem 1.25rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: .75rem;
+}
+
+.org-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px dashed #e3eee4;
+}
+
+    .org-row:last-child {
+        border-bottom: none;
+    }
+
+    .org-row .name {
+        color: #1f2d20;
+        font-weight: 600;
+    }
+
+    .org-row .amount {
+        color: #1b5e20;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .org-row .count {
+        color: #7a8b7c;
+        font-size: .82rem;
+        margin-left: 8px;
+    }
+
+.org-total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 14px;
+    margin-top: 6px;
+    border-top: 2px solid #cfe8d0;
+    font-weight: 700;
+    color: #1b5e20;
+    font-size: 1.05rem;
+}

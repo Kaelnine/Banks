@@ -1,0 +1,89 @@
+/* Account.razor.css */
+.transparent-file-input[b-3p0kpfey00] {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+
+    .transparent-file-input input[type="file"][b-3p0kpfey00] {
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+    }
+
+.file-upload-section[b-3p0kpfey00] {
+    position: relative;
+    width: 100%;
+}
+
+.file-upload-area[b-3p0kpfey00] {
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+    .file-upload-area:hover[b-3p0kpfey00] {
+        border-color: #007bff;
+        background: #e9ecef;
+    }
+
+.upload-placeholder div[b-3p0kpfey00] {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.upload-placeholder p[b-3p0kpfey00] {
+    margin: 0;
+    font-weight: 500;
+}
+
+.upload-placeholder small[b-3p0kpfey00] {
+    color: #6c757d;
+}
+
+.parsed-transactions[b-3p0kpfey00] {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    background: #f8f9fa;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.transaction-preview-item[b-3p0kpfey00] {
+    padding: 10px;
+    border-bottom: 1px solid #e9ecef;
+    background: white;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+    .transaction-preview-item:last-child[b-3p0kpfey00] {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+.preview-row[b-3p0kpfey00] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.preview-description[b-3p0kpfey00] {
+    font-size: 0.85em;
+    color: #6c757d;
+}
+
+.preview-more[b-3p0kpfey00] {
+    text-align: center;
+    padding: 10px;
+    font-style: italic;
+}

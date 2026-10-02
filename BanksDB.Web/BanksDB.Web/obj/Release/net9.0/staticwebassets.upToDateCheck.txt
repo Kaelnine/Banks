@@ -1,0 +1,14 @@
+wwwroot\app.css
+wwwroot\css\account.css
+wwwroot\css\login.css
+wwwroot\css\modals.css
+wwwroot\css\site.css
+wwwroot\css\transactions.css
+wwwroot\js\fileUpload.js
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\app.css
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\css\account.css
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\css\login.css
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\css\modals.css
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\css\site.css
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\css\transactions.css
+D:\For Jobs\BanksDB\Banks\BanksDB.Web\BanksDB.Web\wwwroot\js\fileUpload.js

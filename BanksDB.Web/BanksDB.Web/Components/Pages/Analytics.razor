@@ -1,0 +1,255 @@
+﻿@page "/analytics"
+@using BanksDB.Core.Dtos
+@using BanksDB.BLL.Interfaces
+@using BanksDB.BLL.Services
+@using Microsoft.AspNetCore.Components.Web
+@inject ITransactionService TransactionService
+@inject NavigationManager Navigation
+@inject IAuthenticationService Auth
+
+<div class="page-container">
+    <div class="user-header">
+        <div class="user-info">
+            <button class="btn-login" @onclick="@(() => Navigation.NavigateTo("/"))">← На главную</button>
+            <span>👩🏼 @(Auth.CurrentUser?.FullName ?? "Пользователь")</span>
+        </div>
+    </div>
+
+    <h3>📊 Аналитика по дням</h3>
+
+    @* ---- Фильтры ---- *@
+    <div class="admin-panel" style="margin-bottom:1rem;">
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+
+            <div class="month-nav">
+                <button class="nav-arrow" @onclick="PrevMonth" title="Предыдущий месяц">‹</button>
+                <span class="month-title">
+                    @(new DateTime(year, month, 1).ToString("MMMM yyyy", new System.Globalization.CultureInfo("ru-RU")))
+                </span>
+                <button class="nav-arrow" @onclick="NextMonth" title="Следующий месяц">›</button>
+            </div>
+
+            <select class="form-select" @bind="typeFilter" @bind:after="LoadAsync">
+                <option value="">Тип: все</option>
+                <option value="Приход">Приход</option>
+                <option value="Расход">Расход</option>
+            </select>
+
+            <select class="form-select" @bind="categoryFilter" @bind:after="LoadAsync">
+                <option value="">Категория: все</option>
+                @foreach (var c in categories)
+                {
+                    <option value="@c">@c</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    @* ---- Сводка ---- *@
+    @if (pivot != null)
+    {
+        <div class="summary-panel" style="margin-bottom:1rem;">
+            <div><span class="label">Приход:</span><span class="income">+@pivot.TotalIncome.ToString("N2") ₽</span></div>
+            <div><span class="label">Расход:</span><span class="expense">−@pivot.TotalExpense.ToString("N2") ₽</span></div>
+            <div><span class="label">Итого:</span><span class="saldo">@pivot.GrandTotal.ToString("N2") ₽</span></div>
+        </div>
+
+        
+    
+
+        @* ---- Пивот ---- *@
+        <div class="pivot-wrap">
+            @if (isLoading)
+            {
+                <p style="padding:1rem;">Загрузка...</p>
+            }
+            else if (!pivot.Rows.Any())
+            {
+                <p style="padding:1rem;">Нет операций за выбранный период.</p>
+            }
+            else
+            {
+                <table class="pivot-table">
+                    <thead>
+                        <tr>
+                            <th>Категория</th>
+                            @for (int d = 1; d <= pivot.DaysInMonth; d++)
+                            {
+                                <th>@d</th>
+                            }
+                            <th>Итого</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            bool incomeSeparatorShown = false;
+                        }
+                        @foreach (var row in pivot.Rows)
+                        {
+                            if (!incomeSeparatorShown && row.TransactionType == "Приход")
+                            {
+                                incomeSeparatorShown = true;
+                                <tr>
+                                    <td colspan="@(pivot.DaysInMonth + 2)"
+                                        style="background:#e7f4e8; font-weight:700; text-align:left; padding:6px 10px; color:#1b5e20;">
+                                        ПРИХОДЫ
+                                    </td>
+                                </tr>
+                            }
+
+                            <tr class="@(row.TransactionType == "Приход" ? "row-income" : "row-expense")">
+                                <td>@row.Category</td>
+                                @for (int i = 0; i < pivot.DaysInMonth; i++)
+                                {
+                                    var dayNumber = i + 1;
+                                    var cell = row.CellsByDay[i];
+                                    var isClickable = cell.Total > 0;
+                                    <td class="@(isClickable ? "cell-clickable" : "")"
+                                        @onclick="@(isClickable ? (() => OpenCell(row.Category, row.TransactionType, dayNumber, cell)) : null)">
+                                        @(isClickable? cell.Total.ToString("N2") : "")
+                                    </td>
+                                }
+                                <td>@row.MonthTotal.ToString("N2")</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Итого по дням</td>
+                            @for (int i = 0; i < pivot.DaysInMonth; i++)
+                            {
+                                var dayNumber = i + 1;
+                                var cell = pivot.DayTotals[i];
+                                var isClickable = cell.Total > 0;
+                                <td class="@(isClickable ? "cell-clickable" : "")"
+                                    @onclick="@(isClickable ? (() => OpenCell("Все категории", "Все типы", dayNumber, cell)) : null)">
+                                    @(isClickable? cell.Total.ToString("N2") : "")
+                                </td>
+                            }
+                            <td>—</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            }
+        </div>
+    }
+
+    @* ---- Модалка детализации ---- *@
+    @* ---- Модалка детализации ---- *@
+    @if (selectedCell != null)
+    {
+        <div class="modal-backdrop" @onclick="CloseModal"></div>
+        <div class="modal-window" @onclick:stopPropagation="true" tabindex="0" @onkeydown="OnModalKeyDown">
+
+            <div class="modal-header">
+                <h5>@selectedDate.ToString("dd.MM.yyyy")</h5>
+                <button class="modal-close" @onclick="CloseModal" title="Закрыть">×</button>
+            </div>
+
+            <div class="modal-body">
+                <div style="color:#5b6b5d; margin-bottom:.75rem;">
+                    <strong style="color:#1f2d20;">@selectedCategory</strong> · @selectedType
+                </div>
+
+                @if (selectedCell.Organizations.Any())
+                {
+                    @foreach (var o in selectedCell.Organizations)
+                    {
+                        <div class="org-row">
+                            <span class="name">@o.OrganizationName</span>
+                            <span>
+                                <span class="amount">@o.Amount.ToString("N2") ₽</span>
+                                <span class="count">@o.TransactionsCount шт.</span>
+                            </span>
+                        </div>
+                    }
+
+                    <div class="org-total">
+                        <span>Итого</span>
+                        <span>@selectedCell.Total.ToString("N2") ₽</span>
+                    </div>
+                }
+                else
+                {
+                    <p>Нет операций.</p>
+                }
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-login" @onclick="CloseModal">Закрыть</button>
+            </div>
+        </div>
+    }
+</div>
+
+
+@code {
+    private int year = DateTime.Today.Year;
+    private int month = DateTime.Today.Month;
+    private string? typeFilter;
+    private string? categoryFilter;
+    private PivotMonthDto? pivot;
+    private List<string> categories = new();
+    private bool isLoading;
+
+    private PivotCellDto? selectedCell;
+    private DateTime selectedDate;
+    private string selectedCategory = "";
+    private string selectedType = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        // категории берём из полного набора за месяц без фильтров
+        var all = await TransactionService.GetMonthlyPivotAsync(year, month);
+        categories = all.Rows.Select(r => r.Category).Distinct().OrderBy(c => c).ToList();
+        pivot = all;
+    }
+
+    private async Task LoadAsync()
+    {
+        isLoading = true;
+        pivot = await TransactionService.GetMonthlyPivotAsync(year, month, categoryFilter, typeFilter);
+        isLoading = false;
+    }
+
+    private async Task PrevMonth()
+    {
+        var d = new DateTime(year, month, 1).AddMonths(-1);
+        year = d.Year; month = d.Month;
+        await ReloadAll();
+    }
+
+    private async Task NextMonth()
+    {
+        var d = new DateTime(year, month, 1).AddMonths(1);
+        year = d.Year; month = d.Month;
+        await ReloadAll();
+    }
+
+    private async Task ReloadAll()
+    {
+        var all = await TransactionService.GetMonthlyPivotAsync(year, month);
+        categories = all.Rows.Select(r => r.Category).Distinct().OrderBy(c => c).ToList();
+        await LoadAsync();
+    }
+
+    private void OpenCell(string category, string type, int day, PivotCellDto cell)
+    {
+        if (cell == null || cell.Total == 0) return;
+
+        var days = DateTime.DaysInMonth(year, month);
+        if (day < 1 || day > days) return;     // подстраховка
+
+        selectedDate = new DateTime(year, month, day);
+        selectedCategory = category;
+        selectedType = type;
+        selectedCell = cell;
+    }
+
+    private void CloseModal() => selectedCell = null;
+
+    private void OnModalKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape") CloseModal();
+    }
+}

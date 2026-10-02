@@ -225,6 +225,24 @@ else
                         </div>
                     </InputFile>
                 </div>
+                <!---->
+                 @if (parserResult?.HasAccountMismatch == true)
+                {
+                    <div class="alert alert-danger" style="margin-top: 15px;">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-exclamation-circle-fill me-2"></i>
+                            <div>
+                                <strong>Несоответствие расчетного счета!</strong>
+                                <div>
+                                    Номер счета в файле (<strong>@parserResult.FileAccountNumber</strong>) 
+                                    не соответствует выбранному счету (<strong>@accountInfo.AccountNumber</strong>)
+                                </div>
+                                <small class="text-muted">Выберите правильный расчетный счет или загрузите корректный файл</small>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <!---->
 
                 @if (!string.IsNullOrEmpty(uploadError))
                 {
@@ -290,14 +308,18 @@ else
                         </div>
                     </div>
                 }
-                @if (parserResult?.Errors.Any() == true)
+                @if (parserResult?.Errors.Any() == true || parserResult?.HasAccountMismatch == true)
                 {
-                    <div class="alert alert-warning">
-                        <h6>Предупреждения:</h6>
+                    <div class="alert alert-danger">
+                        <h6>Ошибки загрузки:</h6>
                         <ul>
                             @foreach (var error in parserResult.Errors.Take(3))
                             {
                                 <li>@error</li>
+                            }
+                            @if (parserResult.HasAccountMismatch && !parserResult.Errors.Any(e => e.Contains("не соответствует")))
+                            {
+                                <li>Номер счета в файле не соответствует выбранному расчетному счету</li>
                             }
                         </ul>
                         @if (parserResult.Errors.Count > 3)
@@ -311,15 +333,16 @@ else
                 <button @onclick="CloseUploadModal" class="btn btn-secondary">
                     Отмена
                 </button>
-                <button @onclick="UploadTransactions" class="btn btn-success"                        
-                        disabled="@(parserResult?.Transactions.Any() != true || isUploading)">
+                <!--<button @onclick="UploadTransactions" class="btn btn-success"-->
+                    <button @onclick="UploadTransactions" class="btn @GetUploadButtonClass()"
+                        disabled="@(!CanUploadTransactions || isUploading)">
                     @if (isUploading)
                     {
                         <span>Загрузка...</span>
                     }
                     else
                     {                        
-                        <span>📤 Загрузить (@parserResult?.TotalTransactionsFound)</span>
+                        <span>📤 Загрузить (@(parserResult?.TotalTransactionsFound - duplicateCount))</span>
                     }
                 </button>
             </div>
@@ -330,7 +353,20 @@ else
 
 @code {
     [Parameter] public int Id { get; set; }
-
+    private string GetUploadButtonClass()
+    {
+        if (isUploading)
+            return "btn-secondary";
+            
+        if (CanUploadTransactions)
+            return "btn-success";
+        else
+            return "btn-outline-secondary disabled-opacity";
+    }
+    private bool CanUploadTransactions => 
+        parserResult?.Transactions.Any() == true && 
+        parserResult.IsValid && 
+        !parserResult.HasAccountMismatch;
     private AccountOutputModel? accountInfo;
     private List<DailySummaryOutputModel> dailySummary = new();
     private DateRangeInputModel dateRange = new();
