@@ -1,4 +1,6 @@
 ﻿using BanksDB.BLL.Parsers;
+using BanksDB.Core.Dtos;
+
 using BanksDB.Core.Entities;
 using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
@@ -22,6 +24,7 @@ namespace BanksDB.BLL.Interfaces
         Task<List<Transaction>> ImportTransactionsAsync(List<TransactionInputModel> transactions);
         Task<bool> IsDuplicateTransactionAsync(TransactionInputModel transaction);
         Task<List<TransactionInputModel>> FilterDuplicateTransactionsAsync(List<TransactionInputModel> transactions);
-        Task<int> GetDuplicateCountAsync(List<TransactionInputModel> transactions);        
+        Task<int> GetDuplicateCountAsync(List<TransactionInputModel> transactions);
+        Task<PivotMonthDto> GetMonthlyPivotAsync(int year, int month, string? categoryFilter = null, string? transactionTypeFilter = null);
     }
 }

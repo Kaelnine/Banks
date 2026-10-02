@@ -80,6 +80,15 @@ else
 		</div>
 		<!-- Панель управления для бухгалтера -->
 		@* @if (AuthenticationService.CurrentUser.Role == "Accountant") *@
+		<div class="page-container">
+			<div class="admin-panel">
+				<div class="admin-buttons">
+					<button class="btn-login" @onclick="@(() => Navigation.NavigateTo("/analytics"))">
+						📊 Аналитика по дням
+					</button>
+				</div>
+			</div>
+		</div>
 		@if (AuthenticationService.CurrentUser?.Role == "Accountant")
 		{
 			<div class="page-container">
@@ -100,6 +109,7 @@ else
 			</div>
 			
 		}
+
 		<div class="page-container">
 			<h3>🏦 Все счета</h3>
 		</div>

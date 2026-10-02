@@ -1,11 +1,15 @@
 ﻿using AutoMapper;
 using BanksDB.BLL.Interfaces;
 using BanksDB.BLL.Parsers;
+using BanksDB.Core.Dtos;
+
 using BanksDB.Core.Entities;
 using BanksDB.Core.Enums;
 using BanksDB.Core.Interfaces;
 using BanksDB.Core.Models.InputModels;
 using BanksDB.Core.Models.OutputModels;
+using BanksDB.DAL.Data;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace BanksDB.BLL.Services
@@ -16,12 +20,16 @@ namespace BanksDB.BLL.Services
         private readonly IMapper _mapper;
         private readonly IAccountRepository _accountRepository;
         private readonly BankParser _bankParser;
-        public TransactionService(ITransactionRepository transactionRepository, IAccountRepository accountRepository, IMapper mapper, BankParser bankParser)
+        private readonly ICategoryClassifier _classifier;
+        private readonly IDbContextFactory<BankDbContext> _db;
+        public TransactionService(ITransactionRepository transactionRepository, IAccountRepository accountRepository, IMapper mapper, BankParser bankParser, ICategoryClassifier classifier, IDbContextFactory<BankDbContext> db)
         {
             _transactionRepository = transactionRepository;
             _accountRepository = accountRepository;
             _mapper = mapper;
             _bankParser = bankParser;
+            _classifier = classifier;
+            _db = db;
         }
 
         public async Task<BankParserResult> BankParserStatementAsync(Stream fileStream, int accountId)
@@ -219,6 +227,117 @@ namespace BanksDB.BLL.Services
         {
             return await _transactionRepository.GetDuplicateCountAsync(transactions);
         }
+
+        public async Task<PivotMonthDto> GetMonthlyPivotAsync(int year, int month, string? categoryFilter = null, string? transactionTypeFilter = null)
+        {
+            await using var db = await _db.CreateDbContextAsync();
+
+            var start = new DateTime(year, month, 1);
+            var end = start.AddMonths(1);
+            var daysInMonth = DateTime.DaysInMonth(year, month);
+
+            // Тянем только нужные поля + организацию через Account.Organization.
+            var raw = await db.Transactions
+                .Where(t => !t.IsDeleted
+                            && t.TransactionDate >= start
+                            && t.TransactionDate < end
+                            && !t.Account.IsDeleted)
+                .Select(t => new
+                {
+                    t.TransactionDate,
+                    t.Amount,
+                    t.TransactionType,
+                    t.Description,
+                    t.DisplayCounterparty,
+                    OrgId = t.Account.OrganizationId,
+                    OrgName = t.Account.Organization.Name
+                })
+                .ToListAsync();
+
+            // Классифицируем в памяти (нельзя делать в SQL).
+            var classified = raw
+                .Select(t => new
+                {
+                    t.TransactionDate,
+                    t.Amount,
+                    t.TransactionType,
+                    Category = _classifier.Classify(t.Description, t.TransactionType, t.DisplayCounterparty),
+                    t.OrgId,
+                    t.OrgName
+                })
+                .Where(t => string.IsNullOrEmpty(categoryFilter) || t.Category == categoryFilter)
+                .Where(t => string.IsNullOrEmpty(transactionTypeFilter) || t.TransactionType == transactionTypeFilter)
+                .ToList();
+
+            var result = new PivotMonthDto
+            {
+                Year = year,
+                Month = month,
+                DaysInMonth = daysInMonth,
+                DayTotals = Enumerable.Range(0, daysInMonth).Select(_ => new PivotCellDto()).ToList()
+            };
+
+            foreach (var group in classified.GroupBy(t => new { t.Category, t.TransactionType }))
+            {
+                var row = new PivotRowDto
+                {
+                    Category = group.Key.Category,
+                    TransactionType = group.Key.TransactionType,
+                    CellsByDay = Enumerable.Range(0, daysInMonth).Select(_ => new PivotCellDto()).ToList()
+                };
+
+                foreach (var dayGroup in group.GroupBy(t => t.TransactionDate.Day))
+                {
+                    var idx = dayGroup.Key - 1;
+                    var cell = row.CellsByDay[idx];
+                    cell.Total = dayGroup.Sum(t => t.Amount);
+                    cell.Organizations = dayGroup
+                        .GroupBy(t => new { t.OrgId, t.OrgName })
+                        .Select(og => new OrganizationAmountDto
+                        {
+                            OrganizationId = og.Key.OrgId,
+                            OrganizationName = og.Key.OrgName,
+                            Amount = og.Sum(x => x.Amount),
+                            TransactionsCount = og.Count()
+                        })
+                        .OrderByDescending(o => o.Amount)
+                        .ToList();
+
+                    // В итог дня кладём ту же ячейку — так модалка итога тоже покажет разбивку.
+                    result.DayTotals[idx].Total += cell.Total;
+                    result.DayTotals[idx].Organizations.AddRange(cell.Organizations);
+                }
+
+                row.MonthTotal = row.CellsByDay.Sum(c => c.Total);
+                result.Rows.Add(row);
+
+                if (group.Key.TransactionType == "Приход") result.TotalIncome += row.MonthTotal;
+                else result.TotalExpense += row.MonthTotal;
+            }
+
+            result.Rows = result.Rows
+                .OrderBy(r => r.TransactionType == "Расход" ? 0 : 1) // сначала расходы
+                .ThenByDescending(r => r.MonthTotal)
+                .ToList();
+
+            // Пересобираем итоги дня после возможной консолидации (в DayTotals уже накоплено).
+            foreach (var dayCell in result.DayTotals)
+            {
+                dayCell.Organizations = dayCell.Organizations
+                    .GroupBy(o => new { o.OrganizationId, o.OrganizationName })
+                    .Select(g => new OrganizationAmountDto
+                    {
+                        OrganizationId = g.Key.OrganizationId,
+                        OrganizationName = g.Key.OrganizationName,
+                        Amount = g.Sum(x => x.Amount),
+                        TransactionsCount = g.Sum(x => x.TransactionsCount)
+                    })
+                    .OrderByDescending(o => o.Amount)
+                    .ToList();
+            }
+
+            return result;
+        }
     }
 
     public class ValidationResult
@@ -226,4 +345,6 @@ namespace BanksDB.BLL.Services
         public bool IsValid { get; set; }
         public List<string> Errors { get; set; } = new();
     }
+
+
 }

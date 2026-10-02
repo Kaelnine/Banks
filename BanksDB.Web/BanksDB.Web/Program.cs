@@ -42,6 +42,8 @@ namespace BanksDB.Web
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
+            
+            builder.Services.AddSingleton<ICategoryClassifier, KeywordCategoryClassifier>();
             builder.Services.AddHttpContextAccessor();            
             builder.Services.AddDbContextFactory<BankDbContext>(options =>
                    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
